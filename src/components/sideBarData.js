@@ -4,20 +4,21 @@ import * as FaIcons from "react-icons/fa";
 // import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 import * as BiIcons from "react-icons/bi";
-
-
+import * as BsIcons from "react-icons/bs";
+import * as HiIcons from "react-icons/hi";
+import * as RiIcons from "react-icons/ri";
 
 export const SideBarData = [
     {
         title: 'Dashboard',
         path: '/',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <MdIcons.MdOutlineSpaceDashboard />,
         cName: 'nav-text'
     },
     {
         title: 'Students',
         path: '/students',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <MdIcons.MdPersonSearch />,
         cName: 'nav-text'
     },
     {
@@ -29,25 +30,25 @@ export const SideBarData = [
     {
         title: 'Officers',
         path: '/officers',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <RiIcons.RiAdminLine />,
         cName: 'nav-text'
     },
     {
         title: 'Courses',
         path: '/courses',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <HiIcons.HiOutlineBookOpen />,
         cName: 'nav-text'
     },
     {
         title: 'Semesters',
         path: '/semesters',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <MdIcons.MdDateRange   />,
         cName: 'nav-text'
     },
     {
         title: 'Profile',
         path: '/profile',
-        icon: <MdIcons.MdSpaceDashboard />,
+        icon: <BsIcons.BsPersonCircle />,
         cName: 'nav-text'
     },
     {

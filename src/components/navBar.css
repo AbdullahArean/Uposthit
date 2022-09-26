@@ -7,9 +7,11 @@
     position: fixed;
     left : -100%;
     transition: 850ms;
+    display: overlay;
 }
 
 .nav-menu.active {
     left : 0;
     transition: 350ms;
+    z-index: 2;
 }

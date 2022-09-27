@@ -13,48 +13,65 @@ export const SideBarData = [
         title: 'Dashboard',
         path: '/',
         icon: <MdIcons.MdOutlineSpaceDashboard />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Students',
         path: '/students',
         icon: <MdIcons.MdPersonSearch />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Teachers',
         path: '/teachers',
         icon: <FaIcons.FaChalkboardTeacher />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Officers',
         path: '/officers',
         icon: <RiIcons.RiAdminLine />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Courses',
         path: '/courses',
         icon: <HiIcons.HiOutlineBookOpen />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Semesters',
         path: '/semesters',
         icon: <MdIcons.MdDateRange   />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Profile',
         path: '/profile',
         icon: <BsIcons.BsPersonCircle />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
     },
     {
         title: 'Logout',
         path: '/logout',
         icon: <BiIcons.BiLogOut />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        flex: 'true'
+    },
+    {
+        title: 'Help',
+        path: '/help',
+        icon: <MdIcons.MdHelpOutline />,
+        cName: 'nav-text',
+        flex: 'true',
+        gap: 'true',
+        bottom:'true'
     },
 ];

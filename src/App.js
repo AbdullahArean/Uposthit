@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/navBar';
 import Courses from './pages/courses';
 import Dashboard from './pages/dashboard';
+import Help from './pages/help';
 import Logout from './pages/logout';
 import Officers from './pages/officers';
 import Profile from './pages/profile';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/semesters' element = {<Semesters />} />
           <Route path='/profile' element = {<Profile />} />
           <Route path='/logout' element = {<Logout />} />
+          <Route path='/help' element = {<Help />} />
         </Routes>
       </Router>
     </div>

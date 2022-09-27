@@ -8,10 +8,11 @@
     left : -100%;
     transition: 850ms;
     display: overlay;
+    z-index: 20;
 }
 
 .nav-menu.active {
     left : 0;
     transition: 350ms;
-    z-index: 2;
+    z-index: 20;
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import { OfficersTable } from '../components/officersTable'
 
 function Officers() {
   return (
     <div className='officers'>
-    <h1>Officers</h1>
+      <OfficersTable/>
     </div>
   )
 }

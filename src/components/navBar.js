@@ -12,7 +12,7 @@ function NavBar() {
   const showSideBar = () => setSideBar(!sidebar);
   return (
     <div>
-        <div className='navbar bg-blue-500 p-5 pl-7 text-white'>
+        <div className='navbar drop-shadow-lg bg-blue-500 p-5 pl-7 text-white'>
             <Link to="#" className="menu-bars">
                 <FaIcons.FaBars onClick={showSideBar}/>
             </Link>
@@ -26,8 +26,8 @@ function NavBar() {
                 </div>
             </form>
         </div>
-        <nav className={sidebar ? 'nav-menu active fixed top-0 pt-5 flex h-screen' : 'nav-menu flex fixed top-0 pt-5 h-screen'}>
-            <ul className='nav-menu-items p-2 pt-0 text-xl text-left text-white bg-blue-500' onClick={showSideBar}>
+        <nav className={sidebar ? 'nav-menu active fixed top-0 flex h-screen drop-shadow-2xl' : 'nav-menu flex fixed top-0 pt-5 h-screen'}>
+            <ul className='nav-menu-items p-2 pt-5 text-xl text-left text-white bg-blue-500' onClick={showSideBar}>
                 <li className='navbar-toggle pb-5 pl-5'>
                     <Link to='#' className='menu-bars'>
                         <IoIcons.IoCloseSharp/>

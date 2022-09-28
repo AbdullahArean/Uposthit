@@ -13,7 +13,7 @@ export function StudentsTable() {
                 </div>
                 <input type="text" id="table-search" class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Search for students"/>
             </div>
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg mx-10 mt-5">
+            <div class="overflow-x-auto relative drop-shadow-lg shadow-md sm:rounded-lg mx-10 mt-5">
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>

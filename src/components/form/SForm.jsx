@@ -14,43 +14,13 @@ const SForm = () => {
                 
                 <div className="mb-6">
                     <label for="S_Year" class="block mb-2 text-md font-medium text-gray-900">Select Current Year</label>
-                    <fieldset className='flex mt-5'>
-
-                        <div class="flex items-center mb-4 mr-2">
-                            <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                            <label for="country-option-1" class="block text-sm font-medium text-gray-900">
-                            1st
-                            </label>
-                        </div>
-
-                        <div class="flex items-center mb-4 mr-2">
-                            <input id="country-option-2" type="radio" name="countries" value="Germany" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300"/>
-                            <label for="country-option-2" class="block text-sm font-medium text-gray-900">
-                            2nd
-                            </label>
-                        </div>
-
-                        <div class="flex items-center mb-4 mr-2">
-                            <input id="country-option-3" type="radio" name="countries" value="Spain" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300"/>
-                            <label for="country-option-3" class="block text-sm font-medium text-gray-900">
-                            3rd
-                            </label>
-                        </div>
-
-                        <div class="flex items-center mb-4 mr-2">
-                            <input id="country-option-4" type="radio" name="countries" value="United Kingdom" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring:blue-300"/>
-                            <label for="country-option-4" class="block text-sm font-medium text-gray-900">
-                            4th
-                            </label>
-                        </div>
-
-                        <div class="flex items-center mb-4 mr-2">
-                            <input id="country-option-4" type="radio" name="countries" value="United Kingdom" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring:blue-300"/>
-                            <label for="country-option-4" class="block text-sm font-medium text-gray-900">
-                            M.Sc.
-                            </label>
-                        </div>
-                    </fieldset>
+                    <select id="year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5">
+                        <option className='ordinal'>1st</option>
+                        <option className='ordinal'>2nd</option>
+                        <option className='ordinal'>3rd</option>
+                        <option className='ordinal'>4th</option>
+                        <option>M.Sc.</option>
+                    </select>
                 </div>
             </div>
             <div className="grid md:grid-cols-3 gap-16">
@@ -76,11 +46,11 @@ const SForm = () => {
             <div className='grid md:grid-cols-2 gap-24'>
                 <div class="mb-6">
                     <label for="email_1" class="block mb-2 text-md font-medium text-gray-900">Primary E-Mail Address</label>
-                    <input type="email" id="email_1" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="###@example.com" required=""/>
+                    <input type="email" id="email_1" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="student@example.com" required=""/>
                 </div>
                 <div class="mb-6">
                     <label for="email_2" class="block mb-2 text-md font-medium text-gray-900">Emergency E-Mail Address</label>
-                    <input type="email" id="email_2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="###@example.com" required=""/>
+                    <input type="email" id="email_2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="student@example.com" required=""/>
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">

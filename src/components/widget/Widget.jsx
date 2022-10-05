@@ -7,18 +7,11 @@ import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import SForm from '../form/SForm'
+import OForm from '../form/OForm'
+import TForm from '../form/TForm'
+import CForm from '../form/CForm'
+import SemForm from '../form/SemForm'
 
-// const style = {
-//   position: 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: 400,
-//   bgcolor: 'background.paper',
-//   border: '2px solid #000',
-//   boxShadow: 24,
-//   p: 4,
-// };
 
 const Widget = ( {type} ) => {
   let data;
@@ -28,7 +21,8 @@ const Widget = ( {type} ) => {
         title:'STUDENTS',
         counter:'232',
         link:'All Students',
-        icon:<HiIcons.HiUserAdd className=''/>
+        icon:<HiIcons.HiUserAdd className=''/>,
+        isStudent: true
       };
       break;
     case "teachers":
@@ -36,7 +30,8 @@ const Widget = ( {type} ) => {
         title:'TEACHERS',
         counter:"232",
         link:"All Teachers",
-        icon:<HiIcons.HiUserAdd className=''/>
+        icon:<HiIcons.HiUserAdd className=''/>,
+        isTeacher: true
       };
       break;
     case "officers":
@@ -44,7 +39,8 @@ const Widget = ( {type} ) => {
         title:'OFFICERS',
         counter:"232",
         link:"All Officers",
-        icon:<HiIcons.HiUserAdd className=''/>
+        icon:<HiIcons.HiUserAdd className=''/>,
+        isOfficer: true
       };
       break;
     case "courses":
@@ -52,7 +48,8 @@ const Widget = ( {type} ) => {
         title:'COURSES',
         counter:"323",
         link:"All Courses",
-        icon:<MdIcons.MdAddBox className=''/>
+        icon:<MdIcons.MdAddBox className=''/>,
+        isCourse: true
       };
       break;
     case "semesters":
@@ -60,20 +57,20 @@ const Widget = ( {type} ) => {
         title:'SEMESTERS',
         counter:"323",
         link:"All Semesters",
-        icon:<MdIcons.MdAddBox className=''/>
+        icon:<MdIcons.MdAddBox className=''/>,
+        isSemester: true
       };
       break;
       default:
         break;
   }
 
-  // const [modalOn, setModalOn] = useState(false);
-  // const clicked = () => {
-  //   setModalOn(true);
-  // }
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  console.log(typeof(data.title));
 
 
   return (
@@ -100,7 +97,7 @@ const Widget = ( {type} ) => {
                   <Fade in={open}>
                     <div className='modal -translate-1/2 border rounded-xl shadow-xl bg-white p-12'>
                       <div id="transition-modal-description">
-                        <SForm/>
+                        {data.isStudent ? <SForm/> : data.isTeacher ? <TForm/> : data.isOfficer ? <OForm/> : data.isCourse ? <CForm/> : data.isSemester ? <SemForm/> : 'undefined'}
                       </div>
                     </div>
                   </Fade>

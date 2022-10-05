@@ -67,14 +67,14 @@ const Sidebar = () => {
             <div className='text-gray-400 pl-2 pt-6 text-sm'>
                 <span>SUPPORT</span>
             </div>
-                <div className='flex gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <MdIcons.MdHelpOutline className='text-violet-800'/>
-                    <span className='text-gray-600'>Help</span>
-                </div>
-                <div className='flex w-full gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <MdIcons.MdInfoOutline className='text-violet-800'/>
-                    <span className='text-gray-600'>About</span>
-                </div>
+            <div className='flex gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                <MdIcons.MdHelpOutline className='text-violet-800'/>
+                <span className='text-gray-600'>Help</span>
+            </div>
+            <div className='flex w-full gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                <MdIcons.MdInfoOutline className='text-violet-800'/>
+                <span className='text-gray-600'>About</span>
+            </div>
         </div>
     </div>
   )

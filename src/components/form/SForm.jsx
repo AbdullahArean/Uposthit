@@ -40,7 +40,7 @@ const SForm = () => {
                 </div>
                 <div class="mb-6">
                     <label for="s_mobile2" class="block mb-2 text-md font-medium text-gray-900">Emergency Contact No.</label>
-                    <input type="number" id="s_mbile2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required=""/>
+                    <input type="number" id="s_mobile2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required=""/>
                 </div>
             </div>
             <div className='grid md:grid-cols-2 gap-24'>
@@ -50,7 +50,7 @@ const SForm = () => {
                 </div>
                 <div class="mb-6">
                     <label for="s_mail_2" class="block mb-2 text-md font-medium text-gray-900">Emergency E-Mail Address</label>
-                    <input type="email" id="s_mail_2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="student@example.com" required=""/>
+                    <input type="email" id="s_mail2" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="student@example.com" required=""/>
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">

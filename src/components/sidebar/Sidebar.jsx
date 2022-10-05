@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import * as MdIcons from 'react-icons/md'
 import * as FiIcons from 'react-icons/fi'
 import * as BsIcons from 'react-icons/bs'
@@ -19,16 +20,20 @@ const Sidebar = () => {
                 <li className='text-gray-400 pl-2 pt-3 text-sm'>
                     <span>MAIN</span>
                 </li>
-                <li className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <MdIcons.MdDashboard className='text-violet-800'/>
-                    <span className='text-gray-600'>Dashboard</span>
+                <li>
+                    <Link to="/" className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                        <MdIcons.MdDashboard className='text-violet-800'/>
+                        <span className='text-gray-600'>Dashboard</span>
+                    </Link>
                 </li>
                 <li className='text-gray-400 pl-2 pt-6 text-sm'>
                     <span>LISTS</span>
                 </li>
-                <li className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <FaIcons.FaBookReader className='text-violet-800'/>
-                    <span className='text-gray-600'>Students</span>
+                <li>
+                    <Link to="/students" className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                        <FaIcons.FaBookReader className='text-violet-800'/>
+                        <span className='text-gray-600'>Students</span>
+                    </Link>
                 </li>
                 <li className='flex gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
                     <FaIcons.FaChalkboardTeacher className='text-violet-800'/>

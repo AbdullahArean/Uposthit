@@ -44,14 +44,14 @@ const CForm = () => {
                     <select id="c_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
                         setCourseSemester(event.target.value);
                     }}>
-                        <option className='ordinal'>1-1</option>
-                        <option className='ordinal'>1-2</option>
-                        <option className='ordinal'>2-1</option>
-                        <option className='ordinal'>2-2</option>
-                        <option className='ordinal'>3-1</option>
-                        <option className='ordinal'>3-2</option>
-                        <option className='ordinal'>4-1</option>
-                        <option className='ordinal'>4-2</option>
+                        <option>1-1</option>
+                        <option>1-2</option>
+                        <option>2-1</option>
+                        <option>2-2</option>
+                        <option>3-1</option>
+                        <option>3-2</option>
+                        <option>4-1</option>
+                        <option>4-2</option>
                     </select>
                 </div>
             </div>
@@ -64,7 +64,7 @@ const CForm = () => {
                 </div>
                 <div class="mb-6">
                     <label for="c_year" class="block mb-2 text-md font-medium text-gray-900">Year</label>
-                    <input type="text" id="c_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 2022" required="20" onChange={(event)=>{
+                    <input type="number" id="c_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 2022" required="20" onChange={(event)=>{
                         setcourseYear(event.target.value);
                     }}/>
                 </div>
@@ -77,7 +77,7 @@ const CForm = () => {
             </div>
             <div className="grid grid-cols-4 gap-12">
                 <div class="flex items-center mb-4">
-                    <input id="archive" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300" />
+                    <input id="c_archive" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300" />
                     <label for="checkbox-1" class="ml-2 text-md font-medium text-gray-900">Archive</label>
                 </div>
                 <button id='submit' onClick={addCourse} type="submit" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>

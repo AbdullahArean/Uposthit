@@ -62,16 +62,16 @@ const SForm = () => {
                 </div>
             </div>
             <div className="grid md:grid-cols-3 gap-16">
+                <div class="mb-6 col-end-3 col-span-2">
+                <label for="s_reg" class="block mb-2 text-md font-medium text-gray-900">Registration No.</label>
+                <input type="number" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. 2023-017-342" required="-" onChange={(event)=>{
+                    setstudentReg(event.target.value);
+                }}/>
+                </div>
                 <div class="mb-6">
                     <label for="s_roll" class="block mb-2 text-md font-medium text-gray-900">Class Roll</label>
                     <input type="number" id="s_roll" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 69" required="-" onChange={(event)=>{
                         setstudentRoll(event.target.value);
-                    }}/>
-                </div>
-                <div class="mb-6 col-end-4 col-span-2">
-                    <label for="s_reg" class="block mb-2 text-md font-medium text-gray-900">Registration No.</label>
-                    <input type="number" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. 2023-017-342" required="-" onChange={(event)=>{
-                        setstudentReg(event.target.value);
                     }}/>
                 </div>
             </div>

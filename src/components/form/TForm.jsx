@@ -58,14 +58,14 @@ const TForm = () => {
             </div>
             <div className='grid md:grid-cols-2 gap-24'>
                 <div class="mb-6">
-                    <label for="t_tel" class="block mb-2 text-md font-medium text-gray-900">Contact No.</label>
-                    <input type="tel" id="t_tel" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required="0" onChange={(event)=>{
+                    <label for="t_mobile" class="block mb-2 text-md font-medium text-gray-900">Contact No.</label>
+                    <input type="number" id="t_mobile" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required="0" onChange={(event)=>{
                         setteacherMobile(event.target.value);
                     }}/>
                 </div>
                 <div class="mb-6">
-                    <label for="t_email" class="block mb-2 text-md font-medium text-gray-900">E-Mail Address</label>
-                    <input type="email" id="t_email" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="teacher@example.com" required="@" onChange={(event)=>{
+                    <label for="t_mail" class="block mb-2 text-md font-medium text-gray-900">E-Mail Address</label>
+                    <input type="email" id="t_mail" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="teacher@example.com" required="@" onChange={(event)=>{
                         setteacherMail(event.target.value);
                     }}
                     />
@@ -73,11 +73,18 @@ const TForm = () => {
             </div>
             <div className="grid md:grid-cols-1">
                 <div class="mb-6">
-                    <label for="t_desc" class="block mb-2 text-md font-medium text-gray-900">Description (Optional)</label>
-                    <textarea id="t_desc" rows="4" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="Add Description" onChange={(event)=>{
+                    <label for="t_des" class="block mb-2 text-md font-medium text-gray-900">Designation</label>
+                    <select id="t_des" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
                         setteacherDescription(event.target.value);
-                    }}
-                    ></textarea>
+                    }}>
+                        <option>Chairperson</option>
+                        <option>Professor</option>
+                        <option>Associate Professor</option>
+                        <option>Assistant Professor</option>
+                        <option>Lecturer</option>
+                        <option>Teaching Assistant</option>
+                        <option>Research Assistant</option>
+                    </select>
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">

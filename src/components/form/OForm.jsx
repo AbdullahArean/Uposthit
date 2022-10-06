@@ -49,24 +49,30 @@ const OForm = () => {
             </div>
             <div className='grid md:grid-cols-2 gap-24'>
                 <div class="mb-6">
-                    <label for="o_tel" class="block mb-2 text-md font-medium text-gray-900">Contact No.</label>
-                    <input type="tel" id="o_tel" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required="0" onChange={(event)=>{
+                    <label for="o_mobile" class="block mb-2 text-md font-medium text-gray-900">Contact No.</label>
+                    <input type="number" id="o_mobile" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" required="0" onChange={(event)=>{
                         setofficerMobile(event.target.value);
                     }}/>
                 </div>
                 <div class="mb-6">
-                    <label for="o_email" class="block mb-2 text-md font-medium text-gray-900">E-Mail Address</label>
-                    <input type="email" id="o_email" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="officer@example.com" required="@" onChange={(event)=>{
+                    <label for="o_mail" class="block mb-2 text-md font-medium text-gray-900">E-Mail Address</label>
+                    <input type="email" id="o_mail" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="officer@example.com" required="@" onChange={(event)=>{
                         setofficerMail(event.target.value);
                     }}/>
                 </div>
             </div>
             <div className="grid md:grid-cols-1">
                 <div class="mb-6">
-                    <label for="o_desc" class="block mb-2 text-md font-medium text-gray-900">Description (Optional)</label>
-                    <textarea id="o_desc" rows="4" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="Add Description" onChange={(event)=>{
+                    <label for="o_des" class="block mb-2 text-md font-medium text-gray-900">Designation</label>
+                    <select id="o_des" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
                         setofficerDesignation(event.target.value);
-                    }}></textarea>
+                    }}>
+                        <option>Principal Technical Officer</option>
+                        <option>Superintendent Engineer</option>
+                        <option>Senior Technical Officer</option>
+                        <option>Senior Administrative Officer</option>
+                        <option>Technical Officer</option>
+                    </select>
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">

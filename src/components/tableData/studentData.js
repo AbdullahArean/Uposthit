@@ -1,5 +1,5 @@
 export const studentColumns = [
-    { field: 's_name', headerName: 'Name', width: 200,sx:{text-align:'center'}},
+    { field: 's_name', headerName: 'Name', width: 200},
     { field: 'id', headerName: 'Registration No.', width: 150 },
     { field: 's_roll', headerName: 'Roll', width: 70},
     {field: 's_mobile1',headerName: 'Primary Contact',width: 150},

@@ -1,0 +1,21 @@
+.widget {
+    justify-content: space-between;
+}
+
+.left {
+    justify-content: space-between;
+}
+
+.right {
+    justify-content: space-between;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: table;
+}

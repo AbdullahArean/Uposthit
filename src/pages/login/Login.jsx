@@ -1,8 +1,16 @@
 import React from 'react'
 import './login.css'
 import loginImage from '../../images/login.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  let navigate = useNavigate(); 
+  const toDashboard = () =>{ 
+    let path = `/dashboard`; 
+    navigate(path);
+  }
+  
   return (
     <div className='block h-screen bg-gradient-to-r from-violet-500 to-violet-200 flex items-center justify-center'>
       <div className="container h-content w-content rounded-3xl grid grid-cols-2 bg-white shadow-2xl">
@@ -37,8 +45,8 @@ const Login = () => {
               </label>
             </div>
             <div className="md:w-full grid grid-cols-1 justify-items-center items-center">
-              <button className="shadow bg-violet-600 hover:bg-violet-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full" type="submit">
-                Log In
+              <button onClick={toDashboard} className="shadow bg-violet-600 hover:bg-violet-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full" type="submit">
+                Log In  
               </button>
             </div>
           </form>
@@ -48,7 +56,7 @@ const Login = () => {
                   Don't have an account?
                 </span>
               </label>
-              <button className="shadow bg-white text-violet-600 border border-violet-600 hover:bg-violet-600 hover:text-white focus:shadow-outline focus:outline-none text-white font-bold lg:py-2 lg:px-8 sm:py-1 sm:px-2 transition-all rounded-full" type="button">
+              <button className="shadow bg-white text-violet-600 border border-violet-600 hover:bg-violet-600 hover:text-white focus:shadow-outline focus:outline-none font-bold lg:py-2 lg:px-8 sm:py-1 sm:px-2 transition-all rounded-full" type="button">
                 Create New
               </button>
             </div>

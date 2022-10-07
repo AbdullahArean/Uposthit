@@ -21,7 +21,7 @@ const Sidebar = () => {
                     <span>MAIN</span>
                 </li>
                 <li>
-                    <Link to="/" className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                    <Link to="/dashboard" className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
                         <MdIcons.MdDashboard className='text-violet-800'/>
                         <span className='text-gray-600'>Dashboard</span>
                     </Link>

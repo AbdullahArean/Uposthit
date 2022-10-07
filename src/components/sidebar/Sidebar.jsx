@@ -61,9 +61,11 @@ const Sidebar = () => {
                     <BsIcons.BsPersonCircle className='text-violet-800'/>
                     <span className='text-gray-600'>Profile</span>
                 </li>
-                <li className='flex gap-1 items-center pr-4 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <BiIcons.BiLogOutCircle className='text-violet-800'/>
-                    <span className='text-gray-600'>Logout</span>
+                <li>
+                    <Link to="/login" className='flex gap-1 items-center pr-4 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                        <BiIcons.BiLogOutCircle className='text-violet-800'/>
+                        <span className='text-gray-600'>Logout</span>
+                    </Link>
                 </li>
             </ul>
         </div> 

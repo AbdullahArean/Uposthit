@@ -11,15 +11,15 @@ const actionColumn = [
     width: 200,
     renderCell: () => {
       return (
-        <div className="cellAction grid grid-cols-2 w-full">
-          <div className="viewButton flex items-center justify-center space-x-2">
+        <div className="cellAction text-center grid grid-cols-2 w-full">
+          <button className="viewButton hover:bg-violet-200 rounded-lg flex items-center justify-center space-x-2">
             <p className='text-sm'>View</p>
-            <FaIcons.FaShareSquare/>
-          </div>
-          <div className="deleteButton flex items-center justify-center space-x-2">
+            <FaIcons.FaShareSquare className='text-violet-800'/>
+          </button>
+          <button className="deleteButton hover:bg-red-200 rounded-lg flex items-center justify-center space-x-2">
             <p className="text-sm">Delete</p>
-            <AiIcons.AiFillDelete/>
-          </div>
+            <AiIcons.AiFillDelete className='text-red-800'/>
+          </button>
         </div>
       )
     }
@@ -28,13 +28,15 @@ const actionColumn = [
 
 const DataTable = () => {
   return (
-    <div className='h-full mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>
+    <div className='text-center mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>
       <DataGrid className=''
         rows={studentRows}
         columns={studentColumns.concat(actionColumn)}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        disableSelectionOnClick
+        autoHeight
       />
     </div>
   )

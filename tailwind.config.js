@@ -9,6 +9,7 @@ module.exports = {
       fontFamily: {
         'dancing-script': ['"Dancing Script"', 'cursive'],
         'nunito': ['Nunito', 'sans-serif'],
+        'lobster': ['Lobster', 'cursive']
       }
     },
   },

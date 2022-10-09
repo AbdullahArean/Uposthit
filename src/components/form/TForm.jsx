@@ -151,8 +151,8 @@ const TForm = () => {
                         <option>Teaching Assistant</option>
                         <option>Research Assistant</option>
                     </select>
+                    <span id="tDesError" className='text-red-800'></span>
                 </div>
-                <span id="tDesError" className='text-red-800'></span>
             </div>
             <div className="grid grid-cols-4 gap-12">
                 <button onClick={tFormValidation} type="button" id='t_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Add New Teacher</button>

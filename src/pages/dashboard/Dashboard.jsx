@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Widget from '../../components/widget/Widget'
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <div className='flex'>
       <Sidebar/>
@@ -22,4 +22,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Dashboard

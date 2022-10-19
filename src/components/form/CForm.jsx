@@ -8,9 +8,7 @@ const CForm = () => {
 
     const [courseName, setcourseName] = useState("");
     const [courseCode, setcourseCode] = useState("");
-    const [courseSemester, setCourseSemester] = useState("1-1");
-    const [courseYear, setcourseYear] = useState("");
-    const [courseByOfficerID, setcourseByOfficerID] = useState("");
+    const [courseCredit, setcourseCredit] = useState("");
 
 
     const addCourse = () =>{
@@ -18,9 +16,7 @@ const CForm = () => {
 
             courseName: courseName,
             courseCode: courseCode,
-            courseSemester: courseSemester,
-            courseYear : courseYear,
-            courseByOfficerID : courseByOfficerID,
+            courseCredit: courseCredit,
         
       }).then(()=>{
         console.log("success");
@@ -71,7 +67,9 @@ const CForm = () => {
             <div className="grid md:grid-cols-2 gap-16">
                 <div class="mb-6">
                     <label for="c_credit" class="block mb-2 text-md font-medium text-gray-900">Course Credit</label>
-                    <input type="text" id="c_credit" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"/>
+                    <input type="text" id="c_credit" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                        setcourseCredit(event.target.value);
+                    }}/>
                     <span id="cCreditError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">

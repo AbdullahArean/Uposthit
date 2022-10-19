@@ -7,7 +7,7 @@ const SForm = () => {
     const [studentName, setstudentName] = useState("");
     const [studentReg, setstudentReg] = useState("");
     const [studentRoll, setstudentRoll] = useState("");
-    const [studentYear, setstudentYear] = useState("1st");
+    const [studentSemester, setstudentSemester] = useState("1st");
     const [studentPMail, setstudentPMail] = useState("");
     const [studentEMail, setstudentEMail] = useState("");
     const [studentPMobile, setstudentPMobile] = useState("");
@@ -21,7 +21,7 @@ const SForm = () => {
         studentName: studentName,
         studentReg: studentReg,
         studentRoll: studentRoll,
-        studentYear : studentYear,
+        studentSemester : studentSemester,
         studentPMail : studentPMail,
         studentEMail : studentEMail,
         studentPMobile: studentPMobile,
@@ -43,10 +43,10 @@ const SForm = () => {
         let sMail2 = document.getElementById('s_mail2').value;
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-        let regCheck = /^[0-9]{4}\-[0-9]{3}\-[0-9]{3}$/;
+        let regCheck = /^[0-9]{4}.[0-9]{3}.[0-9]{3}$/;
         let rollCheck = /^[A-Z]{2}\-[0-9]{2}$/;
         let mobileCheck = /^[0]{1}[1]{1}[0-9]{9}$/;
-        let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/
+        let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
         if(nameCheck.test(sName) === false){
             document.getElementById('sNameError').innerText="Please insert a valid name";
@@ -126,7 +126,9 @@ const SForm = () => {
                 
                 <div className="mb-6">
                     <label for="s_sem" class="block mb-2 text-md font-medium text-gray-900">Select Current Semester</label>
-                    <select id="s_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5">
+                    <select id="s_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                        setstudentSemester(event.target.value);
+                    }}>
                         <option>-</option>
                         <option>1-1</option>
                         <option>1-2</option>
@@ -144,7 +146,7 @@ const SForm = () => {
             <div className="grid md:grid-cols-3 gap-16">
                 <div class="mb-6 col-end-3 col-span-2">
                     <label for="s_reg" class="block mb-2 text-md font-medium text-gray-900">Registration No.</label>
-                    <input type="number" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. 2023-017-342" onChange={(event)=>{
+                    <input type="text" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. 2023-017-342" onChange={(event)=>{
                         setstudentReg(event.target.value);
                     }}/>
                     <span id="sRegError" className='text-red-800'></span>

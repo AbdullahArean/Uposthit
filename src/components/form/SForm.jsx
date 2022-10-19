@@ -17,6 +17,8 @@ const SForm = () => {
   
   
     const addStudent = () =>{
+        
+
       Axios.post('http://localhost:3001/createStudent',{ 
         studentName: studentName,
         studentReg: studentReg,
@@ -196,7 +198,6 @@ const SForm = () => {
                 <button id='reset' type="reset" class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>
-
     </div>
   )
 }

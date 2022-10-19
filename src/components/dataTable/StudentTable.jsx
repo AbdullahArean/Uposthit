@@ -27,6 +27,7 @@ const actionColumn = [
 ]
 
 const DataTable = () => {
+
   return (
     <div className='text-center mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>
       <DataGrid className=''

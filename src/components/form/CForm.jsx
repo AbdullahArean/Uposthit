@@ -26,7 +26,7 @@ const CForm = () => {
       function oFormValidation () {
         let cName = document.getElementById('c_name').value;
         let cCode = document.getElementById('c_code').value;
-        let cCredit = document.getElementById('c_credit').value;
+        // let cCredit = document.getElementById('c_credit').value;
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
         let codeCheck = /^[A-Z]{3}\-[0-9]{4}$/;
@@ -47,6 +47,7 @@ const CForm = () => {
 
         if(nameCheck.test(cName) === true && codeCheck.test(cCode) === true){
             addCourse();
+            window.location.reload();
         }
     }
 

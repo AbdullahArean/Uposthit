@@ -35,9 +35,11 @@ const Sidebar = () => {
                         <span className='text-gray-600'>Students</span>
                     </Link>
                 </li>
-                <li className='flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
-                    <FaIcons.FaChalkboardTeacher className='text-black text-2xl'/>
-                    <span className='text-gray-600'>Teachers</span>
+                <li>
+                    <Link to="/teacher" className='flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
+                        <FaIcons.FaChalkboardTeacher className='text-black text-2xl'/>
+                        <span className='text-gray-600'>Teachers</span>
+                    </Link>
                 </li>
                 <li className='flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-violet-200 rounded-md cursor-pointer'>
                     <FaIcons.FaUserShield className='text-black text-2xl'/>

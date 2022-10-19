@@ -53,14 +53,14 @@ const CForm = () => {
             document.getElementById('oIdError').innerText="";
         }
 
-        if(mobileCheck.test(cCode) === false){
+        if(codeCheck.test(cCode) === false){
             document.getElementById('cCodeError').innerText="Please insert a valid course code";
         }
         else {
             document.getElementById('cCodeError').innerText="";
         }
 
-        if(mailCheck.test(cYear) === false){
+        if(yearCheck.test(cYear) === false){
             document.getElementById('cYearError').innerText="Please insert a valid year";
         }
         else {
@@ -139,7 +139,7 @@ const CForm = () => {
                     <input id="c_archive" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300" />
                     <label for="checkbox-1" class="ml-2 text-md font-medium text-gray-900">Archive</label>
                 </div>
-                <button id='c_submit' onClick={cFormValidation} type="button" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
+                <button id='c_submit' onClick={oFormValidation} type="button" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>

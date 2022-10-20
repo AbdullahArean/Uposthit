@@ -7,7 +7,7 @@ const SForm = () => {
     const [studentName, setstudentName] = useState("");
     const [studentReg, setstudentReg] = useState("");
     const [studentRoll, setstudentRoll] = useState("");
-    const [studentSemester, setstudentSemester] = useState("1st");
+    const [studentSemester, setstudentSemester] = useState("");
     const [studentPMail, setstudentPMail] = useState("");
     const [studentEMail, setstudentEMail] = useState("");
     const [studentPMobile, setstudentPMobile] = useState("");
@@ -37,7 +37,7 @@ const SForm = () => {
     function sFormValidation () {
         let sName = document.getElementById('s_name').value;
         let sSem = document.getElementById('s_sem').value;
-        // let sReg = document.getElementById('s_reg').value;
+        let sReg = document.getElementById('s_reg').value;
         let sRoll = document.getElementById('s_roll').value;
         let sMobile1 = document.getElementById('s_mobile1').value;
         let sMobile2 = document.getElementById('s_mobile2').value;
@@ -45,7 +45,7 @@ const SForm = () => {
         let sMail2 = document.getElementById('s_mail2').value;
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-        // let regCheck = /^[0-9]{4}.[0-9]{3}.[0-9]{3}$/;
+        let regCheck = /^[0-9]{4}.[0-9]{3}.[0-9]{3}$/;
         let rollCheck = /^[A-Z]{2}\-[0-9]{2}$/;
         let mobileCheck = /^[0]{1}[1]{1}[0-9]{9}$/;
         let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -57,12 +57,12 @@ const SForm = () => {
             document.getElementById('sNameError').innerText="";
         }
 
-        // if(regCheck.test(sReg) === false){
-        //     document.getElementById('sRegError').innerText="Please insert a valid registration number";
-        // }
-        // else {
-        //     document.getElementById('sRegError').innerText="";
-        // }
+        if(regCheck.test(sReg) === false){
+            document.getElementById('sRegError').innerText="Please insert a valid registration number";
+        }
+        else {
+            document.getElementById('sRegError').innerText="";
+        }
 
         if(rollCheck.test(sRoll) === false){
             document.getElementById('sRollError').innerText="Please insert a valid roll";

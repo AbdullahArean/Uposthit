@@ -82,7 +82,7 @@ const CForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-3 gap-12">
-                <button id='c_submit' onClick={oFormValidation} type="button" class="col-start-2 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
+                <button id='c_submit' onClick={cFormValidation} type="button" class="col-start-2 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>

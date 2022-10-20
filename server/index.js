@@ -113,7 +113,7 @@ app.post("/createSemester", (req,res)=>{
     const semesterOId = req.body.semesterOId;
     
 
-    db.query('INSERT INTO semester (semester_uid, semester_name, year, o_id) VALUES (?,?,?,?) ', [semesterName + year, semesterName, semesterYear, semesterOId], (err, result) =>{
+    db.query('INSERT INTO semester (semester_uid, semester_name, year, o_id) VALUES (?,?,?,?) ', [semesterName + semesterYear, semesterName, semesterYear, semesterOId], (err, result) =>{
         if(err)
         {
             console.log(err);

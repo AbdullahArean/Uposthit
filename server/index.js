@@ -45,14 +45,14 @@ app.post("/createStudent", (req,res)=>{
     const studentName = req.body.studentName;
     const studentReg = req.body.studentReg;
     const studentRoll = req.body.studentRoll;
-    const studentYear = req.body.studentYear;
+    const studentSemester = req.body.studentSemester;
     const studentPMail = req.body.studentPMail;
     const studentEMail = req.body.studentEMail;
     const studentPMobile = req.body.studentPMobile;
     const studentEMobile = req.body.studentEMobile;
 
 
-    db.query('INSERT INTO student (s_reg, s_name, s_roll, s_mail1, s_mail2, s_mobile1, s_mobile2, s_year ) VALUES (?,?,?,?,?,?,?,?) ', [studentReg, studentName, studentRoll, studentPMail, studentEMail, studentPMobile, studentEMobile, studentYear], (err, result) =>{
+    db.query('INSERT INTO student (s_reg, s_name, s_roll, s_mail1, s_mail2, s_mobile1, s_mobile2, s_semester ) VALUES (?,?,?,?,?,?,?,?) ', [studentReg, studentName, studentRoll, studentPMail, studentEMail, studentPMobile, studentEMobile, studentSemester], (err, result) =>{
         if(err)
         {
             console.log(err);
@@ -90,12 +90,10 @@ app.post("/createOfficer", (req,res)=>{
 app.post("/createCourse", (req,res)=>{
     const courseName = req.body.courseName;
     const courseCode = req.body.courseCode;
-    const courseSemester = req.body.courseSemester;
-    const courseYear = req.body.courseYear;
-    const courseByOfficerID = req.body.courseByOfficerID;
+    const courseCredit = req.body.courseCredit;
     
 
-    db.query('INSERT INTO course (c_uid, c_name, c_code, semester, year, o_id) VALUES (?,?,?,?,?,?) ', [courseCode + courseYear, courseName, courseCode, courseSemester, courseYear, courseByOfficerID], (err, result) =>{
+    db.query('INSERT INTO course (c_uid, c_name, c_code, c_credit) VALUES (?,?,?,?) ', [courseCode + "2022", courseName, courseCode, courseCredit], (err, result) =>{
         if(err)
         {
             console.log(err);
@@ -109,8 +107,27 @@ app.post("/createCourse", (req,res)=>{
 })
 
 
-app.get("/teachers", (req,res) =>{
-    db.query('SELECT * FROM teacher', (err,result) =>{
+app.post("/createSemester", (req,res)=>{
+    const semesterName = req.body.semesterName;
+    const semesterYear = req.body.semesterYear;
+    const semesterOId = req.body.semesterOId;
+    
+
+    db.query('INSERT INTO semester (semester_uid, semester_name, year, o_id) VALUES (?,?,?,?) ', [semesterName + year, semesterName, semesterYear, semesterOId], (err, result) =>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send("Values Inserted");
+        }
+    }  )
+
+})
+
+app.get("/semester", (req,res) =>{
+    db.query('SELECT * FROM semester', (err,result) =>{
 
         if(err)
         {
@@ -123,6 +140,42 @@ app.get("/teachers", (req,res) =>{
 
     })
 })
+
+
+app.get("/course", (req,res) =>{
+    db.query('SELECT * FROM course', (err,result) =>{
+
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+
+    })
+})
+
+
+app.get("/student", (req,res) =>{
+    db.query('SELECT * FROM student', (err,result) =>{
+
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+
+    })
+})
+
+
+
+
 
 app.listen(3001, ()=>{
     console.log("yaay running");

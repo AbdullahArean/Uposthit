@@ -46,7 +46,7 @@ const SForm = () => {
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
         let regCheck = /^[0-9]{4}.[0-9]{3}.[0-9]{3}$/;
-        let rollCheck = /^[A-Z]{2}\-[0-9]{2}$/;
+        let rollCheck = /^[A-Z]{2}-[0-9]{2}$/;
         let mobileCheck = /^[0]{1}[1]{1}[0-9]{9}$/;
         let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
@@ -99,13 +99,8 @@ const SForm = () => {
             document.getElementById('sMail2Error').innerText="";
         }
 
-<<<<<<< HEAD
-        if(sYear === '-'){
-            document.getElementById('sYearError').innerText="Please select a year";
-=======
         if(sSem === '-'){
             document.getElementById('sSemError').innerText="Please select a semester";
->>>>>>> a2df9f6ed932806825e3517f810eddf20ff7c2b0
         }
         else {
             document.getElementById('sSemError').innerText="";
@@ -132,17 +127,10 @@ const SForm = () => {
                 </div>
                 
                 <div className="mb-6">
-<<<<<<< HEAD
-                    <label for="s_year" class="block mb-2 text-md font-medium text-gray-900">Select Current Year</label>
-                    <select id="s_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" onChange={(event)=>{
-                        setstudentYear(event.target.value);
-                    }} >
-=======
                     <label for="s_sem" class="block mb-2 text-md font-medium text-gray-900">Select Current Semester</label>
                     <select id="s_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
                         setstudentSemester(event.target.value);
                     }}>
->>>>>>> a2df9f6ed932806825e3517f810eddf20ff7c2b0
                         <option>-</option>
                         <option>1-1</option>
                         <option>1-2</option>
@@ -160,22 +148,14 @@ const SForm = () => {
             <div className="grid md:grid-cols-3 gap-16">
                 <div class="mb-6 col-end-3 col-span-2">
                     <label for="s_reg" class="block mb-2 text-md font-medium text-gray-900">Registration No.</label>
-<<<<<<< HEAD
-                    <input type="number" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder="ex. 2023-017-342" onChange={(event)=>{
-=======
                     <input type="text" id="s_reg" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. 2023-017-342" onChange={(event)=>{
->>>>>>> a2df9f6ed932806825e3517f810eddf20ff7c2b0
                         setstudentReg(event.target.value);
                     }}/>
                     <span id="sRegError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">
                     <label for="s_roll" class="block mb-2 text-md font-medium text-gray-900">Class Roll</label>
-<<<<<<< HEAD
-                    <input type="number" id="s_roll" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder= "ex. 69" onChange={(event)=>{
-=======
                     <input type="text" id="s_roll" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. FH-69" onChange={(event)=>{
->>>>>>> a2df9f6ed932806825e3517f810eddf20ff7c2b0
                         setstudentRoll(event.target.value);
                     }}/>
                     <span id="sRollError" className='text-red-800'></span>
@@ -214,13 +194,8 @@ const SForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">
-<<<<<<< HEAD
-                <button id='s_submit' onClick={sFormValidation} type="button" class="col-start-3 text-white bg-blue border border-2 border-blue hover:bg-lblue hover:border-lblue hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Student</button>
-                <button id='reset' type="reset" class="text-white bg-red-700 border border-2 border-red-700 hover:bg-red-600 hover:text-white hover:border-red-600 focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
-=======
-                <button id='s_submit' onClick={sFormValidation} type="submit" class="col-start-3 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Student</button>
+                <button id='s_submit' onClick={sFormValidation} type="button" class="col-start-3 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Student</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
->>>>>>> a2df9f6ed932806825e3517f810eddf20ff7c2b0
             </div>
         </form>
     </div>

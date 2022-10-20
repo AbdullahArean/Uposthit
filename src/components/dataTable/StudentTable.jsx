@@ -3,7 +3,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import * as AiIcons from 'react-icons/ai'
 import * as FaIcons from 'react-icons/fa'
 import { studentColumns, studentRows } from '../tableData/studentData';
-// import { rows } from '../tableData/studentData';
 
 const actionColumn = [
   {
@@ -28,8 +27,6 @@ const actionColumn = [
 ]
 
 const DataTable = ({data}) => {
-
-  console.log(data)
 
   return (
     <div className='text-center mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>

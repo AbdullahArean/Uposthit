@@ -35,7 +35,7 @@ const SForm = () => {
     function sFormValidation () {
         let sName = document.getElementById('s_name').value;
         let sYear = document.getElementById('s_year').value;
-        let sReg = document.getElementById('s_reg').value;
+        // let sReg = document.getElementById('s_reg').value;
         let sRoll = document.getElementById('s_roll').value;
         let sMobile1 = document.getElementById('s_mobile1').value;
         let sMobile2 = document.getElementById('s_mobile2').value;
@@ -43,7 +43,7 @@ const SForm = () => {
         let sMail2 = document.getElementById('s_mail2').value;
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-        let regCheck = /^[0-9]{4}\-[0-9]{3}\-[0-9]{3}$/;
+        // let regCheck = /^[0-9]{4}\-[0-9]{3}\-[0-9]{3}$/;
         let rollCheck = /^[0-9]{2}$/;
         let mobileCheck = /^[0]{1}[1]{1}[0-9]{9}$/;
         let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/
@@ -55,12 +55,12 @@ const SForm = () => {
             document.getElementById('sNameError').innerText="";
         }
 
-        if(regCheck.test(sReg) === false){
-            document.getElementById('sRegError').innerText="Please insert a valid registration number";
-        }
-        else {
-            document.getElementById('sRegError').innerText="";
-        }
+        // if(regCheck.test(sReg) === false){
+        //     document.getElementById('sRegError').innerText="Please insert a valid registration number";
+        // }
+        // else {
+        //     document.getElementById('sRegError').innerText="";
+        // }
 
         if(rollCheck.test(sRoll) === false){
             document.getElementById('sRollError').innerText="Please insert a valid roll";
@@ -104,7 +104,7 @@ const SForm = () => {
             document.getElementById('sYearError').innerText="";
         }
 
-        if(nameCheck.test(sName) === true && regCheck.test(sReg) === true && rollCheck.test(sRoll) === true && mobileCheck.test(sMobile1) === true && mobileCheck.test(sMobile2) === true && mailCheck.test(sMail1) === true && mailCheck.test(sMail2) === true && sYear !== '-'){
+        if(nameCheck.test(sName) === true && rollCheck.test(sRoll) === true && mobileCheck.test(sMobile1) === true && mobileCheck.test(sMobile2) === true && mailCheck.test(sMail1) === true && mailCheck.test(sMail2) === true && sYear !== '-'){
             addStudent();
         }
     }
@@ -188,7 +188,7 @@ const SForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">
-                <button id='s_submit' onClick={sFormValidation} type="button" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Student</button>
+                <button id='s_submit' onClick={sFormValidation} type="submit" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Student</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>

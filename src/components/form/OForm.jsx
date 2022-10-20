@@ -134,7 +134,7 @@ const OForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">
-                <button type="button" onClick={oFormValidation} id='o_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Officer</button>
+                <button type="submit" onClick={oFormValidation} id='o_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Officer</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>

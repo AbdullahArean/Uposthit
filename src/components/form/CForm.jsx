@@ -27,7 +27,7 @@ const CForm = () => {
       });
       };
 
-      function oFormValidation () {
+      function cFormValidation () {
         let cName = document.getElementById('c_name').value;
         let cCode = document.getElementById('c_code').value;
         let cYear = document.getElementById('c_year').value;
@@ -53,14 +53,14 @@ const CForm = () => {
             document.getElementById('oIdError').innerText="";
         }
 
-        if(mobileCheck.test(cCode) === false){
+        if(codeCheck.test(cCode) === false){
             document.getElementById('cCodeError').innerText="Please insert a valid course code";
         }
         else {
             document.getElementById('cCodeError').innerText="";
         }
 
-        if(mailCheck.test(cYear) === false){
+        if(yearCheck.test(cYear) === false){
             document.getElementById('cYearError').innerText="Please insert a valid year";
         }
         else {

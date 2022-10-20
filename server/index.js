@@ -27,7 +27,7 @@ app.post("/createTeacher", (req,res)=>{
     const teacherDescription = req.body.teacherDescription;
 
 
-    db.query('INSERT INTO teacher (t_id, t_name, t_dept, t_mail, t_mobile, t_description) VALUES (?,?,?,?,?,?) ', [teacherID, teacherName, teacherDepartment, teacherMail, teacherMobile, teacherDescription], (err, result) =>{
+    db.query('INSERT INTO teacher (t_id, t_name, t_dept, t_mail, t_mobile, t_des) VALUES (?,?,?,?,?,?) ', [teacherID, teacherName, teacherDepartment, teacherMail, teacherMobile, teacherDescription], (err, result) =>{
         if(err)
         {
             console.log(err);

@@ -155,7 +155,7 @@ const TForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">
-                <button onClick={tFormValidation} type="button" id='t_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Add New Teacher</button>
+                <button onClick={tFormValidation} type="submit" id='t_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Add New Teacher</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Reset</button>
             </div>
         </form>

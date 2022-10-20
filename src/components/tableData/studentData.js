@@ -1,3 +1,6 @@
+
+import Axios from 'axios'
+
 export const studentColumns = [
     { field: 's_name', headerName: 'Name', width: 200},
     { field: 'id', headerName: 'Registration No.', width: 150 },
@@ -9,6 +12,17 @@ export const studentColumns = [
     { field: 's_mail2',headerName: 'Emergency Mail',width: 250}
   ];
 
+  
+  export const getStudent = () => {
+    Axios.get('http://localhost:3001/student')
+        .then(response => {
+            console.log(response);
+        })
+  }
+
+
+
+  
 export const studentRows = [
     {
         s_name: "John Marshall Doe",

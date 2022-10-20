@@ -2,8 +2,17 @@ import React from 'react'
 import DataTable from '../../components/dataTable/StudentTable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
+import { useEffect } from 'react'
+import { getStudent } from '../../components/tableData/studentData'
 
-const List = () => {
+const Students = () => {
+  useEffect(() => {
+    let ignore = false;
+    
+    if (!ignore)  getStudent()
+    return () => { ignore = true; }
+    },[]);
+
   return (
     <div className='flex'>
       <Sidebar/>
@@ -16,4 +25,4 @@ const List = () => {
   )
 }
 
-export default List
+export default Students

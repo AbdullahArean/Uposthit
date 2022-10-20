@@ -1,12 +1,28 @@
 import React from 'react'
+import { useState } from 'react';
+import Axios from 'axios';
 
 
 
 const SemForm = () => {
 
-      const addSemester = () => {
-        //something
-      }
+    const [semesterName, setsemesterName] = useState("");
+    const [semesterYear, setsemesterYear] = useState("");
+    const [semesterOId, setsemesterOId] = useState("");
+    
+
+    const addSemester = () =>{
+        Axios.post('http://localhost:3001/createSemester',{ 
+
+            semesterName: semesterName,
+            semesterYear: semesterYear,
+            semesterOId: semesterOId,
+        
+      }).then(()=>{
+        console.log("success");
+      });
+      };
+
 
       function semFormValidation () {
         let semName = document.getElementById('sem_name').value;
@@ -50,19 +66,25 @@ const SemForm = () => {
             <div className="grid grid-cols-2 gap-16">
                 <div class="mb-6 col-end-3 col-span-2">
                     <label for="sem_name" class="block mb-2 text-md font-medium text-gray-900">Semester Name</label>
-                    <input type="text" id="sem_name" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"/>
+                    <input type="text" id="sem_name" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                        setsemesterName(event.target.value);
+                    }}/>
                     <span id="semNameError" className='text-red-800'></span>
                 </div>
             </div>
             <div className="grid md:grid-cols-2 gap-16">
                 <div class="mb-6">
                     <label for="sem_year" class="block mb-2 text-md font-medium text-gray-900">Year</label>
-                    <input type="number" id="sem_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 2022"/>
+                    <input type="number" id="sem_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 2022" onChange={(event)=>{
+                        setsemesterYear(event.target.value);
+                    }}/>
                     <span id="semYearError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">
                     <label for="o_id" class="block mb-2 text-md font-medium text-gray-900">Created by</label>
-                    <input type="text" id="o_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "input Officer ID"/>
+                    <input type="text" id="o_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "input Officer ID" onChange={(event)=>{
+                        setsemesterOId(event.target.value);
+                    }}/>
                     <span id="oIdError" className='text-red-800'></span>
                 </div>
             </div>

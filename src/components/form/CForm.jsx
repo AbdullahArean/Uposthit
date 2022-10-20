@@ -27,7 +27,7 @@ const CForm = () => {
       });
       };
 
-      function oFormValidation () {
+      function cFormValidation () {
         let cName = document.getElementById('c_name').value;
         let cCode = document.getElementById('c_code').value;
         let cYear = document.getElementById('c_year').value;
@@ -53,14 +53,14 @@ const CForm = () => {
             document.getElementById('oIdError').innerText="";
         }
 
-        if(mobileCheck.test(cCode) === false){
+        if(codeCheck.test(cCode) === false){
             document.getElementById('cCodeError').innerText="Please insert a valid course code";
         }
         else {
             document.getElementById('cCodeError').innerText="";
         }
 
-        if(mailCheck.test(cYear) === false){
+        if(yearCheck.test(cYear) === false){
             document.getElementById('cYearError').innerText="Please insert a valid year";
         }
         else {
@@ -87,7 +87,7 @@ const CForm = () => {
             <div className="grid grid-cols-3 gap-16">
                 <div class="mb-6 col-end-3 col-span-2">
                     <label for="c_name" class="block mb-2 text-md font-medium text-gray-900">Course Name</label>
-                    <input type="text" id="c_name" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" required="yes" onChange={(event)=>{
+                    <input type="text" id="c_name" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" required="yes" onChange={(event)=>{
                         setcourseName(event.target.value);
                     }}/>
                     <span id="cNameError" className='text-red-800'></span>
@@ -95,7 +95,7 @@ const CForm = () => {
                 
                 <div className="mb-6">
                     <label for="c_sem" class="block mb-2 text-md font-medium text-gray-900">Select Semester</label>
-                    <select id="c_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                    <select id="c_sem" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" onChange={(event)=>{
                         setCourseSemester(event.target.value);
                     }}>
                         <option>-</option>
@@ -114,21 +114,21 @@ const CForm = () => {
             <div className="grid md:grid-cols-3 gap-16">
                 <div class="mb-6">
                     <label for="c_code" class="block mb-2 text-md font-medium text-gray-900">Course Code</label>
-                    <input type="text" id="c_code" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. PHY-1213" required="-" onChange={(event)=>{
+                    <input type="text" id="c_code" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder= "ex. PHY-1213" required="-" onChange={(event)=>{
                         setcourseCode(event.target.value);
                     }}/>
                     <span id="cCodeError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">
                     <label for="c_year" class="block mb-2 text-md font-medium text-gray-900">Year</label>
-                    <input type="number" id="c_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 2022" required="20" onChange={(event)=>{
+                    <input type="number" id="c_year" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder= "ex. 2022" required="20" onChange={(event)=>{
                         setcourseYear(event.target.value);
                     }}/>
                     <span id="cYearError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">
                     <label for="o_id" class="block mb-2 text-md font-medium text-gray-900">Created by</label>
-                    <input type="text" id="o_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "input Officer ID" required="-" onChange={(event)=>{
+                    <input type="text" id="o_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder= "input Officer ID" required="-" onChange={(event)=>{
                         setcourseByOfficerID(event.target.value);
                     }}/>
                     <span id="oIdError" className='text-red-800'></span>
@@ -139,8 +139,8 @@ const CForm = () => {
                     <input id="c_archive" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300" />
                     <label for="checkbox-1" class="ml-2 text-md font-medium text-gray-900">Archive</label>
                 </div>
-                <button id='c_submit' onClick={cFormValidation} type="button" class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
-                <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
+                <button id='c_submit' onClick={cFormValidation} type="button" class="col-start-3 text-white bg-blue border border-2 border-blue hover:bg-lblue hover:border-lblue hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Add New Course</button>
+                <button id='reset' type="reset" class="text-white bg-red-700 border border-2 border-red-700 hover:bg-red-600 hover:text-white hover:border-red-600 focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center">Reset</button>
             </div>
         </form>
 

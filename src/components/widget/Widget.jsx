@@ -77,12 +77,12 @@ const Widget = ( {type} ) => {
           <div className="left flex flex-col ml-3">
               <div className="title text-gray-500 mt-3 text-sm px-1 py-0.5">{data.title}</div>
               <div className="counter text-gray-600 text-3xl p-1">{data.counter}</div>
-              <div className="link hover:bg-violet-200 rounded-md px-1 py-0.5 mb-3 text-sm cursor-pointer">{data.link}</div>
+              <div className="link hover:bg-hblue rounded-md px-1 py-0.5 mb-3 text-sm cursor-pointer">{data.link}</div>
           </div>
           <div className="right flex flex-col justify-center items-center mr-4">
               <div className="corner text-lg mt-4 "><SiIcons.SiCoderwall/></div>
               <div>
-              <button className='text-xl mb-3 hover:bg-violet-200 rounded-full p-1.5' onClick={handleOpen}>{data.icon}</button>
+              <button className='text-xl mb-3 hover:bg-hblue rounded-full p-1.5' onClick={handleOpen}>{data.icon}</button>
               <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"

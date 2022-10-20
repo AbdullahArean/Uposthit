@@ -12,10 +12,10 @@ const Login = () => {
   }
   
   return (
-    <div className='block h-screen bg-gradient-to-r from-violet-500 to-violet-200 flex items-center justify-center'>
+    <div className='block h-screen bg-hblue flex items-center justify-center'>
       <div className="container h-content w-content rounded-3xl grid grid-cols-2 bg-white shadow-2xl">
         <div className="left lg:my-36 md:my-16 sm:my-3 lg:ml-8 md:ml-4 grid grid-cols-1 lg:gap-6  justify-items-center items-center">
-          <span className="logo text-violet-600 text-5xl font-black font-lobster sm:mb-6 lg:m-0">Welcome Back !</span>
+          <span className="logo text-black text-5xl font-black font-lobster sm:mb-6 lg:m-0">Welcome Back !</span>
           <form className="w-4/5 mb-6">
             <div className="mb-6 justify-self-start">
               <div className="md:w-full txt_field ">
@@ -39,13 +39,13 @@ const Login = () => {
                 </span>
               </label>
               <label className="block text-gray-500 font-bold">
-                <span className="text-md cursor-pointer hover:text-violet-600 transition-all">
+                <span className="text-md cursor-pointer hover:text-blue transition-all">
                   Forgot Password?
                 </span>
               </label>
             </div>
             <div className="md:w-full grid grid-cols-1 justify-items-center items-center">
-              <button onClick={toDashboard} className="shadow bg-violet-600 hover:bg-violet-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full" type="submit">
+              <button onClick={toDashboard} className="shadow bg-blue hover:bg-hover focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full" type="submit">
                 Log In  
               </button>
             </div>
@@ -56,7 +56,7 @@ const Login = () => {
                   Don't have an account?
                 </span>
               </label>
-              <button className="shadow bg-white text-violet-600 border border-violet-600 hover:bg-violet-600 hover:text-white focus:shadow-outline focus:outline-none font-bold lg:py-2 lg:px-8 sm:py-1 sm:px-2 transition-all rounded-full" type="button">
+              <button className="shadow bg-white text-blue border border-blue hover:bg-blue hover:text-white focus:shadow-outline focus:outline-none font-bold lg:py-2 lg:px-8 sm:py-1 sm:px-2 transition-all rounded-full" type="button">
                 Create New
               </button>
             </div>

@@ -29,7 +29,7 @@ const CForm = () => {
         // let cCredit = document.getElementById('c_credit').value;
 
         let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-        let codeCheck = /^[A-Z]{3}\-[0-9]{4}$/;
+        let codeCheck = /^[A-Z]{3}-[0-9]{4}$/;
 
         if(nameCheck.test(cName) === false){
             document.getElementById('cNameError').innerText="Please insert a valid name";

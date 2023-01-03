@@ -1,6 +1,3 @@
-
-import Axios from 'axios'
-
 export const studentColumns = [
     { field: 's_name', headerName: 'Name', width: 200},
     { field: 'id', headerName: 'Registration No.', width: 150 },
@@ -13,91 +10,15 @@ export const studentColumns = [
   ];
 
   
-  export const getStudent = () => {
-   Axios.get('http://localhost:3001/student')
-        .then(response => {
-            // console.log(response);
-            // let data = response.data;
-            // let goodData = JSON.parse(data);
-            // // rows(response);
-
-            console.log(response)
-            return response;
-        })
-    
-  }
-
-//   export const rows = (response) => {
-//     s_name = response.data[0].s_name;
-//     id = response.data[0].s_id;
-//   }
-
-  
 export const studentRows = [
     {
-        s_name: "dshdjh",
-        id: "2023-382-953",
-        s_roll: "SH-58",
-        s_mobile1: "01847238434",
-        s_mail1: "student@example.com",
-        s_mobile2: "01847238434",
-        s_mail2: "student@example.com",
-        s_year: "1st"
-    },
-    {
-        s_name: "dshdjh",
-        id: "2023-382-952",
-        s_roll: "SH-58",
-        s_mobile1: "01847238434",
-        s_mail1: "student@example.com",
-        s_mobile2: "01847238434",
-        s_mail2: "student@example.com",
-        s_year: "1st"
-    },
-    {
-        s_name: "dshdjh",
-        id: "2023-382-954",
-        s_roll: "SH-59",
-        s_mobile1: "01847238434",
-        s_mail1: "student@example.com",
-        s_mobile2: "01847238434",
-        s_mail2: "student@example.com",
-        s_year: "1st"
-    },
-    {
-        s_name: "dshdjh",
-        id: "2023-382-953",
-        s_roll: "SH-58",
-        s_mobile1: "01847238434",
-        s_mail1: "student@example.com",
-        s_mobile2: "01847238434",
-        s_mail2: "student@example.com",
-        s_year: "1st"
-    },
-    {
-        s_name: "dshdjh",
-        id: "2023-382-956",
-        s_roll: "SH-58",
-        s_mobile1: "01847238434",
-        s_mail1: "student@example.com",
-        s_mobile2: "01847238434",
-        s_mail2: "student@example.com",
-        s_year: "1st"
-    },
-    
+        s_name: "dummy_name",
+        id: "0000-000-000",
+        s_roll: "NO-00",
+        s_mobile1: "01000000000",
+        s_mail1: "dummy_mail@nothing.com",
+        s_mobile2: "01000000000",
+        s_mail2: "dummy_mail@nothing.com",
+        s_sem: "0-0"
+    }
 ]
-
-// export const studentRows = getStudent().map((singleData) => {
-//     return(
-//         {
-//                     s_name: singleData[0].s_name,
-//                     id: "2023-382-953",
-//                     s_roll: "SH-58",
-//                     s_mobile1: "01847238434",
-//                     s_mail1: "student@example.com",
-//                     s_mobile2: "01847238434",
-//                     s_mail2: "student@example.com",
-//                     s_year: "1st"
-//         }
-//     )
-// })

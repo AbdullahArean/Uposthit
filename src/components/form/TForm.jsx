@@ -97,7 +97,7 @@ const TForm = () => {
             <div className="grid grid-cols-3 gap-16">
                 <div class="mb-6 col-end-3 col-span-2">
                     <label for="t_name" class="block mb-2 text-md font-medium text-gray-900">Full Name</label>
-                    <input type="text" id="t_name" class="transition-all shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                    <input type="text" id="t_name" class="transition-all shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" onChange={(event)=>{
                         setteacherName(event.target.value);
                     }}/>
                     <span id="tNameError" className='text-red-800'></span>
@@ -105,7 +105,7 @@ const TForm = () => {
                 
                 <div className="mb-6">
                     <label for="t_id" class="block mb-2 text-md font-medium text-gray-900">Teacher ID</label>
-                    <input type="text" id="t_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder= "ex. 293-362" onChange={(event)=>{
+                    <input type="text" id="t_id" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder= "ex. 293-362" onChange={(event)=>{
                         setteacherID(event.target.value);
                     }}/>
                     <span id="tIdError" className='text-red-800'></span>
@@ -114,7 +114,7 @@ const TForm = () => {
             <div className="grid md:grid-cols-1">
                 <div class="mb-6">
                     <label for="t_dept" class="block mb-2 text-md font-medium text-gray-900">Department</label>
-                    <input type="text" id="t_dept" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="ex. Computer Science & Engineering" onChange={(event)=>{
+                    <input type="text" id="t_dept" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder="ex. Computer Science & Engineering" onChange={(event)=>{
                         setteacherDepartment(event.target.value);
                     }}/>
                     <span id="tDeptError" className='text-red-800'></span>
@@ -123,14 +123,14 @@ const TForm = () => {
             <div className='grid md:grid-cols-2 gap-24'>
                 <div class="mb-6">
                     <label for="t_mobile" class="block mb-2 text-md font-medium text-gray-900">Contact No.</label>
-                    <input type="number" id="t_mobile" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="(+88)-" onChange={(event)=>{
+                    <input type="number" id="t_mobile" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder="(+88)-" onChange={(event)=>{
                         setteacherMobile(event.target.value);
                     }}/>
                     <span id="tMobileError" className='text-red-800'></span>
                 </div>
                 <div class="mb-6">
                     <label for="t_mail" class="block mb-2 text-md font-medium text-gray-900">E-Mail Address</label>
-                    <input type="email" id="t_mail" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" placeholder="teacher@example.com" onChange={(event)=>{
+                    <input type="email" id="t_mail" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" placeholder="teacher@example.com" onChange={(event)=>{
                         setteacherMail(event.target.value);
                     }}/>
                     <span id="tMailError" className='text-red-800'></span>
@@ -139,7 +139,7 @@ const TForm = () => {
             <div className="grid md:grid-cols-1">
                 <div class="mb-6">
                     <label for="t_des" class="block mb-2 text-md font-medium text-gray-900">Designation</label>
-                    <select id="t_des" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5" onChange={(event)=>{
+                    <select id="t_des" class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5" onChange={(event)=>{
                         setteacherDescription(event.target.value);
                     }}>
                         <option>-</option>
@@ -155,11 +155,11 @@ const TForm = () => {
                 </div>
             </div>
             <div className="grid grid-cols-4 gap-12">
-                <button onClick={tFormValidation} type="submit" id='t_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Add New Teacher</button>
+                <button onClick={tFormValidation} type="button" id='t_submit' class="col-start-3 text-violet-800 bg-white border border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Add New Teacher</button>
                 <button id='reset' type="reset" class="text-red-700 bg-white border border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center transition-all">Reset</button>
             </div>
         </form>
-
+        
     </div>
   )
 }

@@ -30,13 +30,13 @@ form .txt_field {
   left: 0;
   width: 0%;
   height: 2px;
-  background: #2f119d;
+  background: rgb(59 130 246);
   transition: 0.5s;
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label {
   top: -5px;
-  color: #2f119d;
+  color: rgb(59 130 246);
 }
 .txt_field input:focus ~ span::before,
 .txt_field input:valid ~ span::before {

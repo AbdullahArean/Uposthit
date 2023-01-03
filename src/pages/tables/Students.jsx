@@ -8,25 +8,17 @@ import Axios from "axios";
 const Students = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    let ignore = false;
-
-    if (!ignore) {
-      const getStudent = () => {
-        Axios.get("http://localhost:3001/student")
-          .then((response) => {
-            setData(response?.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-
-      getStudent();
-    }
-    return () => {
-      ignore = true;
-    };
+    getStudent();
   }, []);
+  const getStudent = () => {
+    Axios.get("http://localhost:3001/student")
+      .then((response) => {
+        setData(response?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="flex">
@@ -39,5 +31,4 @@ const Students = () => {
     </div>
   );
 };
-
 export default Students;

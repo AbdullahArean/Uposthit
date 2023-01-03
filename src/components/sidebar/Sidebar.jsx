@@ -43,7 +43,7 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
-              to="/teacher"
+              to="/teachers"
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
               <FaIcons.FaChalkboardTeacher className="text-black text-2xl" />

@@ -11,9 +11,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen bg-hblue  items-center justify-center">
-      <div className="container h-content w-content rounded-3xl grid grid-cols-2 bg-white shadow-2xl">
-        <div className="left lg:my-36 md:my-16 sm:my-3 lg:ml-8 md:ml-4 grid grid-cols-1 lg:gap-6  justify-items-center items-center">
+    <div className="flex h-screen bg-white items-center justify-center">
+      <div className="container h-content w-content rounded-3xl grid grid-cols-1 xl:grid-cols-2 bg-white shadow-2xl">
+        <div className="left lg:my-36 md:my-16 my-3 lg:ml-8 md:ml-4 grid grid-cols-1 lg:gap-6 justify-items-center items-center">
           <span className="logo text-black text-5xl font-black font-lobster sm:mb-6 lg:m-0">
             Welcome Back !
           </span>
@@ -80,7 +80,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <div className="right flex items-center rounded-r-3xl lg:mr-16">
+        <div className="right xl:flex items-center hidden rounded-r-3xl lg:mr-16">
           <img src={loginImage} alt="" className="rounded-3xl" />
         </div>
       </div>

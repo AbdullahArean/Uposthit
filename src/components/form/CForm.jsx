@@ -62,7 +62,7 @@ const CForm = () => {
             <input
               type="text"
               id="c_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setcourseName(event.target.value);
               }}
@@ -81,7 +81,7 @@ const CForm = () => {
             <input
               type="text"
               id="c_credit"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setcourseCredit(event.target.value);
               }}
@@ -98,7 +98,7 @@ const CForm = () => {
             <input
               type="text"
               id="c_code"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. PHY-1213"
               onChange={(event) => {
                 setcourseCode(event.target.value);
@@ -112,14 +112,14 @@ const CForm = () => {
             id="c_submit"
             onClick={cFormValidation}
             type="button"
-            class="col-start-2 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Course
           </button>
           <button
             id="reset"
             type="reset"
-            class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

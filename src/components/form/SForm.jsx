@@ -129,7 +129,7 @@ const SForm = () => {
             <input
               type="text"
               id="s_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setstudentName(event.target.value);
               }}
@@ -146,7 +146,7 @@ const SForm = () => {
             </label>
             <select
               id="s_sem"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setstudentSemester(event.target.value);
               }}
@@ -176,7 +176,7 @@ const SForm = () => {
             <input
               type="text"
               id="s_reg"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. 2023-017-342"
               onChange={(event) => {
                 setstudentReg(event.target.value);
@@ -194,7 +194,7 @@ const SForm = () => {
             <input
               type="text"
               id="s_roll"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. FH-69"
               onChange={(event) => {
                 setstudentRoll(event.target.value);
@@ -214,7 +214,7 @@ const SForm = () => {
             <input
               type="text"
               id="s_mobile1"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="(+88)-"
               onChange={(event) => {
                 setstudentPMobile(event.target.value);
@@ -232,7 +232,7 @@ const SForm = () => {
             <input
               type="text"
               id="s_mobile2"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="(+88)-"
               onChange={(event) => {
                 setstudentEMobile(event.target.value);
@@ -252,7 +252,7 @@ const SForm = () => {
             <input
               type="email"
               id="s_mail1"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="student@example.com"
               onChange={(event) => {
                 setstudentPMail(event.target.value);
@@ -270,7 +270,7 @@ const SForm = () => {
             <input
               type="email"
               id="s_mail2"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="student@example.com"
               onChange={(event) => {
                 setstudentEMail(event.target.value);
@@ -284,14 +284,14 @@ const SForm = () => {
             id="s_submit"
             onClick={sFormValidation}
             type="button"
-            class="col-start-3 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="col-start-3 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Student
           </button>
           <button
             id="reset"
             type="reset"
-            class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

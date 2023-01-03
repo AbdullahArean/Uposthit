@@ -73,7 +73,7 @@ const SemForm = () => {
             <input
               type="text"
               id="sem_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setsemesterName(event.target.value);
               }}
@@ -90,9 +90,9 @@ const SemForm = () => {
               Year
             </label>
             <input
-              type="number"
+              type="text"
               id="sem_year"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. 2022"
               onChange={(event) => {
                 setsemesterYear(event.target.value);
@@ -110,7 +110,7 @@ const SemForm = () => {
             <input
               type="text"
               id="o_id"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-violet-800 block w-full p-2.5"
+              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="input Officer ID"
               onChange={(event) => {
                 setsemesterOId(event.target.value);
@@ -138,14 +138,14 @@ const SemForm = () => {
             id="sem_submit"
             onClick={semFormValidation}
             type="button"
-            class="col-start-2 text-violet-800 bg-white border-2 border-violet-800 hover:bg-violet-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Semester
           </button>
           <button
             id="reset"
             type="reset"
-            class="text-red-700 bg-white border-2 border-red-700 hover:bg-red-800 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

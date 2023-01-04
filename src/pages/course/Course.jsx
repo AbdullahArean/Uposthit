@@ -7,7 +7,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 
 const Course = () => {
     let location = useLocation();
-    let id = location.pathname.slice(-1);
+    let arr = location.pathname.split('courses/');
+    let id = arr[arr.length - 1];
   return (
     <div className="flex">
       <Sidebar />

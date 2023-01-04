@@ -35,7 +35,7 @@ const Courses = () => {
         <div className="grid grid-cols-5 gap-10 mx-7 my-12">
           {data.map((course) => {
             return (
-              <div className="px-4 rounded-lg border border-gray-300 shadow-lg shadow-hblue py-2">
+              <div key={course.course_id} className="px-4 rounded-lg border border-gray-300 shadow-lg shadow-hblue py-2">
                 <div>
                   <div className="text-left text-gray-500 text-4xl mb-4 px-1 uppercase">
                     {course.course_name}

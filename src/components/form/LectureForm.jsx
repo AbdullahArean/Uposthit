@@ -15,12 +15,12 @@ const LectureForm = () => {
 
   var date = new Date();
   var today =
-    date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear();
-  var time = date.getHours() + ":" + date.getMinutes();
+  date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate()  ;
+  var time = date.getHours() + ":" + date.getMinutes() ;
 
   const addLecture = () => {
     axios
-      .post("/?insertstudent", {
+      .post("/?insertlecture", {
         lecture_topic: lectureTopic,
         lecture_date: lectureDate,
         lecture_time: lectureTime,

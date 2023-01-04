@@ -17,13 +17,7 @@ const Course = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  var date = new Date();
-  var today = date.getDate() + '/' + date.getMonth()+1 + '/' + date.getFullYear();
-  var time = date.getHours() + ':' + date.getMinutes();
-  useEffect(() => {
-    console.log(today);
-    console.log(time);
-  }, [])
+  
   return (
     <div className="flex">
       <Sidebar />

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 // import { useEffect } from "react";
@@ -15,9 +15,19 @@ const LectureForm = () => {
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
   var date = new Date();
+
   var today =
     date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
   var time = date.getHours() + ":" + date.getMinutes();
+
+  useEffect(() => {
+    setLectureDate(today.toString());
+  setLectureTime(time.toString());
+  },[]);
+  
+
+  // var lecturedate = document.getElementById("lec_date").value;
+  // var lecturetime = document.getElementById("lec_time").value;
 
   const addLecture = () => {
     axios
@@ -36,6 +46,8 @@ const LectureForm = () => {
           setdataInserted(false);
         }
       });
+
+      console.log(lectureDate);
   };
 
   function lecFormValidation() {
@@ -94,9 +106,10 @@ const LectureForm = () => {
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               value={today.toString()}
               disabled
-              onChange={(event) => {
-                setLectureDate(event.target.value);
-              }}
+              
+              // onChange={(event) => {
+              //   setLectureDate(today.toString());
+              // }}
             />
             <span id="lecDateError" className="text-red-800"></span>
           </div>
@@ -113,9 +126,10 @@ const LectureForm = () => {
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               value={time.toString()}
               disabled
-              onChange={(event) => {
-                setLectureTime(event.target.value);
-              }}
+              // onChange={(event) => {
+              //   setLectureTime(event.target.value);
+              // }}
+              // setLectureTime(time.toString())
             />
             <span id="lecTimeError" className="text-red-800"></span>
           </div>

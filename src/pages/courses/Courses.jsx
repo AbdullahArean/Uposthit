@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { RxOpenInNewWindow } from "react-icons/rx";
+// import { RxOpenInNewWindow } from "react-icons/rx";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
@@ -55,7 +55,7 @@ const Courses = () => {
                     className="text-xl w-full text-center flex justify-center items-center rounded-lg py-2 px-6"
                     onClick={() => singleCourse(course.course_id)}
                   >
-                    <RxOpenInNewWindow className="mr-2" />
+                    {/* <RxOpenInNewWindow className="mr-2" /> */}
                     Open
                   </button>
                 </div>

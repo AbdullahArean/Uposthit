@@ -8,7 +8,6 @@ import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import LectureForm from "../../components/form/LectureForm";
-import { useEffect } from "react";
 
 const Course = () => {
   let location = useLocation();

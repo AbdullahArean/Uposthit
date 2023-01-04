@@ -28,10 +28,6 @@ const CForm = () => {
     
     });
 
-  function cFormValidation() {
-    let cName = document.getElementById("c_name").value;
-    let cCode = document.getElementById("c_code").value;
-    // let cCredit = document.getElementById('c_credit').value;
 
     const addCourse = () =>{
         axios.post('/?insertcourse',{ 
@@ -168,5 +164,4 @@ const CForm = () => {
     </div>
   );
 };
-}
 export default CForm;

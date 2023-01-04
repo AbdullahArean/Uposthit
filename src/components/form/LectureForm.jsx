@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+// import { useEffect } from "react";
 
 const LectureForm = () => {
   let location = useLocation();
@@ -15,12 +16,12 @@ const LectureForm = () => {
 
   var date = new Date();
   var today =
-    date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear();
+    date.getFullYear() + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + ("0" + date.getDate()).slice(-2);
   var time = date.getHours() + ":" + date.getMinutes();
 
   const addLecture = () => {
     axios
-      .post("/?insertstudent", {
+      .post("/?insertlecture", {
         lecture_topic: lectureTopic,
         lecture_date: lectureDate,
         lecture_time: lectureTime,
@@ -121,13 +122,13 @@ const LectureForm = () => {
         </div>
         {dataInserted ? (
           <div
-            class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
+            className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
             role="alert"
           >
-            <div class="flex">
-              <div class="py-1">
+            <div className="flex">
+              <div className="py-1">
                 <svg
-                  class="fill-current h-6 w-6 text-teal-500 mr-4"
+                  className="fill-current h-6 w-6 text-teal-500 mr-4"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -135,7 +136,7 @@ const LectureForm = () => {
                 </svg>
               </div>
               <div>
-                <p class="font-bold">Success! Data has been inserted</p>
+                <p className="font-bold">Success! Data has been inserted</p>
               </div>
             </div>
           </div>
@@ -145,14 +146,16 @@ const LectureForm = () => {
 
         {dataInsertedError ? (
           <div
-            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
             role="alert"
           >
-            <strong class="font-bold">Error! Data couldn't be inserted</strong>
+            <strong className="font-bold">
+              Error! Data couldn't be inserted
+            </strong>
 
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
               <svg
-                class="fill-current h-6 w-6 text-red-500"
+                className="fill-current h-6 w-6 text-red-500"
                 role="button"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"

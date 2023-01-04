@@ -1,12 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
+import { RxOpenInNewWindow } from "react-icons/rx";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
   const [data, setData] = useState([]);
+  const nav = useNavigate();
+  const singleCourse = (id) => {
+    nav(`/courses/${id}`);
+  };
   const getCourse = () => {
     Axios.get("/?getAllcourse")
       .then((response) => {
@@ -44,8 +50,12 @@ const Courses = () => {
                     Semester : {course.semester_id}
                   </div>
                 </div>
-                <div className="bottom w-full flex flex-col rounded-lg bg-hblue justify-center items-center mt-6">
-                  <button className="text-xl flex items-center align-middle rounded-lg py-2 px-6">
+                <div className="bottom flex flex-col rounded-lg bg-hblue justify-center items-center mt-6">
+                  <button
+                    className="text-xl w-full text-center flex justify-center items-center rounded-lg py-2 px-6"
+                    onClick={() => singleCourse(course.course_id)}
+                  >
+                    <RxOpenInNewWindow className="mr-2" />
                     Open
                   </button>
                 </div>

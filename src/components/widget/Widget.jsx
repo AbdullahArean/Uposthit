@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Widget.css";
 import { HiUserAdd } from "react-icons/hi";
-// import { SiCoderwall } from "react-icons/si";
 import { MdAddBox } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
 import Backdrop from "@mui/material/Backdrop";

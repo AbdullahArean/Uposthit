@@ -5,7 +5,8 @@ import Login from "./pages/login/Login";
 import Students from "./pages/tables/Students";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import Teacher from "./pages/teacher/Teacher";
+import Teachers from "./pages/tables/Teachers";
+import Officer from "./pages/tables/Officers";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="/teachers" element={<Teacher />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/officers" element={<Officer />} />
           <Route path="/students">
             <Route index element={<Students />} />
             <Route path=":studentId" element={<Single />} />

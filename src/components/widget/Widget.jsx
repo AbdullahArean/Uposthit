@@ -69,29 +69,31 @@ const Widget = ({ type }) => {
   const nav = useNavigate();
 
   const toPage = () => {
-    nav(`/${data.title.toLowerCase()}`)
-  }
+    nav(`/${data.title.toLowerCase()}`);
+  };
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="widget flex flex-col gap-y-10 flex-1 border rounded-lg shadow-lg">
-      <div className="top gap-y-2 flex flex-col mx-4">
-        <button type="button" onClick={toPage} className="title text-left text-gray-500 mt-3 text-3xl px-1 py-0.5">
+    <div className="widget flex flex-col gap-y-10 flex-1 px-4 py-3 border rounded-lg shadow-lg">
+      <div className="top gap-y-2 flex flex-col ">
+        <button
+          type="button"
+          onClick={toPage}
+          className="title text-left text-gray-500 text-3xl px-1"
+        >
           {data.title}
         </button>
         <div className="counter text-gray-600 text-lg p-1">
           Total : {data.counter}
         </div>
       </div>
-      <div className="bottom w-full flex flex-col justify-center items-center mr-4">
-        <div className="corner text-lg mt-4 ">{/*<SiCoderwall />*/}</div>
+      <div className="bottom w-full flex flex-col rounded-lg bg-hblue justify-center items-center">
         <div>
-          
           <button
-            className="text-xl mb-4 flex items-center bg-hblue rounded-lg py-2 px-8"
+            className="text-xl flex items-center align-middle rounded-lg py-2 px-6"
             onClick={handleOpen}
           >
             {data.icon} <span className="mr-2"></span> Add{" "}

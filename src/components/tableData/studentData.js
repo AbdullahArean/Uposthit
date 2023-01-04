@@ -4,8 +4,8 @@ export const studentColumns = [
   { field: "s_roll", headerName: "Roll", width: 70 },
   { field: "s_semester", headerName: "Current Semester", width: 150 },
   { field: "s_mobile1", headerName: "Primary Contact", width: 150 },
+  { field: "s_mobile2", headerName: "Emergency Contact", width: 150 },  
   { field: "s_mail1", headerName: "Primary Mail", width: 250 },
-  { field: "s_mobile2", headerName: "Emergency Contact", width: 150 },
   { field: "s_mail2", headerName: "Emergency Mail", width: 250 },
 ];
 

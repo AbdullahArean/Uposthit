@@ -23,5 +23,11 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getAllStudents();
   }
 
+  if(isset($_GET['insertlecture'])){
+    echo $obj->insertLecture();
+  }
+
+
+
 /*cd api
   php -S 127.0.0.1:8000 api.php */

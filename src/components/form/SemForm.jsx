@@ -145,6 +145,7 @@ const SemForm = () => {
           <button
             id="reset"
             type="reset"
+            
             class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset

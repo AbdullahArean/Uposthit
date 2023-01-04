@@ -43,12 +43,12 @@ const Students = () => {
     const columns: GridColDef[] = [
       { field: 's_name', headerName: 'Name', width: 200},
       { field: 'reg', headerName: 'Registration No.', width: 150 },
-      { field: 's_roll', headerName: 'Roll', width: 70},
-      { field: 's_semester', headerName: 'Current Semester', width: 150},
-      { field: 's_mobile1',headerName: 'Primary Contact',width: 150},
-      { field: 's_mail1',headerName: 'Primary Mail',width: 250},
-      { field: 's_mobile2',headerName: 'Emergency Contact',width: 150,},
-      { field: 's_mail2',headerName: 'Emergency Mail',width: 250}
+      { field: 'class_roll', headerName: 'Roll', width: 70},
+      { field: 'semester_id', headerName: 'Current Semester', width: 150},
+      { field: 'p_contact',headerName: 'Primary Contact',width: 150},
+      { field: 'p_email',headerName: 'Primary Mail',width: 250},
+      { field: 'e_contact',headerName: 'Emergency Contact',width: 150,},
+      { field: 'e_email',headerName: 'Emergency Mail',width: 250}
     ];
 
 

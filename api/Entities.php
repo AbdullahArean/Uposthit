@@ -33,20 +33,7 @@ class Entities
     }
 
 
-    public function insertCourse()
-    {
-        if (isset($_POST['course_code']) && isset($_POST['semester_id']) && isset($_POST['course_name'])) {
-            $course_code =  $_POST['course_code'];
-            $semester_id =   $_POST['semester_id'];
-            $course_name =  $_POST['course_name'];
-            $insertSql = "INSERT INTO `courses`(  `course_code`, `semester_id`, `course_name`) VALUES ( '" . $course_code . "','" . $semester_id . "', '" . $course_name . "' )";
-            if (mysqli_query($this->conn, $insertSql)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    }
+    
     public function getAllCourses()
     {
         $selectdata = "SELECT * FROM `courses`";
@@ -83,9 +70,34 @@ class Entities
        
     }
 
+    public function insertCourse()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $course_code =  $data->course_code;
+            $course_name =   $data->course_name;
+            $semester_id =  $data->semester_id;
+            $course_credit=  $data->course_credit;
+            
+            if( $semester_id!=0){
+                $insertSql = "INSERT INTO `courses`( `course_code`, `semester_id` , `course_name`, `course_credit`) VALUES ( '" . $course_code . "','" . $semester_id . "'  , '" . $course_name . "' , '" . $course_credit . "'  )";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+            }
+     
+        }
+      
+       
+    }
+
     public function getAllStudents()
     {
-        $selectdata = "SELECT `s_id` as id,`semester_id` as s_semester,`s_name` ,`reg`,`class_roll` as s_roll,`p_contact` as s_mobile1,`p_email` as s_mail1,`e_contact` as s_mobile2,`e_email` as s_mail2 FROM `students`;";
+        $selectdata = "SELECT `s_id` as id,`semester_id`,`s_name` ,`reg`,`class_roll`,`p_contact`,`p_email`,`e_contact`,`e_email` FROM `students`;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);

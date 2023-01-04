@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Widget.css";
 import { HiUserAdd } from "react-icons/hi";
-// import { SiCoderwall } from "react-icons/si";
 import { MdAddBox } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
 import Backdrop from "@mui/material/Backdrop";
@@ -77,7 +76,7 @@ const Widget = ({ type }) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="widget flex flex-col gap-y-10 flex-1 px-4 py-3 border rounded-lg shadow-lg">
+    <div className="widget flex flex-col gap-y-10 flex-1 px-4 py-3 border shadow-hblue rounded-lg shadow-lg">
       <div className="top gap-y-2 flex flex-col ">
         <button
           type="button"

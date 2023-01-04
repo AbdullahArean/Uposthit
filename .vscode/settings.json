@@ -2,5 +2,6 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "githubPullRequests.ignoredPullRequestBranches": ["main"]
+  "githubPullRequests.ignoredPullRequestBranches": ["main"],
+  "javascript.validate.enable": false
 }

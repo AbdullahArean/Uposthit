@@ -77,7 +77,7 @@ const Widget = ({ type }) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="widget flex flex-col gap-y-10 flex-1 px-4 py-3 border rounded-lg shadow-lg">
+    <div className="widget flex flex-col gap-y-10 flex-1 px-4 py-3 border shadow-hblue rounded-lg shadow-lg">
       <div className="top gap-y-2 flex flex-col ">
         <button
           type="button"

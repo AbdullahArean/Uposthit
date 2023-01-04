@@ -7,6 +7,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Teachers from "./pages/tables/Teachers";
 import Officer from "./pages/tables/Officers";
+import Courses from "./pages/courses/Courses";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/officers" element={<Officer />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/students">
             <Route index element={<Students />} />
             <Route path=":studentId" element={<Single />} />

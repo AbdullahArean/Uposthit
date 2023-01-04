@@ -7,25 +7,17 @@ import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 
 const Students = () => {
   const [data, setData] = useState([]);
+  const getStudent = () => {
+    Axios.get("/?getallstudents")
+      .then((response) => {
+        setData(response?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
-    let ignore = false;
-
-    if (!ignore) {
-      const getStudent = () => {
-        Axios.get("/?getallstudents")
-          .then((response) => {
-            setData(response?.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-
-      getStudent();
-    }
-    return () => {
-      ignore = true;
-    };
+    getStudent();
   }, []);
 
   const rows: GridRowsProp = data;

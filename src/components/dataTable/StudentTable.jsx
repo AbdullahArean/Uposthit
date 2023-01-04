@@ -26,19 +26,29 @@ const actionColumn = [
   }
 ]
 
-const DataTable = ({data}) => {
+// const DataTable = ({data}) => {
+
+//   return (
+//     <div className='text-center mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>
+//       <DataGrid className=''
+//         rows={data? data : studentRows}
+//         columns={studentColumns.concat(actionColumn)}
+//         pageSize={5}
+//         getRowId={(row) => row.s_reg}
+//         rowsPerPageOptions={[5]}
+//         checkboxSelection
+//         disableSelectionOnClick
+//         autoHeight
+//       />
+//     </div>
+//   )
+// }
+
+const DataTable = ({rows, columns}) => {
 
   return (
     <div className='text-center mx-7 my-6 border rounded-lg focus:ring-0 focus:border-none'>
-      <DataGrid className=''
-        rows={data? data : studentRows}
-        columns={studentColumns.concat(actionColumn)}
-        pageSize={5}
-        getRowId={(row) => row.s_reg}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        disableSelectionOnClick
-        autoHeight
+      <DataGrid rows={rows} columns={columns}
       />
     </div>
   )

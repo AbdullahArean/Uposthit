@@ -42,6 +42,11 @@ class Entities
         return json_encode($all);
     }
 
+    
+
+
+
+
     public function insertStudent()
     {
         $postdata = file_get_contents("php://input");
@@ -89,6 +94,32 @@ class Entities
                        return 0;
                    }
             }
+     
+        }
+      
+       
+    }
+
+
+    public function insertLecture()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            // $lecture_id =  $data->lecture_id;
+            // $teacher_id =   $data->teacher_id;
+            $course_id =  $data->course_id;
+            $lecture_topic=  $data->lecture_topic;
+            $lecture_date=  $data->lecture_date;
+            $lecture_time=  $data->lecture_time;
+
+                $insertSql = "INSERT INTO `lectures`( `course_id`, `lecture_topic` , `lecture_date`, `lecture_time`) VALUES ( '" . $course_id . "','" . $lecture_topic . "'  , '" . $lecture_date . "' , '" . $lecture_time . "'  )";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
      
         }
       

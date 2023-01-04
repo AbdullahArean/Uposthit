@@ -60,7 +60,7 @@ const Students = () => {
         <hr className='mx-2 mb-3'/>
         {/* <DataTable data={data}/> */}
         <div style={{ height: 300, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={rows} columns={columns} getRowId={(rows) => rows._id} />
     </div>
       </div>
     </div>

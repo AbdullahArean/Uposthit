@@ -134,6 +134,15 @@ class Entities
         return json_encode($all);
     }
 
+
+    public function getAllTeachers()
+    {
+        $selectdata = "SELECT `t_id` as id,`t_code`,`t_designation` ,`t_contact`,`t_email`,`t_deptname` FROM `teachers`;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all); 
+    }
+
     
 
     public function getLecture($course_id)
@@ -142,6 +151,31 @@ class Entities
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
+    }
+
+    public function insertTeacher()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $t_code =  $data->t_code;
+            $t_name =   $data->t_name;
+            $t_designation =  $data->t_designation;
+            $t_contact =  $data->t_contact;
+            $t_email =   $data->t_email;
+            $t_deptname =  $data->t_deptname;
+
+            $insertSql = "INSERT INTO `teachers`( `t_code`, `t_name` , `t_designation`, `t_contact`, `t_email`, `t_deptname`) VALUES ( '" . $t_code . "','" . $t_name . "'  , '" . $t_designation . "' , '" . $t_contact . "' , '" . $t_email . "', '" . $t_deptname . "')";
+            if (mysqli_query($this->conn, $insertSql))
+             {
+                return 1;
+            } else {
+                       return 0;
+                   }
+        }
+      
+       
     }
 
 

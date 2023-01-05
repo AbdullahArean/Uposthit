@@ -11,13 +11,14 @@ const TForm = () => {
   const [teacherDescription, setteacherDescription] = useState("");
 
   const addTeacher = () => {
-    Axios.post("http://localhost:3001/createTeacher", {
-      teacherName: teacherName,
-      teacherID: teacherID,
-      teacherDepartment: teacherDepartment,
-      teacherMail: teacherMail,
-      teacherMobile: teacherMobile,
-      teacherDescription: teacherDescription,
+    Axios.post("/?insertteacher", {
+      t_name: teacherName,
+      t_code: teacherID,
+      t_deptname: teacherDepartment,
+      t_email: teacherMail,
+      t_contact: teacherMobile,
+      t_designation: teacherDescription,
+      
     }).then(() => {
       console.log("success");
     });

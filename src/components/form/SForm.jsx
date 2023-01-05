@@ -139,7 +139,7 @@ const SForm = () => {
     var s_semester = data[e].s_semester;
     var semester_id = data[e].semester_id;
     var semester_text = s_year + " - " + s_semester;
-    return <option value={semester_id}>{semester_text}</option>;
+    return <option key={data[e].semester_id} value={semester_id}>{semester_text}</option>;
   });
 
   return (
@@ -149,17 +149,17 @@ const SForm = () => {
           Create A Student
         </div>
         <div className="grid grid-cols-3 gap-16">
-          <div class="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-3 col-span-2">
             <label
-              for="s_name"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_name"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Full Name
             </label>
             <input
               type="text"
               id="s_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
               onChange={(event) => {
                 setstudentName(event.target.value);
               }}
@@ -169,14 +169,14 @@ const SForm = () => {
 
           <div className="mb-6">
             <label
-              for="s_sem"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_sem"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Select Current Semester
             </label>
             <select
               id="s_sem"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setstudentSemester(event.target.value);
               }}
@@ -197,17 +197,17 @@ const SForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-16">
-          <div class="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-3 col-span-2">
             <label
-              for="s_reg"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_reg"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Registration No.
             </label>
             <input
               type="text"
               id="s_reg"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. 2023-017-342"
               onChange={(event) => {
                 setstudentReg(event.target.value);
@@ -215,17 +215,17 @@ const SForm = () => {
             />
             <span id="sRegError" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="s_roll"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_roll"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
-              Class Roll
+              className Roll
             </label>
             <input
               type="text"
               id="s_roll"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. FH-69"
               onChange={(event) => {
                 setstudentRoll(event.target.value);
@@ -235,17 +235,17 @@ const SForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-24">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="s_mobile1"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_mobile1"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Primary Contact No.
             </label>
             <input
               type="text"
               id="s_mobile1"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
               placeholder="(+88)-"
               onChange={(event) => {
                 setstudentPMobile(event.target.value);
@@ -253,17 +253,17 @@ const SForm = () => {
             />
             <span id="sMobile1Error" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="s_mobile2"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_mobile2"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Emergency Contact No.
             </label>
             <input
               type="text"
               id="s_mobile2"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
               placeholder="(+88)-"
               onChange={(event) => {
                 setstudentEMobile(event.target.value);
@@ -273,17 +273,17 @@ const SForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-24">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="s_mail1"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_mail1"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Primary E-Mail Address
             </label>
             <input
               type="email"
               id="s_mail1"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
               placeholder="student@example.com"
               onChange={(event) => {
                 setstudentPMail(event.target.value);
@@ -291,17 +291,17 @@ const SForm = () => {
             />
             <span id="sMail1Error" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="s_mail_2"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_mail_2"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Emergency E-Mail Address
             </label>
             <input
               type="email"
               id="s_mail2"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-blue block w-full p-2.5"
               placeholder="student@example.com"
               onChange={(event) => {
                 setstudentEMail(event.target.value);
@@ -313,13 +313,13 @@ const SForm = () => {
 
         {dataInserted ? (
           <div
-            class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
+            className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
             role="alert"
           >
-            <div class="flex">
-              <div class="py-1">
+            <div className="flex">
+              <div className="py-1">
                 <svg
-                  class="fill-current h-6 w-6 text-teal-500 mr-4"
+                  className="fill-current h-6 w-6 text-teal-500 mr-4"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -327,7 +327,7 @@ const SForm = () => {
                 </svg>
               </div>
               <div>
-                <p class="font-bold">Success! Data has been inserted</p>
+                <p className="font-bold">Success! Data has been inserted</p>
               </div>
             </div>
           </div>
@@ -337,14 +337,14 @@ const SForm = () => {
 
         {dataInsertedError ? (
           <div
-            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
             role="alert"
           >
-            <strong class="font-bold">Error! Data couldn't be inserted</strong>
+            <strong className="font-bold">Error! Data couldn't be inserted</strong>
 
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
               <svg
-                class="fill-current h-6 w-6 text-red-500"
+                className="fill-current h-6 w-6 text-red-500"
                 role="button"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -362,7 +362,7 @@ const SForm = () => {
             id="s_submit"
             onClick={sFormValidation}
             type="button"
-            class="col-start-3 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="col-start-3 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Student
           </button>
@@ -373,7 +373,7 @@ const SForm = () => {
               setdataInserted(false);
               setdataInsertedError(false);
             }}
-            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

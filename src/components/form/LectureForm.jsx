@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { useState, useEffect, useParams } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 // import { useEffect } from "react";
@@ -8,31 +9,28 @@ const LectureForm = () => {
   let location = useLocation();
   let arr = location.pathname.split("courses/");
   let id = arr[arr.length - 1];
-  
+
   // let id = courseID;
   const [lectureTopic, setLectureTopic] = useState("");
   const [lectureDate, setLectureDate] = useState("");
   const [lectureTime, setLectureTime] = useState("");
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
-  
 
   var date = new Date();
 
   var today =
-    date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
+    date.getFullYear() +
+    "-" +
+    ("0" + (date.getMonth() + 1)).slice(-2) +
+    "-" +
+    ("0" + date.getDate()).slice(-2);
   var time = date.getHours() + ":" + date.getMinutes();
 
   useEffect(() => {
     setLectureDate(today.toString());
-  setLectureTime(time.toString());
-   
-  
-  },[]);
-  
-
-  // var lecturedate = document.getElementById("lec_date").value;
-  // var lecturetime = document.getElementById("lec_time").value;
+    setLectureTime(time.toString());
+  }, []);
 
   const addLecture = () => {
     axios
@@ -52,10 +50,8 @@ const LectureForm = () => {
         }
       });
 
-      console.log(lectureDate);
+    console.log(lectureDate);
   };
-
-  
 
   function lecFormValidation() {
     let lecTopic = document.getElementById("lec_topic").value;
@@ -113,7 +109,7 @@ const LectureForm = () => {
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               value={today.toString()}
               disabled
-              
+
               // onChange={(event) => {
               //   setLectureDate(today.toString());
               // }}

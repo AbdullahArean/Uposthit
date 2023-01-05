@@ -7,6 +7,7 @@ import Teachers from "./pages/tables/Teachers";
 import Officer from "./pages/tables/Officers";
 import Courses from "./pages/courses/Courses";
 import Course from "./pages/course/Course";
+import Attendance from "./pages/attendance/Attendance";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/officers" element={<Officer />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:courseID" element={<Course />} />
+          <Route path="/attendance/:attendanceID" element={<Attendance />} />
           <Route path="/students">
             <Route index element={<Students />} />
           </Route>

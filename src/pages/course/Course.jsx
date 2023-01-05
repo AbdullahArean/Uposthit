@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -20,49 +20,61 @@ const Course = () => {
   const handleClose = () => setOpen(false);
 
   const [loading, setLoading] = useState(true);
-  const [course_ID, setCourse_ID] = useState("");
+  const [lectures, setLectures] = useState([]);
   let { courseID } = useParams();
-  
 
-  const getlecture =() => {
-    if(loading)
-  {
-    
-    
-    axios
-      .get("/?getlecture&course_id=" + courseID)
-      .then((response) => {
-        console.log(response.data);
+  const nav = useNavigate();
+  const takeAttendance = (id) => {
+    nav(`/attendance/${id}`);
+  };
+
+  const getlecture = () => {
+    if (loading) {
+      axios.get("/?getlecture&course_id=" + courseID).then((response) => {
+        setLectures(response.data);
+        // console.log(response.data);
         setLoading(false);
-        
-        }
-      );
-
-  }
-
-  }
-
+      });
+    }
+  };
 
   useEffect(() => {
-    
-  // setCourse_ID(courseID);
+    // setCourse_ID(courseID);
+    // console.log(courseID);
     getlecture();
   }, []);
-  
-  
 
-
-
-  
-
-  
-  
   return (
     <div className="flex">
       <Sidebar />
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
+        <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
+          All Lectures
+        </div>
+        <div className="mx-7 my-12 flex flex-col gap-y-8">
+          {lectures.map((lecture) => {
+            return (
+              <button
+                onClick={() => takeAttendance(lecture.lecture_id)}
+                key={lecture.lecture_id}
+                className="flex gap-16 shadow-lg shadow-hblue border border-gray-300 rounded-lg py-8 px-12 align-middle"
+              >
+                <div className="text-2xl bg-hblue px-2 rounded-md">
+                  {lecture.lecture_id}
+                </div>
+                <div className="flex w-full justify-between">
+                  <div className="text-2xl">{lecture.lecture_topic}</div>
+                  <div className="flex gap-8 font-medium align-middle">
+                    <div>{lecture.lecture_date}</div>
+                    <div>{lecture.lecture_time}</div>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
         <button
           className="text-5xl bg-hblue px-8 py-5 fixed right-20 bottom-20 rounded-full shadow-lg"
           onClick={handleOpen}
@@ -93,7 +105,6 @@ const Course = () => {
             </div>
           </Fade>
         </Modal>
-        Course page for course with id : {id}
       </div>
     </div>
   );

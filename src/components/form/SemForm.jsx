@@ -5,13 +5,13 @@ import Axios from "axios";
 const SemForm = () => {
   const [semesterName, setsemesterName] = useState("");
   const [semesterYear, setsemesterYear] = useState("");
-  const [semesterOId, setsemesterOId] = useState("");
+  const [semesterNo, setsemesterNo] = useState("");
 
   const addSemester = () => {
     Axios.post("http://localhost:3001/createSemester", {
-      semesterName: semesterName,
-      semesterYear: semesterYear,
-      semesterOId: semesterOId,
+      semester_name: semesterName,
+      s_year: semesterYear,
+      s_semester: semesterNo,
     }).then(() => {
       console.log("success");
     });
@@ -19,12 +19,12 @@ const SemForm = () => {
 
   function semFormValidation() {
     let semName = document.getElementById("sem_name").value;
-    let semYear = document.getElementById("sem_year").value;
-    let oId = document.getElementById("o_id").value;
+    let semYear = document.getElementById("s_year").value;
+    let semNo = document.getElementById("s_semester").value;
 
     let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-    let idCheck = /^[0-9]{1,20}$/;
-    let yearCheck = /^[0-9]{4}$/;
+    let semCheck = /^[1-2]{1}$/;
+    let yearCheck = /^[1-4]{1}$/;
 
     if (nameCheck.test(semName) === false) {
       document.getElementById("semNameError").innerText =
@@ -33,11 +33,11 @@ const SemForm = () => {
       document.getElementById("semNameError").innerText = "";
     }
 
-    if (idCheck.test(oId) === false) {
-      document.getElementById("oIdError").innerText =
-        "Please insert a valid ID";
+    if (semCheck.test(semNo) === false) {
+      document.getElementById("sNoError").innerText =
+        "Please insert a valid semester number";
     } else {
-      document.getElementById("oIdError").innerText = "";
+      document.getElementById("sNoError").innerText = "";
     }
 
     if (yearCheck.test(semYear) === false) {
@@ -49,7 +49,7 @@ const SemForm = () => {
 
     if (
       nameCheck.test(semName) === true &&
-      idCheck.test(oId) === true &&
+      semCheck.test(semNo) === true &&
       yearCheck.test(semYear) === true
     ) {
       addSemester();
@@ -63,17 +63,17 @@ const SemForm = () => {
           Create A Semester
         </div>
         <div className="grid grid-cols-2 gap-16">
-          <div class="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-3 col-span-2">
             <label
-              for="sem_name"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="sem_name"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Semester Name
             </label>
             <input
               type="text"
               id="sem_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setsemesterName(event.target.value);
               }}
@@ -82,54 +82,52 @@ const SemForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-16">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="sem_year"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_year"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Year
             </label>
             <input
               type="text"
-              id="sem_year"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
-              placeholder="ex. 2022"
+              id="s_year"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setsemesterYear(event.target.value);
               }}
             />
             <span id="semYearError" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="o_id"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="s_semester"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
-              Created by
+              Semester No.
             </label>
             <input
               type="text"
-              id="o_id"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
-              placeholder="input Officer ID"
+              id="s_semester"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
-                setsemesterOId(event.target.value);
+                setsemesterNo(event.target.value);
               }}
             />
-            <span id="oIdError" className="text-red-800"></span>
+            <span id="sNoError" className="text-red-800"></span>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-12">
-          <div class="flex items-center mb-4">
+          <div className="flex items-center mb-4">
             <input
               id="c_archive"
               type="checkbox"
               value=""
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300"
+              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300"
             />
             <label
-              for="checkbox-1"
-              class="ml-2 text-md font-medium text-gray-900"
+              htmlFor="checkbox-1"
+              className="ml-2 text-md font-medium text-gray-900"
             >
               Archive
             </label>
@@ -138,7 +136,7 @@ const SemForm = () => {
             id="sem_submit"
             onClick={semFormValidation}
             type="button"
-            class="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Semester
           </button>
@@ -146,7 +144,7 @@ const SemForm = () => {
             id="reset"
             type="reset"
             
-            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

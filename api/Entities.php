@@ -134,6 +134,16 @@ class Entities
         return json_encode($all);
     }
 
+    
+
+    public function getLecture($course_id)
+    {
+        $selectdata = "SELECT * FROM lectures where course_id = '$course_id';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
 
     
 }

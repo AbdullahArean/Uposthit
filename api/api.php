@@ -39,6 +39,10 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getLecture($course_id);
   }
 
+  if(isset($_GET['getallteachers'])){
+    echo $obj->getAllTeachers();
+  }
+
 
 
 

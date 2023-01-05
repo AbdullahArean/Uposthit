@@ -7,8 +7,9 @@ import { useEffect } from "react";
 
 const Attendance = () => {
   let { attendanceID } = useParams();
+  let { semID } = useParams();
   useEffect(() => {
-    // console.log(attendanceID);
+    console.log(semID);
   }, []);
   return (
     <div className="flex">

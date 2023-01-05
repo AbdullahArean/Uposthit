@@ -137,7 +137,7 @@ class Entities
 
     public function getAllTeachers()
     {
-        $selectdata = "SELECT `t_id` as id,`t_code`,`t_designation` ,`t_contact`,`t_email`,`t_deptname` FROM `teachers`;";
+        $selectdata = "SELECT `t_id` as id,`t_name`,`t_code`,`t_designation` ,`t_contact`,`t_email`,`t_deptname` FROM `teachers`;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all); 

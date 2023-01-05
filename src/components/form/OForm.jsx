@@ -86,17 +86,17 @@ const OForm = () => {
           Create An Officer
         </div>
         <div className="grid grid-cols-3 gap-16">
-          <div class="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-3 col-span-2">
             <label
-              for="o_name"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="o_name"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Full Name
             </label>
             <input
               type="text"
               id="o_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setofficerName(event.target.value);
               }}
@@ -106,15 +106,15 @@ const OForm = () => {
 
           <div className="mb-6">
             <label
-              for="o_id"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="o_id"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Officer ID
             </label>
             <input
               type="text"
               id="o_id"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. 293-362"
               onChange={(event) => {
                 setofficerID(event.target.value);
@@ -124,17 +124,17 @@ const OForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-24">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="o_mobile"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="o_mobile"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Contact No.
             </label>
             <input
               type="text"
               id="o_mobile"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="(+88)-"
               onChange={(event) => {
                 setofficerMobile(event.target.value);
@@ -142,17 +142,17 @@ const OForm = () => {
             />
             <span id="oMobileError" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="o_mail"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="o_mail"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               E-Mail Address
             </label>
             <input
               type="email"
               id="o_mail"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="officer@example.com"
               onChange={(event) => {
                 setofficerMail(event.target.value);
@@ -162,16 +162,16 @@ const OForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-1">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="o_des"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="o_des"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Designation
             </label>
             <select
               id="o_des"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setofficerDesignation(event.target.value);
               }}
@@ -191,14 +191,14 @@ const OForm = () => {
             type="button"
             onClick={oFormValidation}
             id="o_submit"
-            class="col-start-3 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="col-start-3 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Officer
           </button>
           <button
             id="reset"
             type="reset"
-            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

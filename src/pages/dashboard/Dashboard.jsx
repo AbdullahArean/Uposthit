@@ -11,7 +11,7 @@ const Dashboard = () => {
         <Navbar />
         <hr className="mx-2 mb-3" />
         <div className="flex justify-center items-center">
-          <div className="widgets grid lg:grid-cols-5 gap-8 md:grid-cols-1 mt-10">
+          <div className="widgets grid lg:grid-cols-5 mx-8 gap-8 md:grid-cols-1 mt-10">
             <Widget type="students" />
             <Widget type="teachers" />
             <Widget type="officers" />

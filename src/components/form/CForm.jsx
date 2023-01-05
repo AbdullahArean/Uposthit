@@ -74,7 +74,7 @@ const CForm = () => {
     var c_semester = data[e].s_semester;
     var semester_id = data[e].semester_id;
     var semester_text = c_year + " - " + c_semester;
-    return <option value={semester_id}>{semester_text}</option>;
+    return <option key={data[e].semester_id} value={semester_id}>{semester_text}</option>;
   });
 
   return (
@@ -84,17 +84,17 @@ const CForm = () => {
           Create A Course
         </div>
         <div className="grid grid-cols-3 gap-16">
-          <div class="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-3 col-span-2">
             <label
-              for="c_name"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="c_name"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Course Name
             </label>
             <input
               type="text"
               id="c_name"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setcourseName(event.target.value);
               }}
@@ -103,14 +103,14 @@ const CForm = () => {
           </div>
           <div className="mb-6">
             <label
-              for="c_sem"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="c_sem"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Select Current Semester
             </label>
             <select
               id="c_sem"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setcourseSemester(event.target.value);
               }}
@@ -131,34 +131,34 @@ const CForm = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-16">
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="c_credit"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="c_credit"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Course Credit
             </label>
             <input
               type="text"
               id="c_credit"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               onChange={(event) => {
                 setcourseCredit(event.target.value);
               }}
             />
             <span id="cCreditError" className="text-red-800"></span>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label
-              for="c_code"
-              class="block mb-2 text-md font-medium text-gray-900"
+              htmlFor="c_code"
+              className="block mb-2 text-md font-medium text-gray-900"
             >
               Course Code
             </label>
             <input
               type="text"
               id="c_code"
-              class="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               placeholder="ex. PHY-1213"
               onChange={(event) => {
                 setcourseCode(event.target.value);
@@ -169,13 +169,13 @@ const CForm = () => {
         </div>
         {dataInserted ? (
           <div
-            class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
+            className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 mb-6 shadow-md"
             role="alert"
           >
-            <div class="flex">
-              <div class="py-1">
+            <div className="flex">
+              <div className="py-1">
                 <svg
-                  class="fill-current h-6 w-6 text-teal-500 mr-4"
+                  className="fill-current h-6 w-6 text-teal-500 mr-4"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -183,7 +183,7 @@ const CForm = () => {
                 </svg>
               </div>
               <div>
-                <p class="font-bold">Success! Data has been inserted</p>
+                <p className="font-bold">Success! Data has been inserted</p>
               </div>
             </div>
           </div>
@@ -193,14 +193,14 @@ const CForm = () => {
 
         {dataInsertedError ? (
           <div
-            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
             role="alert"
           >
-            <strong class="font-bold">Error! Data couldn't be inserted</strong>
+            <strong className="font-bold">Error! Data couldn't be inserted</strong>
 
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
               <svg
-                class="fill-current h-6 w-6 text-red-500"
+                className="fill-current h-6 w-6 text-red-500"
                 role="button"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -218,7 +218,7 @@ const CForm = () => {
             id="c_submit"
             onClick={cFormValidation}
             type="button"
-            class="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="col-start-2 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Add New Course
           </button>
@@ -229,7 +229,7 @@ const CForm = () => {
               setdataInserted(false);
               setdataInsertedError(false);
             }}
-            class="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            className="text-black bg-white border-2 border-gray-500 hover:bg-red-500 hover:text-white focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
           >
             Reset
           </button>

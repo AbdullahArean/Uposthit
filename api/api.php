@@ -19,6 +19,12 @@ if(isset($_GET['insertcourse'])){
   if(isset($_GET['insertstudent'])){
     echo $obj->insertStudent();
   }
+
+  if(isset($_GET['insertteacher'])){
+    echo $obj->insertTeacher();
+  }
+
+
   if(isset($_GET['getallstudents'])){
     echo $obj->getAllStudents();
   }

@@ -27,6 +27,13 @@ if(isset($_GET['insertcourse'])){
     echo $obj->insertLecture();
   }
 
+  if(isset($_GET['getlecture']) && isset($_GET['course_id']))
+  {
+    $course_id = $_GET['course_id'];
+    echo $obj->getLecture($course_id);
+  }
+
+
 
 
 /*cd api

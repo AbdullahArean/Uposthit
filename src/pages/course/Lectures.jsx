@@ -13,9 +13,9 @@ import LectureForm from "../../components/form/LectureForm";
 import axios from "axios";
 
 const Course = () => {
-  let location = useLocation();
-  let arr = location.pathname.split("courses/");
-  let id = arr[arr.length - 1];
+  // let location = useLocation();
+  // let arr = location.pathname.split("courses/");
+  // let id = arr[arr.length - 1];
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -23,10 +23,16 @@ const Course = () => {
   const [loading, setLoading] = useState(true);
   const [lectures, setLectures] = useState([]);
   let { courseID } = useParams();
+  let { semID } = useParams();
+  // const {state} = useLocation();
+  // const state = this.props.location.state;
+  // const location = useLocation();
+
+  // const {semesterId} = state;
 
   const nav = useNavigate();
-  const takeAttendance = (id) => {
-    nav(`/attendance/${id}`);
+  const takeAttendance = (id,semID) => {
+    nav(`/attendance/${id}/${semID}`);
   };
 
   const getlecture = () => {
@@ -42,6 +48,9 @@ const Course = () => {
   useEffect(() => {
     // setCourse_ID(courseID);
     // console.log(courseID);
+    // console.log(semesterId);
+    // console.log(location.state.id)
+    console.log(semID);
     getlecture();
   }, []);
 
@@ -58,7 +67,7 @@ const Course = () => {
           {lectures.map((lecture) => {
             return (
               <button
-                onClick={() => takeAttendance(lecture.lecture_id)}
+                onClick={() => takeAttendance(lecture.lecture_id,semID)}
                 key={lecture.lecture_id}
                 className="flex gap-16 shadow-lg shadow-hblue border border-gray-300 rounded-lg py-8 px-12 align-middle"
               >

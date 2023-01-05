@@ -10,9 +10,17 @@ import { useNavigate } from "react-router-dom";
 const Courses = () => {
   const [data, setData] = useState([]);
   const nav = useNavigate();
-  const singleCourse = (id) => {
-    nav(`/courses/${id}`);
+  const singleCourse = (id, sId) => {
+    nav(`/courses/${id}/${sId}`);
+    // this.props.router.push({
+    //   pathname: `/courses/${id}`,
+    //   state: {
+    //     id: 7,
+    //     color: 'green'
+    //   }
+    // })
   };
+
   const getCourse = () => {
     Axios.get("/?getAllcourse")
       .then((response) => {
@@ -32,6 +40,9 @@ const Courses = () => {
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
+        <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
+          All Courses
+        </div>
         <div className="grid grid-cols-5 gap-10 mx-7 my-12">
           {data.map((course) => {
             return (
@@ -56,7 +67,7 @@ const Courses = () => {
                 <div className="bottom flex flex-col rounded-lg bg-hblue justify-center items-center mt-6">
                   <button
                     className="text-xl w-full text-center flex justify-center items-center rounded-lg py-2 px-6"
-                    onClick={() => singleCourse(course.course_id)}
+                    onClick={() => singleCourse(course.course_id, course.semester_id)}
                   >
                     {/* <RxOpenInNewWindow className="mr-2" /> */}
                     Open

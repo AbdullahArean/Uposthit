@@ -1,5 +1,5 @@
 import React from "react";
-import * as BsIcons from "react-icons/bs";
+import {BsPersonCircle} from "react-icons/bs";
 
 const Navbar = () => {
   return (
@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="items absolute right-8">
         <div className="item flex items-center">
           <span className="text-gray-600 mr-2">John Doe</span>
-          <BsIcons.BsPersonCircle className="text-black" />
+          <BsPersonCircle className="text-black" />
         </div>
       </div>
     </div>

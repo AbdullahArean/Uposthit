@@ -37,7 +37,6 @@ const Course = () => {
   };
 
   useEffect(() => {
-    console.log(semID);
     getlecture();
   }, []);
 

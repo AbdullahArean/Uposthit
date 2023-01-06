@@ -24,21 +24,16 @@ const Attendance = () => {
     if (e.target.checked) {
       isPresent = 1;
       setPresent((array) => [...array, s_id]);
-      // console.log("agei hoitase")
     } else {
       isPresent = 0;
       setPresent(present.filter((item) => item !== s_id));
-      // console.log(present);
-      // console.log("not");
     }
-    // console.log(present);
   };
 
   const getstudents = () => {
     if (loading) {
       axios.get("/?getstudents&semester_id=" + semID).then((response) => {
         setStudents(response.data);
-        // console.log(response.data);
         setLoading(false);
       });
     }

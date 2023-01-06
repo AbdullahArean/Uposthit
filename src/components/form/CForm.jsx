@@ -43,7 +43,6 @@ const CForm = () => {
   function cFormValidation() {
     let cName = document.getElementById("c_name").value;
     let cCode = document.getElementById("c_code").value;
-    // let cCredit = document.getElementById('c_credit').value;
 
     let nameCheck = /^[a-zA-Z\s]{1,100}$/;
     let codeCheck = /^[A-Z]{3}-[0-9]{4}$/;
@@ -64,7 +63,6 @@ const CForm = () => {
 
     if (nameCheck.test(cName) === true && codeCheck.test(cCode) === true) {
       addCourse();
-      // window.location.reload();
     }
   }
 
@@ -116,15 +114,6 @@ const CForm = () => {
               }}
             >
               <option>-</option>
-              {/* <option>1-1</option>
-                        <option>1-2</option>
-                        <option>2-1</option>
-                        <option>2-2</option>
-                        <option>3-1</option>
-                        <option>3-2</option>
-                        <option>4-1</option>
-                        <option>4-2</option>
-                        <option>M.Sc</option> */}
               {loading ? "" : renderOption}
             </select>
             <span id="cSemError" className="text-red-800"></span>

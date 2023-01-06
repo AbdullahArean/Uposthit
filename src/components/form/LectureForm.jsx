@@ -3,14 +3,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-// import { useEffect } from "react";
 
 const LectureForm = () => {
   let location = useLocation();
   let arr = location.pathname.split("courses/");
   let id = arr[arr.length - 1];
 
-  // let id = courseID;
   const [lectureTopic, setLectureTopic] = useState("");
   const [lectureDate, setLectureDate] = useState("");
   const [lectureTime, setLectureTime] = useState("");
@@ -109,10 +107,6 @@ const LectureForm = () => {
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               value={today.toString()}
               disabled
-
-              // onChange={(event) => {
-              //   setLectureDate(today.toString());
-              // }}
             />
             <span id="lecDateError" className="text-red-800"></span>
           </div>
@@ -129,10 +123,6 @@ const LectureForm = () => {
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
               value={time.toString()}
               disabled
-              // onChange={(event) => {
-              //   setLectureTime(event.target.value);
-              // }}
-              // setLectureTime(time.toString())
             />
             <span id="lecTimeError" className="text-red-800"></span>
           </div>

@@ -49,7 +49,6 @@ const SForm = () => {
   };
 
   function sFormValidation() {
-    console.log(studentSemester)
     let sName = document.getElementById("s_name").value;
     let sSem = document.getElementById("s_sem").value;
     let sReg = document.getElementById("s_reg").value;

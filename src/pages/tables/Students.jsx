@@ -40,7 +40,10 @@ const Students = () => {
         <Navbar />
         <hr className="mx-2 mb-3" />
         {/* <DataTable data={data}/> */}
-        <div className="px-7" style={{ height: 650, width: "100%" }}>
+        <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
+          All Students
+        </div>
+        <div className="px-7 my-12" style={{ height: 650, width: "100%" }}>
           <DataGrid rows={rows} columns={columns} />
         </div>
       </div>

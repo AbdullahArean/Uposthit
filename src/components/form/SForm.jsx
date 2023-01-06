@@ -49,6 +49,7 @@ const SForm = () => {
   };
 
   function sFormValidation() {
+    console.log(studentSemester)
     let sName = document.getElementById("s_name").value;
     let sSem = document.getElementById("s_sem").value;
     let sReg = document.getElementById("s_reg").value;
@@ -139,7 +140,11 @@ const SForm = () => {
     var s_semester = data[e].s_semester;
     var semester_id = data[e].semester_id;
     var semester_text = s_year + " - " + s_semester;
-    return <option key={data[e].semester_id} value={semester_id}>{semester_text}</option>;
+    return (
+      <option key={data[e].semester_id} value={semester_id}>
+        {semester_text}
+      </option>
+    );
   });
 
   return (
@@ -182,15 +187,6 @@ const SForm = () => {
               }}
             >
               <option>-</option>
-              {/* <option>1-1</option>
-                        <option>1-2</option>
-                        <option>2-1</option>
-                        <option>2-2</option>
-                        <option>3-1</option>
-                        <option>3-2</option>
-                        <option>4-1</option>
-                        <option>4-2</option>
-                        <option>M.Sc</option> */}
               {loading ? "" : renderOption}
             </select>
             <span id="sSemError" className="text-red-800"></span>
@@ -220,7 +216,7 @@ const SForm = () => {
               htmlFor="s_roll"
               className="block mb-2 text-md font-medium text-gray-900"
             >
-              className Roll
+              class Roll
             </label>
             <input
               type="text"
@@ -340,7 +336,9 @@ const SForm = () => {
             className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative"
             role="alert"
           >
-            <strong className="font-bold">Error! Data couldn't be inserted</strong>
+            <strong className="font-bold">
+              Error! Data couldn't be inserted
+            </strong>
 
             <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
               <svg

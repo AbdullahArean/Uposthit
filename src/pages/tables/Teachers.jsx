@@ -20,7 +20,6 @@ const Teacher = () => {
   };
   useEffect(() => {
     getTeacher();
-    console.log(data)
   }, []);
 
   const rows: GridRowsProp = data;
@@ -40,8 +39,10 @@ const Teacher = () => {
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
-        {/* <DataTable data={data}/> */}
-        <div className="px-7" style={{ height: 650, width: "100%" }}>
+        <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
+          All Teachers
+        </div>
+        <div className="px-7 my-12" style={{ height: 650, width: "100%" }}>
           <DataGrid rows={rows} columns={columns} />
         </div>
       </div>

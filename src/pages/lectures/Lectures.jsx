@@ -13,9 +13,6 @@ import LectureForm from "../../components/form/LectureForm";
 import axios from "axios";
 
 const Course = () => {
-  // let location = useLocation();
-  // let arr = location.pathname.split("courses/");
-  // let id = arr[arr.length - 1];
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -24,11 +21,6 @@ const Course = () => {
   const [lectures, setLectures] = useState([]);
   let { courseID } = useParams();
   let { semID } = useParams();
-  // const {state} = useLocation();
-  // const state = this.props.location.state;
-  // const location = useLocation();
-
-  // const {semesterId} = state;
 
   const nav = useNavigate();
   const takeAttendance = (lecID,semID,lecDate) => {
@@ -39,17 +31,12 @@ const Course = () => {
     if (loading) {
       axios.get("/?getlecture&course_id=" + courseID).then((response) => {
         setLectures(response.data);
-        // console.log(response.data);
         setLoading(false);
       });
     }
   };
 
   useEffect(() => {
-    // setCourse_ID(courseID);
-    // console.log(courseID);
-    // console.log(semesterId);
-    // console.log(location.state.id)
     console.log(semID);
     getlecture();
   }, []);

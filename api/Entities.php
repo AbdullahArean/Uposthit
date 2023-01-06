@@ -179,5 +179,14 @@ class Entities
     }
 
 
+    public function getStudents($semester_id)
+    {
+        $selectdata = "SELECT * FROM students where semester_id = '$semester_id';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+
     
 }

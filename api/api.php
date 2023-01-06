@@ -43,6 +43,14 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getAllTeachers();
   }
 
+  if(isset($_GET['getstudents']) && isset($_GET['semester_id']))
+  {
+    $semester_id = $_GET['semester_id'];
+    echo $obj->getStudents($semester_id);
+  }
+
+
+
 
 
 

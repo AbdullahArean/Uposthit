@@ -8,7 +8,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Attendance = () => {
-  let { attendanceID } = useParams();
+  let { lectureID } = useParams();
+  let { courseID } = useParams();
+  let { lecDate } = useParams();
   let { semID } = useParams();
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);

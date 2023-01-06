@@ -31,8 +31,8 @@ const Course = () => {
   // const {semesterId} = state;
 
   const nav = useNavigate();
-  const takeAttendance = (id,semID) => {
-    nav(`/attendance/${id}/${semID}`);
+  const takeAttendance = (lecID,semID,lecDate) => {
+    nav(`/lectures/${courseID}${lecID}${semID}/${lecDate}`);
   };
 
   const getlecture = () => {
@@ -67,7 +67,7 @@ const Course = () => {
           {lectures.map((lecture) => {
             return (
               <button
-                onClick={() => takeAttendance(lecture.lecture_id,semID)}
+                onClick={() => takeAttendance(lecture.lecture_id,semID,lecture.lecture_date)}
                 key={lecture.lecture_id}
                 className="flex gap-16 shadow-lg shadow-hblue border border-gray-300 rounded-lg py-8 px-12 align-middle"
               >

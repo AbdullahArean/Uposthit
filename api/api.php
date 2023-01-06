@@ -49,6 +49,28 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getStudents($semester_id);
   }
 
+  if(isset($_GET['insertcourseassign'])){
+    echo $obj->insertCourseTakes();
+  }
+
+  if(isset($_GET['getteachers']) && isset($_GET['course_id']))
+  {
+    $course_id = $_GET['course_id'];
+    echo $obj->getTeachers($course_id);
+  }
+
+
+  if(isset($_GET['insertattendance'])){
+    echo $obj->insertAttendance();
+  }
+
+  if(isset($_GET['updateattendance'])){
+    echo $obj->updateAttendance();
+  }
+
+
+
+
 
 
 

@@ -188,5 +188,94 @@ class Entities
     }
 
 
+    public function insertCourseTakes()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $teacher_id =   $data->teacher_id;
+            $course_id =  $data->course_id;
+
+                $insertSql = "INSERT INTO `course_takes`( `course_id`,  `teacher_id` ) VALUES ( '" . $course_id . "','" . $teacher_id . "')";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+     
+        }
+      
+       
+    }
+
+
+    public function insertAttendance()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $student_id =   $data->student_id;
+            $teacher_id =  $data->teacher_id;
+            $course_id =  $data->course_id;
+            $lecture_id =  $data->lecture_id;
+            $date =  $data->date;
+            $ispresent =  $data->ispresent;
+            $s_name =  $data->s_name;
+            $class_roll =  $data->class_roll;
+
+
+                $insertSql = "INSERT INTO `attendances`( `student_id`,  `teacher_id`, `course_id`,`lecture_id`,`date`,`ispresent`,`s_name`,`class_roll`) VALUES ('" . $student_id . "','" . $teacher_id . "','" . $course_id . "','" . $lecture_id . "','" . $date . "','" . $ispresent . "','" . $s_name . "','" . $class_roll . "')";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+     
+        }
+      
+       
+    }
+
+    public function getTeachers($course_id)
+    {
+        $selectdata = "SELECT * FROM course_takes where course_id = '$course_id';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+
+    public function updateAttendance()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $student_id =   $data->student_id;
+            $date =  $data->date;
+            
+
+            $insertSql= "UPDATE `attendances` 
+            SET `ispresent`  = 1
+            WHERE `student_id` = '" . $student_id . "' AND `date` = '" . $date . "';";
+                
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+                
+     
+        }
+      
+       
+    }
+
+
+
+
+
     
 }

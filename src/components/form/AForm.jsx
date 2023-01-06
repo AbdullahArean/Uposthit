@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AForm = ({ teacher, loading, course }) => {
   var data = teacher;
@@ -10,7 +11,27 @@ const AForm = ({ teacher, loading, course }) => {
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
   
-  const assignTeacher = () => {};
+  
+  const assignTeacher = () => {
+    for(var i=0; i<courseID.length; i++)
+    {
+      axios
+        .post("/?insertcourseassign", {
+          teacher_id: teacherID,
+          course_id: courseID[i],
+        })
+        .then((response) => {
+          if (response.data === 1) {
+            setdataInserted(true);
+            setdataInsertedError(false);
+          } else {
+            setdataInsertedError(true);
+            setdataInserted(false);
+          }
+        });
+
+    }
+  };
 
   const aFormValidation = () => {
     let notChecked = true;

@@ -11,7 +11,7 @@ const Courses = () => {
   const [data, setData] = useState([]);
   const nav = useNavigate();
   const singleCourse = (id, sId) => {
-    nav(`/courses/${id}/${sId}`);
+    nav(`/courses/${id}${sId}`);
     // this.props.router.push({
     //   pathname: `/courses/${id}`,
     //   state: {

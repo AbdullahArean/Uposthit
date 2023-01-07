@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-import * as MdIcons from "react-icons/md";
-import * as FiIcons from "react-icons/fi";
-import * as BsIcons from "react-icons/bs";
-import * as FaIcons from "react-icons/fa";
-import * as BiIcons from "react-icons/bi";
+import {MdTimeline,MdDashboard,MdHelpOutline,MdInfoOutline} from "react-icons/md";
+import {FiBookOpen} from "react-icons/fi";
+import {FaBookReader,FaChalkboardTeacher,FaUserShield} from "react-icons/fa";
+import {BiLogOutCircle} from "react-icons/bi";
+import {BsArchive,BsPersonCircle} from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -25,7 +26,7 @@ const Sidebar = () => {
               to="/dashboard"
               className="flex gap-2 items-center pr-12 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <MdIcons.MdDashboard className="text-black text-2xl" />
+              <MdDashboard className="text-black text-2xl" />
               <span className="text-gray-600">Dashboard</span>
             </Link>
           </li>
@@ -37,7 +38,7 @@ const Sidebar = () => {
               to="/students"
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <FaIcons.FaBookReader className="text-black text-2xl" />
+              <FaBookReader className="text-black text-2xl" />
               <span className="text-gray-600">Students</span>
             </Link>
           </li>
@@ -46,7 +47,7 @@ const Sidebar = () => {
               to="/teachers"
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <FaIcons.FaChalkboardTeacher className="text-black text-2xl" />
+              <FaChalkboardTeacher className="text-black text-2xl" />
               <span className="text-gray-600">Teachers</span>
             </Link>
           </li>
@@ -55,7 +56,7 @@ const Sidebar = () => {
               to="/officers"
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <FaIcons.FaUserShield className="text-black text-2xl" />
+              <FaUserShield className="text-black text-2xl" />
               <span className="text-gray-600">Officers</span>
             </Link>
           </li>
@@ -67,19 +68,19 @@ const Sidebar = () => {
               to="/courses"
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <FiIcons.FiBookOpen className="text-black text-2xl" />
+              <FiBookOpen className="text-black text-2xl" />
               <span className="text-gray-600">Courses</span>
             </Link>
           </li>
           <li className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-            <MdIcons.MdTimeline className="text-black text-2xl" />
+            <MdTimeline className="text-black text-2xl" />
             <span className="text-gray-600">Semesters</span>
           </li>
           <li className="text-gray-400 pl-2 pt-6 text-sm">
             <span>USER</span>
           </li>
           <li className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-            <BsIcons.BsPersonCircle className="text-black text-2xl" />
+            <BsPersonCircle className="text-black text-2xl" />
             <span className="text-gray-600">Profile</span>
           </li>
           <li>
@@ -87,7 +88,7 @@ const Sidebar = () => {
               to="/login"
               className="flex gap-2 items-center pr-6 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
-              <BiIcons.BiLogOutCircle className="text-black text-2xl" />
+              <BiLogOutCircle className="text-black text-2xl" />
               <span className="text-gray-600">Logout</span>
             </Link>
           </li>
@@ -99,11 +100,11 @@ const Sidebar = () => {
           <span>SUPPORT</span>
         </div>
         <div className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-          <MdIcons.MdHelpOutline className="text-black text-2xl" />
+          <MdHelpOutline className="text-black text-2xl" />
           <span className="text-gray-600">Help</span>
         </div>
         <div className="flex w-full gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-          <MdIcons.MdInfoOutline className="text-black text-2xl" />
+          <MdInfoOutline className="text-black text-2xl" />
           <span className="text-gray-600">About</span>
         </div>
       </div>

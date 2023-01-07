@@ -8,6 +8,7 @@ import Officer from "./pages/tables/Officers";
 import Courses from "./pages/courses/Courses";
 import Lectures from "./pages/lectures/Lectures";
 import Attendance from "./pages/attendance/Attendance";
+import Archive from "./pages/archive/Archive";
 
 function App() {
   return (
@@ -20,8 +21,12 @@ function App() {
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/officers" element={<Officer />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/:courseID:semID" element={<Lectures />} />
-          <Route path="/lectures/:courseID:lectureID:semID/:lecDate" element={<Attendance />} />
+          <Route path="/archive/:courseID" element={<Archive />} />
+          <Route path="/courses/:courseID/:semID" element={<Lectures />} />
+          <Route
+            path="/lectures/:courseID:lectureID:semID/:lecDate"
+            element={<Attendance />}
+          />
           <Route path="/students">
             <Route index element={<Students />} />
           </Route>

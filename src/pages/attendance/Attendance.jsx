@@ -6,6 +6,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Attendance = () => {
   let { lectureID } = useParams();
@@ -18,48 +20,34 @@ const Attendance = () => {
   const [present, setPresent] = useState([]);
 
   let isPresent = 0;
-  
-  const updateAttendance = () =>{
-    for(var i=0; i<present.length; i++)
-    {
-      axios
-        .post("/?updateattendance", {
-          student_id: present[i],
-          date: lecDate,
-        })
 
+  const updateAttendance = () => {
+    for (var i = 0; i < present.length; i++) {
+      axios.post("/?updateattendance", {
+        student_id: present[i],
+        date: lecDate,
+      });
     }
-  }
+    toast.success("Attendance Saved Successfully!");
+  };
 
-  const submitAttendance = () =>{
+  const submitAttendance = () => {
     loadAttendance().then(() => updateAttendance());
-  }
-  const loadAttendance = async() => {
-    console.log("hello");
-    for(var i=0; i<students.length; i++)
-    {
-      axios
-        .post("/?insertattendance", {
-          student_id: students[i].s_id,
-          teacher_id: teachers[0].teacher_id,
-          course_id: courseID,
-          lecture_id: lectureID,
-          date: lecDate,
-          ispresent: 0,
-          s_name: students[i].s_name,
-          class_roll: students[i].class_roll,
-        })
+  };
 
+  const loadAttendance = async () => {
+    for (var i = 0; i < students.length; i++) {
+      axios.post("/?insertattendance", {
+        student_id: students[i].s_id,
+        teacher_id: teachers[0].teacher_id,
+        course_id: courseID,
+        lecture_id: lectureID,
+        date: lecDate,
+        ispresent: 0,
+        s_name: students[i].s_name,
+        class_roll: students[i].class_roll,
+      });
     }
-      // .then((response) => {
-      //   // if (response.data === 1) {
-      //   //   setdataInserted(true);
-      //   //   setdataInsertedError(false);
-      //   // } else {
-      //   //   setdataInsertedError(true);
-      //   //   setdataInserted(false);
-      //   // }
-      // });
   };
 
   const takeAttendance = (e, s_id) => {
@@ -76,25 +64,20 @@ const Attendance = () => {
     if (loading) {
       axios.get("/?getstudents&semester_id=" + semID).then((response) => {
         setStudents(response.data);
-        console.log(students);
         setLoading(false);
       });
     }
   };
-
 
   const getteachers = () => {
     setLoading(true);
     if (loading) {
       axios.get("/?getteachers&course_id=" + courseID).then((response) => {
         setTeachers(response.data);
-        console.log(teachers);
         setLoading(false);
       });
     }
   };
-
-
 
   useEffect(() => {
     getstudents();
@@ -104,6 +87,7 @@ const Attendance = () => {
     <div className="flex">
       <Sidebar />
       <div className="homeContainer flex-1">
+        <ToastContainer position="top-right" pauseOnHover draggable />
         <Navbar />
         <hr className="mx-2 mb-3" />
         <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">

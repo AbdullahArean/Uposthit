@@ -10,7 +10,11 @@ const Courses = () => {
   const [data, setData] = useState([]);
   const nav = useNavigate();
   const singleCourse = (id, sId) => {
-    nav(`/courses/${id}${sId}`);
+    nav(`/courses/${id}/${sId}`);
+  };
+
+  const viewAttendance = (courseID) => {
+    nav(`/archive/${courseID}`);
   };
 
   const getCourse = () => {
@@ -53,12 +57,18 @@ const Courses = () => {
                     Credits : {course.course_credit}
                   </div>
                 </div>
-                <div className="bottom flex flex-col rounded-lg bg-hblue justify-center items-center mt-6">
+                <div className="bottom flex flex-col rounded-lg  justify-center items-center mt-6">
                   <button
-                    className="text-xl w-full text-center flex justify-center items-center rounded-lg py-2 px-6"
+                    className="text-xl w-full text-center bg-hblue mb-4 flex justify-center items-center rounded-lg py-2 px-6"
                     onClick={() => singleCourse(course.course_id, course.semester_id)}
                   >
                     Open
+                  </button>
+                  <button
+                    className="text-md w-full text-center text-white bg-gray-600 flex justify-center items-center rounded-lg py-2 px-6"
+                    onClick={() => viewAttendance(course.course_id)}
+                  >
+                    View attendance
                   </button>
                 </div>
               </div>

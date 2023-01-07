@@ -16,7 +16,7 @@ const Course = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lectures, setLectures] = useState([]);
   let { courseID } = useParams();
@@ -36,8 +36,22 @@ const Course = () => {
     }
   };
 
+  const getteachers = () => {
+    setLoading(true);
+    if (loading) {
+      axios.get("/?getteachers&course_id=" + courseID).then((response) => {
+        setTeachers(response.data);
+        setLoading(false);
+      });
+    }
+  };
+
   useEffect(() => {
     getlecture();
+    getteachers();
+    console.log(courseID);
+    console.log(semID);
+
   }, []);
 
   return (
@@ -97,7 +111,7 @@ const Course = () => {
               >
                 <CgClose />
               </button>
-              <div id="transition-modal-description">{<LectureForm />}</div>
+              <div id="transition-modal-description">{<LectureForm teacher={teachers}/>}</div>
             </div>
           </Fade>
         </Modal>

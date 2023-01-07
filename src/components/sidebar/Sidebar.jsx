@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
 import {MdTimeline,MdDashboard,MdHelpOutline,MdInfoOutline} from "react-icons/md";
@@ -74,15 +75,6 @@ const Sidebar = () => {
           <li className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
             <MdTimeline className="text-black text-2xl" />
             <span className="text-gray-600">Semesters</span>
-          </li>
-          <li>
-            <Link
-              to="/archive"
-              className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
-            >
-              <BsArchive className="text-black text-2xl" />
-              <span className="text-gray-600">Archives</span>
-            </Link>
           </li>
           <li className="text-gray-400 pl-2 pt-6 text-sm">
             <span>USER</span>

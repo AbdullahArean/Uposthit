@@ -2,12 +2,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
-const LectureForm = () => {
-  let location = useLocation();
-  let arr = location.pathname.split("courses/");
-  let id = arr[arr.length - 1];
+const LectureForm = ({teacher}) => {
+  // let location = useLocation();
+  // let arr = location.pathname.split("courses/");
+  // let id = arr[arr.length - 1];
+
+  let {courseID} = useParams();
 
   const [lectureTopic, setLectureTopic] = useState("");
   const [lectureDate, setLectureDate] = useState("");
@@ -28,6 +30,7 @@ const LectureForm = () => {
   useEffect(() => {
     setLectureDate(today.toString());
     setLectureTime(time.toString());
+    console.log(courseID);
   }, []);
 
   const addLecture = () => {
@@ -36,7 +39,8 @@ const LectureForm = () => {
         lecture_topic: lectureTopic,
         lecture_date: lectureDate,
         lecture_time: lectureTime,
-        course_id: id,
+        course_id: courseID,
+        teacher_id: teacher[0].teacher_id,
       })
       .then((response) => {
         if (response.data === 1) {
@@ -47,8 +51,6 @@ const LectureForm = () => {
           setdataInserted(false);
         }
       });
-
-    console.log(lectureDate);
   };
 
   function lecFormValidation() {

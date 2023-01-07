@@ -108,13 +108,13 @@ class Entities
             
             $data = json_decode($postdata) ; 
             // $lecture_id =  $data->lecture_id;
-            // $teacher_id =   $data->teacher_id;
+            $teacher_id =   $data->teacher_id;
             $course_id =  $data->course_id;
             $lecture_topic=  $data->lecture_topic;
             $lecture_date=  $data->lecture_date;
             $lecture_time=  $data->lecture_time;
 
-                $insertSql = "INSERT INTO `lectures`( `course_id`, `lecture_topic` , `lecture_date`, `lecture_time`) VALUES ( '" . $course_id . "','" . $lecture_topic . "'  , '" . $lecture_date . "' , '" . $lecture_time . "'  )";
+                $insertSql = "INSERT INTO `lectures`( `course_id`, `lecture_topic` , `lecture_date`, `lecture_time`, `teacher_id`) VALUES ( '" . $course_id . "','" . $lecture_topic . "'  , '" . $lecture_date . "' , '" . $lecture_time . "'  , '" . $teacher_id . "'  )";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {

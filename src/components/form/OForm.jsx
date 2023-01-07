@@ -12,7 +12,7 @@ const OForm = () => {
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
   const addOfficer = () => {
-    Axios.post("http://localhost:3001/createOfficer", {
+    Axios.post("/?insertofficer", {
       o_name: officerName,
       o_code: officerID,
       o_des: officerDesignation,

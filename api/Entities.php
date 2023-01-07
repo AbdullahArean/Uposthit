@@ -10,12 +10,18 @@ class Entities
         $this->conn->set_charset("utf8");
     }
     public function insertSemester()
-    {
-        if (isset($_POST['semester_name']) && isset($_POST['s_year']) && isset($_POST['s_semester'])) {
-            $semester_name =  $_POST['semester_name'];
-            $s_year =   $_POST['s_year'];
-            $s_semester =  $_POST['s_semester'];
-            $insertSql = "INSERT INTO `semesters`(  `semester_name`, `s_year`, `s_semester`) VALUES ('" . $semester_name . "','" . $s_year . "', '" . $s_semester . "' )";
+    {       
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            $data = json_decode($postdata) ;
+            
+            $sem_code =  $data->sem_code;
+            $sem_name =   $data->sem_name;
+            $sem_year = $data->sem_year;
+            $sem_running = $data->sem_running;
+            $o_code =  $data->o_code;
+
+            $insertSql = "INSERT INTO `semesters`(  `sem_code`, `sem_name`, `sem_year`, `sem_running`, `o_code` ) VALUES ('" . $sem_code . "','" . $sem_name . "', '" . $sem_year . "','" . $sem_running . "','" . $o_code . "')";
             if (mysqli_query($this->conn, $insertSql)) {
                 return 1;
             } else {
@@ -53,22 +59,20 @@ class Entities
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
-            $semester_id =  $data->semester_id;
             $s_name =   $data->s_name;
-            $reg =  $data->reg;
-            $class_roll =  $data->class_roll;
-            $p_contact =   $data->p_contact;
-            $p_email =  $data->p_email;
-            $e_contact =  $data->e_contact;
-            $e_email =   $data->e_email;
-            if( $semester_id!=0){
-                $insertSql = "INSERT INTO `students`( `semester_id`, `s_name` , `reg`, `class_roll`, `p_contact`, `p_email`, `e_contact`, `e_email`) VALUES ( '" . $semester_id . "','" . $s_name . "'  , '" . $reg . "' , '" . $class_roll . "' , '" . $p_contact . "', '" . $p_email . "' , '" . $e_contact . "' , '" . $e_email . "'  )";
+            $s_reg =  $data->s_reg;
+            $s_classroll =  $data->s_classroll;
+            $s_contact =   $data->s_contact;
+            $s_email =  $data->s_email;
+            $s_contact2 =  $data->s_contact2;
+            $s_email2 =   $data->s_email2;
+
+                $insertSql = "INSERT INTO `students`(`s_name` , `s_reg`, `s_classroll`, `s_contact`, `s_email`, `s_contact2`, `s_email2`) VALUES ('" . $s_name . "'  , '" . $s_reg . "' , '" . $s_classroll . "' , '" . $s_contact . "', '" . $s_email . "' , '" . $s_contact2 . "' , '" . $s_email2 . "'  )";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {
                        return 0;
                    }
-            }
      
         }
       
@@ -161,12 +165,37 @@ class Entities
             $data = json_decode($postdata) ; 
             $t_code =  $data->t_code;
             $t_name =   $data->t_name;
-            $t_designation =  $data->t_designation;
+            $t_des =  $data->t_des;
             $t_contact =  $data->t_contact;
             $t_email =   $data->t_email;
-            $t_deptname =  $data->t_deptname;
+            $t_dept =  $data->t_dept;
 
-            $insertSql = "INSERT INTO `teachers`( `t_code`, `t_name` , `t_designation`, `t_contact`, `t_email`, `t_deptname`) VALUES ( '" . $t_code . "','" . $t_name . "'  , '" . $t_designation . "' , '" . $t_contact . "' , '" . $t_email . "', '" . $t_deptname . "')";
+            $insertSql = "INSERT INTO `teachers`( `t_code`, `t_name` , `t_des`, `t_contact`, `t_email`, `t_dept`) VALUES ( '" . $t_code . "','" . $t_name . "'  , '" . $t_des . "' , '" . $t_contact . "' , '" . $t_email . "', '" . $t_dept . "')";
+            if (mysqli_query($this->conn, $insertSql))
+             {
+                return 1;
+            } else {
+                       return 0;
+                   }
+        }
+      
+       
+    }
+
+
+    public function insertOfficer()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $o_code =  $data->o_code;
+            $o_name =   $data->o_name;
+            $o_des =  $data->o_des;
+            $o_contact =  $data->o_contact;
+            $o_email =   $data->o_email;
+
+            $insertSql = "INSERT INTO `officers`( `o_code`, `o_name` , `o_des`, `o_contact`, `o_email`) VALUES ( '" . $o_code . "','" . $o_name . "'  , '" . $o_des . "' , '" . $o_contact . "' , '" . $o_email . "')";
             if (mysqli_query($this->conn, $insertSql))
              {
                 return 1;

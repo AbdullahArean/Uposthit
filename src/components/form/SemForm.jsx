@@ -11,7 +11,7 @@ const SemForm = () => {
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
   const addSemester = () => {
-    Axios.post("http://localhost:3001/createSemester", {
+    Axios.post("/?insertsemester", {
       sem_name: semesterName,
       sem_year: semesterYear,
       sem_code: semesterNo,

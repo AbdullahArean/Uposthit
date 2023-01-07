@@ -5,23 +5,22 @@ import Axios from "axios";
 
 const TForm = () => {
   const [teacherName, setteacherName] = useState("");
-  const [teacherID, setteacherID] = useState("");
+  const [teacherCode, setTeacherCode] = useState("");
   const [teacherDepartment, setteacherDepartment] = useState("");
   const [teacherMail, setteacherMail] = useState("");
   const [teacherMobile, setteacherMobile] = useState("");
   const [teacherDescription, setteacherDescription] = useState("");
-
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
   const addTeacher = () => {
     Axios.post("/?insertteacher", {
       t_name: teacherName,
-      t_code: teacherID,
-      t_deptname: teacherDepartment,
+      t_code: teacherCode,
+      t_dept: teacherDepartment,
       t_email: teacherMail,
       t_contact: teacherMobile,
-      t_designation: teacherDescription,
+      t_des: teacherDescription,
     }).then((response) => {
       if (response.data === 1) {
         setdataInserted(true);
@@ -35,14 +34,14 @@ const TForm = () => {
 
   function tFormValidation() {
     let tName = document.getElementById("t_name").value;
-    let tId = document.getElementById("t_id").value;
+    let tCode = document.getElementById("t_code").value;
     let tDept = document.getElementById("t_dept").value;
     let tMobile = document.getElementById("t_mobile").value;
     let tMail = document.getElementById("t_mail").value;
     let tDes = document.getElementById("t_des").value;
 
     let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-    let idCheck = /^[0-9]{1,20}$/;
+    let codeCheck = /^[T]{1}[0-9]{3}$/;
     let deptCheck = /^[a-zA-Z\s&]{1,50}$/;
     let mobileCheck = /^[0]{1}[1]{1}[0-9]{9}$/;
     let mailCheck = /^[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -54,11 +53,11 @@ const TForm = () => {
       document.getElementById("tNameError").innerText = "";
     }
 
-    if (idCheck.test(tId) === false) {
-      document.getElementById("tIdError").innerText =
+    if (codeCheck.test(tCode) === false) {
+      document.getElementById("tCodeError").innerText =
         "Please insert a valid ID";
     } else {
-      document.getElementById("tIdError").innerText = "";
+      document.getElementById("tCodeError").innerText = "";
     }
 
     if (deptCheck.test(tDept) === false) {
@@ -91,7 +90,7 @@ const TForm = () => {
 
     if (
       nameCheck.test(tName) === true &&
-      idCheck.test(tId) === true &&
+      codeCheck.test(tCode) === true &&
       deptCheck.test(tDept) === true &&
       mobileCheck.test(tMobile) === true &&
       mailCheck.test(tMail) === true &&
@@ -128,21 +127,21 @@ const TForm = () => {
 
           <div className="mb-6">
             <label
-              htmlFor="t_id"
+              htmlFor="t_code"
               className="block mb-2 text-md font-medium text-gray-900"
             >
-              Teacher ID
+              Teacher Code
             </label>
             <input
               type="text"
-              id="t_id"
+              id="t_code"
               className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
-              placeholder="ex. 293-362"
+              placeholder="ex. T001"
               onChange={(event) => {
-                setteacherID(event.target.value);
+                setTeacherCode(event.target.value);
               }}
             />
-            <span id="tIdError" className="text-red-800"></span>
+            <span id="tCodeError" className="text-red-800"></span>
           </div>
         </div>
         <div className="grid md:grid-cols-1">

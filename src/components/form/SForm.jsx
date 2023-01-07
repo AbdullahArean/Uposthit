@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
@@ -6,36 +6,23 @@ const SForm = () => {
   const [studentName, setstudentName] = useState("");
   const [studentReg, setstudentReg] = useState("");
   const [studentRoll, setstudentRoll] = useState("");
-  const [studentSemester, setstudentSemester] = useState("");
   const [studentPMail, setstudentPMail] = useState("");
   const [studentEMail, setstudentEMail] = useState("");
   const [studentPMobile, setstudentPMobile] = useState("");
   const [studentEMobile, setstudentEMobile] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [semesterData, setsemesterData] = useState("");
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
-
-  useEffect(() => {
-    if (loading) {
-      axios.get("/?getAllsemester").then((response) => {
-        setLoading(false);
-        setsemesterData(response.data);
-      });
-    }
-  });
-
+  
   const addStudent = () => {
     axios
       .post("/?insertstudent", {
         s_name: studentName,
-        reg: studentReg,
-        class_roll: studentRoll,
-        semester_id: studentSemester,
-        p_email: studentPMail,
-        e_email: studentEMail,
-        p_contact: studentPMobile,
-        e_contact: studentEMobile,
+        s_reg: studentReg,
+        s_classroll: studentRoll,
+        s_email: studentPMail,
+        s_email2: studentEMail,
+        s_contact: studentPMobile,
+        s_contact2: studentEMobile,
       })
       .then((response) => {
         if (response.data === 1) {
@@ -50,7 +37,6 @@ const SForm = () => {
 
   function sFormValidation() {
     let sName = document.getElementById("s_name").value;
-    let sSem = document.getElementById("s_sem").value;
     let sReg = document.getElementById("s_reg").value;
     let sRoll = document.getElementById("s_roll").value;
     let sMobile1 = document.getElementById("s_mobile1").value;
@@ -113,38 +99,17 @@ const SForm = () => {
       document.getElementById("sMail2Error").innerText = "";
     }
 
-    if (sSem === "-") {
-      document.getElementById("sSemError").innerText =
-        "Please select a semester";
-    } else {
-      document.getElementById("sSemError").innerText = "";
-    }
-
     if (
       nameCheck.test(sName) === true &&
       rollCheck.test(sRoll) === true &&
       mobileCheck.test(sMobile1) === true &&
       mobileCheck.test(sMobile2) === true &&
       mailCheck.test(sMail1) === true &&
-      mailCheck.test(sMail2) === true &&
-      sSem !== "-"
+      mailCheck.test(sMail2) === true
     ) {
       addStudent();
     }
   }
-
-  var data = semesterData;
-  const renderOption = Object.keys(data).map((e) => {
-    var s_year = data[e].s_year;
-    var s_semester = data[e].s_semester;
-    var semester_id = data[e].semester_id;
-    var semester_text = s_year + " - " + s_semester;
-    return (
-      <option key={data[e].semester_id} value={semester_id}>
-        {semester_text}
-      </option>
-    );
-  });
 
   return (
     <div>
@@ -153,7 +118,7 @@ const SForm = () => {
           Create A Student
         </div>
         <div className="grid grid-cols-3 gap-16">
-          <div className="mb-6 col-end-3 col-span-2">
+          <div className="mb-6 col-end-4 col-span-3">
             <label
               htmlFor="s_name"
               className="block mb-2 text-md font-medium text-gray-900"
@@ -169,26 +134,6 @@ const SForm = () => {
               }}
             />
             <span id="sNameError" className="text-red-800"></span>
-          </div>
-
-          <div className="mb-6">
-            <label
-              htmlFor="s_sem"
-              className="block mb-2 text-md font-medium text-gray-900"
-            >
-              Select Current Semester
-            </label>
-            <select
-              id="s_sem"
-              className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
-              onChange={(event) => {
-                setstudentSemester(event.target.value);
-              }}
-            >
-              <option>-</option>
-              {loading ? "" : renderOption}
-            </select>
-            <span id="sSemError" className="text-red-800"></span>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-16">
@@ -215,7 +160,7 @@ const SForm = () => {
               htmlFor="s_roll"
               className="block mb-2 text-md font-medium text-gray-900"
             >
-              class Roll
+              Class Roll
             </label>
             <input
               type="text"

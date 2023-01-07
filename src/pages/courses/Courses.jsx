@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Courses = () => {
   const [data, setData] = useState([]);
   const nav = useNavigate();
-  const singleCourse = (id, sId) => {
+
+  const lectures = (id, sId) => {
     nav(`/courses/${id}/${sId}`);
   };
 
@@ -43,30 +44,30 @@ const Courses = () => {
           {data.map((course) => {
             return (
               <div
-                key={course.course_id}
-                className="px-4 rounded-lg border border-gray-300 shadow-lg shadow-hblue py-2"
+                key={course.c_code}
+                className="px-4 rounded-lg border flex flex-col justify-between border-gray-300 shadow-lg shadow-hblue py-2"
               >
                 <div>
-                  <div className="text-left text-gray-500 text-4xl mb-4 px-1 uppercase">
-                    {course.course_name}
+                  <div className="text-left text-gray-500 text-2xl mt-2 mb-4 px-1 uppercase">
+                    {course.c_name}
                   </div>
                   <div className="text-gray-600 text-lg pl-1">
-                    Code : {course.course_code}
+                    Code : {course.c_code}
                   </div>
                   <div className="text-gray-600 text-lg pl-1">
-                    Credits : {course.course_credit}
+                    Credits : {course.c_credit}
                   </div>
                 </div>
                 <div className="bottom flex flex-col rounded-lg  justify-center items-center mt-6">
                   <button
                     className="text-xl w-full text-center bg-hblue mb-4 flex justify-center items-center rounded-lg py-2 px-6"
-                    onClick={() => singleCourse(course.course_id, course.semester_id)}
+                    onClick={() => lectures(course.c_code, course.sem_id)}
                   >
                     Open
                   </button>
                   <button
-                    className="text-md w-full text-center text-white bg-gray-600 flex justify-center items-center rounded-lg py-2 px-6"
-                    onClick={() => viewAttendance(course.course_id)}
+                    className="text-md w-full text-center text-white mb-2 bg-gray-600 flex justify-center items-center rounded-lg py-2 px-6"
+                    onClick={() => viewAttendance(course.c_code)}
                   >
                     View attendance
                   </button>

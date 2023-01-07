@@ -13,19 +13,19 @@ const Archive = () => {
   const [teacherID, setTeacherID] = useState("");
   const [lectureID, setLectureID] = useState([]);
   let { courseID } = useParams();
-  //   const getlecture = () => {
-  //     if (loading) {
-  //       axios.get("/?getlecture&course_id=" + courseID).then((response) => {
-  //         setLectures(response?.data);
-  //         for (var i = 0; i < response.data.length; i++) {
-  //           setLectureID(lectures[i].lecture_id);
-  //           setTeacherID(lectures[i].teacher_id);
-  //         }
-  //         setLoading(false);
-  //         console.log(response.data);
-  //       });
-  //     }
-  //   };
+    const getlecture = () => {
+      if (loading) {
+        axios.get("/?getlecture&course_id=" + courseID).then((response) => {
+          setLectures(response?.data);
+          for (var i = 0; i < response.data.length; i++) {
+            setLectureID(lectures[i].lecture_id);
+            setTeacherID(lectures[i].teacher_id);
+          }
+          setLoading(false);
+          console.log(response.data);
+        });
+      }
+    };
 
   const getteachers = () => {
     if (loading) {

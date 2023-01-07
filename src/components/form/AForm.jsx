@@ -192,7 +192,7 @@ const AForm = ({ teacher, loading, course }) => {
           type="button"
           className="col-start-1 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
         >
-          Add New Course
+          Assign Course
         </button>
         <button
           id="reset"

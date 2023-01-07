@@ -67,18 +67,18 @@ const Course = () => {
           {lectures.map((lecture) => {
             return (
               <button
-                onClick={() => takeAttendance(lecture.lecture_id,semID,lecture.lecture_date)}
-                key={lecture.lecture_id}
+                onClick={() => takeAttendance(lecture.l_id,semID,lecture.l_date)}
+                key={lecture.l_id}
                 className="flex gap-16 shadow-lg shadow-hblue border border-gray-300 rounded-lg py-8 px-12 align-middle"
               >
                 <div className="text-2xl bg-hblue px-2 rounded-md">
-                  {lecture.lecture_id}
+                  {lecture.l_id}
                 </div>
                 <div className="flex w-full justify-between">
-                  <div className="text-2xl">{lecture.lecture_topic}</div>
+                  <div className="text-2xl">{lecture.l_topic}</div>
                   <div className="flex gap-8 font-medium align-middle">
-                    <div>{lecture.lecture_date}</div>
-                    <div>{lecture.lecture_time}</div>
+                    <div>{lecture.l_date}</div>
+                    <div>{lecture.l_time}</div>
                   </div>
                 </div>
               </button>

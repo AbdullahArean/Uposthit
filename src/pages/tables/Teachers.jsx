@@ -23,14 +23,13 @@ const Teacher = () => {
   }, []);
 
   const rows: GridRowsProp = data;
-
   const columns: GridColDef[] = [
     { field: "t_name", headerName: "Name", width: 200 },
-    { field: "t_code", headerName: "T_Code", width: 170 },
-    { field: "t_designation", headerName: "Designation", width: 250 },
+    { field: "id", headerName: "T_Code", width: 170 },
+    { field: "t_des", headerName: "Designation", width: 250 },
     { field: "t_contact", headerName: "Mobile No.", width:170 },
     { field: "t_email", headerName: "E-mail", width: 150 },
-    { field: "t_deptname", headerName: "Department", width: 400 },
+    { field: "t_dept", headerName: "Department", width: 400 },
   ];
 
   return (

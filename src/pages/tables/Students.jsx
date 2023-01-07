@@ -19,18 +19,17 @@ const Students = () => {
   useEffect(() => {
     getStudent();
   }, []);
-
+  
   const rows: GridRowsProp = data;
 
   const columns: GridColDef[] = [
     { field: "s_name", headerName: "Name", width: 200 },
-    { field: "reg", headerName: "Registration No.", width: 150 },
-    { field: "class_roll", headerName: "Roll", width: 70 },
-    { field: "semester_id", headerName: "Current Semester", width: 150 },
-    { field: "p_contact", headerName: "Primary Contact", width: 150 },
-    { field: "e_contact", headerName: "Emergency Contact", width: 150 },
-    { field: "p_email", headerName: "Primary Mail", width: 250 },
-    { field: "e_email", headerName: "Emergency Mail", width: 250 },
+    { field: "id", headerName: "Registration No.", width: 150 },
+    { field: "s_classroll", headerName: "Roll", width: 70 },
+    { field: "s_contact", headerName: "Primary Contact", width: 150 },
+    { field: "s_contact2", headerName: "Emergency Contact", width: 150 },
+    { field: "s_email", headerName: "Primary Mail", width: 250 },
+    { field: "s_email2", headerName: "Emergency Mail", width: 250 },
   ];
 
   return (

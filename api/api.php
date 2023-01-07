@@ -24,6 +24,10 @@ if(isset($_GET['insertcourse'])){
     echo $obj->insertTeacher();
   }
 
+  if(isset($_GET['insertofficer'])){
+    echo $obj->insertOfficer();
+  }
+
 
   if(isset($_GET['getallstudents'])){
     echo $obj->getAllStudents();

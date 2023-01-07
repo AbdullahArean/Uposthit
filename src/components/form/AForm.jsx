@@ -8,6 +8,7 @@ const AForm = ({ teacher, loading, course }) => {
   var data = teacher;
   const [teacherID, setTeacherID] = useState("");
   const [courseID, setCourseID] = useState([]);
+  const [semID, setSemID] = useState([]);
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
   
@@ -17,8 +18,9 @@ const AForm = ({ teacher, loading, course }) => {
     {
       axios
         .post("/?insertcourseassign", {
-          teacher_id: teacherID,
-          course_id: courseID[i],
+          t_code: teacherID,
+          c_code: courseID[i],
+          sem_id: semID[i],
         })
         .then((response) => {
           if (response.data === 1) {
@@ -65,21 +67,22 @@ const AForm = ({ teacher, loading, course }) => {
     }
   };
 
-  const takeAttendance = (e, course_id) => {
+  const selectCourses = (e, course_id, sem_id) => {
     if (e.target.checked) {
       setCourseID((array) => [...array, course_id]);
+      setSemID((array) => [...array, sem_id]);
     } else {
       setCourseID(courseID.filter((item) => item !== course_id));
+      setSemID(semID.filter((item) => item !== sem_id));
     }
   };
 
   const renderOption = Object.keys(data).map((e) => {
     var t_name = data[e].t_name;
-    var t_id = data[e].id;
-    var t_code = data[e].t_code;
+    var t_code = data[e].id;
     var teacher_text = t_name + " - " + t_code;
     return (
-      <option key={data[e].id} value={t_id}>
+      <option key={data[e].id} value={t_code}>
         {teacher_text}
       </option>
     );
@@ -110,22 +113,22 @@ const AForm = ({ teacher, loading, course }) => {
       <div className="flex flex-col gap-y-6">
         {course.map((course) => {
           return (
-            <div key={course.course_id} className="flex gap-8 ">
+            <div key={course.c_code} className="flex gap-8 ">
               <div className="flex items-center gap-2">
                 <input
                   id="teal"
                   type="checkbox"
                   value=""
                   className="w-6 h-6 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-0"
-                  onChange={(e) => takeAttendance(e, course.course_id)}
+                  onChange={(e) => selectCourses(e, course.c_code, course.sem_id)}
                 />
                 <label
                   htmlFor="teal-checkbox"
                   className="ml-2 text-lg font-medium text-gray-900"
                 >
                   <div className="flex gap-6">
-                    <div className="">{course.course_code}</div>
-                    <div className="">{course.course_name}</div>
+                    <div className="">{course.c_code}</div>
+                    <div className="">{course.c_name}</div>
                   </div>
                 </label>
               </div>

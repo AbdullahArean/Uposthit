@@ -17,6 +17,7 @@ const CForm = () => {
       axios.get("/?getAllsemester").then((response) => {
         setLoading(false);
         setsemesterData(response.data);
+        console.log(response.data);
       });
     }
   });
@@ -24,10 +25,10 @@ const CForm = () => {
   const addCourse = () => {
     axios
       .post("/?insertcourse", {
-        course_name: courseName,
-        course_code: courseCode,
-        course_credit: courseCredit,
-        semester_id: courseSemester,
+        c_name: courseName,
+        c_code: courseCode,
+        c_credit: courseCredit,
+        sem_id: courseSemester,
       })
       .then((response) => {
         if (response.data === 1) {
@@ -45,7 +46,7 @@ const CForm = () => {
     let cCode = document.getElementById("c_code").value;
 
     let nameCheck = /^[a-zA-Z\s]{1,100}$/;
-    let codeCheck = /^[A-Z]{3}-[0-9]{4}$/;
+    let codeCheck = /^[A-Z]{3,4}-[0-9]{4}$/;
 
     if (nameCheck.test(cName) === false) {
       document.getElementById("cNameError").innerText =
@@ -65,14 +66,11 @@ const CForm = () => {
       addCourse();
     }
   }
-
   var data = semesterData;
   const renderOption = Object.keys(data).map((e) => {
-    var c_year = data[e].s_year;
-    var c_semester = data[e].s_semester;
-    var semester_id = data[e].semester_id;
-    var semester_text = c_year + " - " + c_semester;
-    return <option key={data[e].semester_id} value={semester_id}>{semester_text}</option>;
+    var semester_code = data[e].sem_code;
+    var semester_text = semester_code;
+    return <option key={data[e].sem_id} value={data[e].sem_id}>{semester_text}</option>;
   });
 
   return (

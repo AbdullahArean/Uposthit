@@ -79,19 +79,20 @@ class Entities
        
     }
 
+
     public function insertCourse()
     {
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
-            $course_code =  $data->course_code;
-            $course_name =   $data->course_name;
-            $semester_id =  $data->semester_id;
-            $course_credit=  $data->course_credit;
+            $c_code =  $data->c_code;
+            $c_name =   $data->c_name;
+            $sem_id =  $data->sem_id;
+            $c_credit=  $data->c_credit;
             
-            if( $semester_id!=0){
-                $insertSql = "INSERT INTO `courses`( `course_code`, `semester_id` , `course_name`, `course_credit`) VALUES ( '" . $course_code . "','" . $semester_id . "'  , '" . $course_name . "' , '" . $course_credit . "'  )";
+            if( $sem_id!=0){
+                $insertSql = "INSERT INTO `courses`( `c_code`, `sem_id` , `c_name`, `c_credit`) VALUES ( '" . $c_code . "','" . $sem_id . "'  , '" . $c_name . "' , '" . $c_credit . "'  )";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {
@@ -138,10 +139,9 @@ class Entities
         return json_encode($all);
     }
 
-
     public function getAllTeachers()
     {
-        $selectdata = "SELECT `t_id` as id,`t_name`,`t_code`,`t_designation` ,`t_contact`,`t_email`,`t_deptname` FROM `teachers`;";
+        $selectdata = "SELECT `t_code` as id,`t_name`,`t_des` ,`t_contact`,`t_email`,`t_dept` FROM `teachers`;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all); 
@@ -223,10 +223,11 @@ class Entities
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
-            $teacher_id =   $data->teacher_id;
-            $course_id =  $data->course_id;
+            $t_code =   $data->t_code;
+            $c_code =  $data->c_code;
+            $sem_id = $data->sem_id;
 
-                $insertSql = "INSERT INTO `course_takes`( `course_id`,  `teacher_id` ) VALUES ( '" . $course_id . "','" . $teacher_id . "')";
+                $insertSql = "INSERT INTO `teaches`( `c_code`,  `t_code`, `sem_id` ) VALUES ( '" . $c_code . "','" . $t_code . "','" . $sem_id . "')";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {

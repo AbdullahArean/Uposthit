@@ -60,16 +60,16 @@ const Attendance = () => {
     }
   };
 
-const loadinfo = (s_reg) => {
-  s_reg.map((reg) => {
-    if (loading) {
-      axios.get("/?getstudentsforattendance&s_reg=" + reg).then((response) => {
-        setInfo(response.data);
-        setLoading(false);
-      });
-    }
-  })
-}
+// const loadinfo = (s_reg) => {
+//   s_reg.map((reg) => {
+//     if (loading) {
+//       axios.get("/?getstudentsforattendance&s_reg=" + reg).then((response) => {
+//         setInfo(response.data);
+//         setLoading(false);
+//       });
+//     }
+//   })
+// }
 
 
 
@@ -83,7 +83,7 @@ const loadinfo = (s_reg) => {
 
 
   useEffect(() => {
-    getstudents().then(() => loadinfo(students));
+    getstudents();
   }, []);
   return (
     <div className="flex">
@@ -96,7 +96,7 @@ const loadinfo = (s_reg) => {
           Set Attendance
         </div>
         <div className="px-7 my-12">
-          {info.map((student) => {
+          {students.map((student) => {
             return (
               <div
                 key={student.s_reg}

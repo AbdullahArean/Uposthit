@@ -208,9 +208,9 @@ class Entities
     }
 
 
-    public function getStudents($semester_id)
+    public function getStudents($sem_id)
     {
-        $selectdata = "SELECT * FROM students where semester_id = '$semester_id';";
+        $selectdata = "SELECT s_reg FROM enrolls where sem_id = '$sem_id';";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -246,17 +246,12 @@ class Entities
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
-            $student_id =   $data->student_id;
-            $teacher_id =  $data->teacher_id;
-            $course_id =  $data->course_id;
-            $lecture_id =  $data->lecture_id;
-            $date =  $data->date;
-            $ispresent =  $data->ispresent;
-            $s_name =  $data->s_name;
-            $class_roll =  $data->class_roll;
+            $s_reg =   $data->s_reg;
+            $l_id =  $data->l_id;
+            $presence =  $data->presence;
 
 
-                $insertSql = "INSERT INTO `attendances`( `student_id`,  `teacher_id`, `course_id`,`lecture_id`,`date`,`ispresent`,`s_name`,`class_roll`) VALUES ('" . $student_id . "','" . $teacher_id . "','" . $course_id . "','" . $lecture_id . "','" . $date . "','" . $ispresent . "','" . $s_name . "','" . $class_roll . "')";
+                $insertSql = "INSERT INTO `attendances`( `s_reg`,  `l_id`, `presence`) VALUES ('" . $s_reg . "','" . $l_id . "','" . $presence . "')";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {
@@ -265,7 +260,6 @@ class Entities
      
         }
       
-       
     }
 
     public function getTeachers($course_id)
@@ -283,13 +277,13 @@ class Entities
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
-            $student_id =   $data->student_id;
-            $date =  $data->date;
+            $s_reg =   $data->s_reg;
+            $l_id =   $data->l_id;
             
 
             $insertSql= "UPDATE `attendances` 
-            SET `ispresent`  = 1
-            WHERE `student_id` = '" . $student_id . "' AND `date` = '" . $date . "';";
+            SET `presence`  = 1
+            WHERE `s_reg` = '" . $s_reg . "' && `l_id` = '" . $l_id . "'  ;";
                 
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
@@ -301,6 +295,35 @@ class Entities
         }
       
        
+    }
+
+    public function insertEnrollSemester()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $s_reg =   $data->s_reg;
+            $sem_id = $data->sem_id;
+
+                $insertSql = "INSERT INTO `enrolls`( `s_reg`, `sem_id` ) VALUES ( '" . $s_reg . "','" . $sem_id . "')";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+     
+        }
+      
+       
+    }
+
+    public function getStudentsForAttendance($s_reg)
+    {
+        $selectdata = "SELECT s_name, s_classroll FROM students where s_reg = '$s_reg';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
     }
 
 

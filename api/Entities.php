@@ -303,6 +303,27 @@ class Entities
        
     }
 
+    public function insertEnrollSemester()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $s_reg =   $data->s_reg;
+            $sem_id = $data->sem_id;
+
+                $insertSql = "INSERT INTO `enrolls`( `s_reg`, `sem_id` ) VALUES ( '" . $s_reg . "','" . $sem_id . "')";
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+     
+        }
+      
+       
+    }
+
 
 
 

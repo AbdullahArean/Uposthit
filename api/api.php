@@ -73,6 +73,22 @@ if(isset($_GET['insertcourse'])){
   }
 
 
+  if(isset($_GET['insertuser']) && isset($_GET['username']) && isset($_GET['password']) && isset($_GET['email']))
+  {
+    $username = $_GET['username'];
+    $password = $_GET['password'];
+    $email = $GET['email'];
+
+
+    echo $obj->insertUser($username, $password, $email);
+    
+  }
+
+  if(isset($_GET['insertsemesterassign'])){
+    echo $obj->insertEnrollSemester();
+  }
+
+
 
 
 

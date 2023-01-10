@@ -11,30 +11,49 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import { MdAddBox } from "react-icons/md";
 import AForm from "../../components/form/AForm";
+import EForm from "../../components/form/EForm";
 
 const Dashboard = () => {
   const [tData, setTData] = useState([]);
   const [cData, setCData] = useState([]);
   const [sData, setSData] = useState([]);
+  const [semesterData, setsemesterData] = useState("");
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [opens, setOpens] = useState(false);
   const handleOpen = () => setOpen(true);
+  const handleOpens = () => setOpens(true);
   const handleClose = () => setOpen(false);
-  const getStudent = () => {
-    Axios.get("/?getallstudents")
+  const handleCloses = () => setOpens(false);
+  const getSemester = () => {
+    if (loading) {
+      Axios.get("/?getAllsemester")
       .then((response) => {
-        setSData(response?.data);
+        setsemesterData(response?.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
+    }
+  }
+  const getStudent = () => {
+    if(loading) {
+      Axios.get("/?getallstudents")
+        .then((response) => {
+          setSData(response?.data);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const getTeacher = () => {
     if (loading) {
       Axios.get("/?getallteachers")
         .then((response) => {
           setTData(response?.data);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -46,7 +65,6 @@ const Dashboard = () => {
       Axios.get("/?getAllcourse")
         .then((response) => {
           setCData(response?.data);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -58,6 +76,7 @@ const Dashboard = () => {
     getTeacher();
     getCourse();
     getStudent();
+    getSemester();
   }, []);
   return (
     <div className="flex">
@@ -111,6 +130,50 @@ const Dashboard = () => {
                         </button>
                         <div id="transition-modal-description">
                           <AForm teacher={tData} loading={loading} course={cData} />
+                        </div>
+                      </div>
+                    </Fade>
+                  </Modal>
+                </div>
+              </div>
+            </div>
+            <div className="widget flex flex-col gap-y-10 px-4 py-3 border shadow-hblue rounded-lg shadow-lg">
+              <div className="top gap-y-2 flex flex-col ">
+                <div className="title text-center text-gray-500 text-3xl px-1">
+                  ENROLL STUDENTS<br/> TO SEMESTERS
+                </div>
+                <div className="counter text-gray-600 text-lg p-1"></div>
+              </div>
+              <div className="bottom w-full flex flex-col rounded-lg bg-hblue justify-center items-center">
+                <div>
+                  <button
+                    className="text-xl flex items-center align-middle rounded-lg py-2 px-6"
+                    onClick={handleOpens}
+                  >
+                    <MdAddBox /> <span className="mr-2"></span> Assign Semesters
+                  </button>
+                  <Modal
+                    aria-labelledby="transition-modal-title1"
+                    aria-describedby="transition-modal-description1"
+                    open={opens}
+                    onClose={handleCloses}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                      timeout: 500,
+                    }}
+                  >
+                    <Fade in={opens}>
+                      <div className="modal relative -translate-1/2 border rounded-xl shadow-xl bg-white p-12">
+                        <button
+                          id="close"
+                          className="absolute top-5 right-5"
+                          onClick={handleCloses}
+                        >
+                          <CgClose />
+                        </button>
+                        <div id="transition-modal-description1">
+                          <EForm student={sData} loading={loading} semester={semesterData} />
                         </div>
                       </div>
                     </Fade>

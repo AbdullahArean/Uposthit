@@ -210,7 +210,9 @@ class Entities
 
     public function getStudents($sem_id)
     {
-        $selectdata = "SELECT s_reg FROM enrolls where sem_id = '$sem_id';";
+        // $selectdata = "SELECT s_reg FROM enrolls where sem_id = '$sem_id';";
+
+        $selectdata = "SELECT s_reg, s_name, s_classroll from students NATURAL JOIN enrolls where sem_id = '$sem_id' ORDER BY s_classroll ASC ";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);

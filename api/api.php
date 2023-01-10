@@ -47,10 +47,10 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getAllTeachers();
   }
 
-  if(isset($_GET['getstudents']) && isset($_GET['semester_id']))
+  if(isset($_GET['getstudents']) && isset($_GET['sem_id']))
   {
-    $semester_id = $_GET['semester_id'];
-    echo $obj->getStudents($semester_id);
+    $sem_id = $_GET['sem_id'];
+    echo $obj->getStudents($sem_id);
   }
 
   if(isset($_GET['insertcourseassign'])){
@@ -88,6 +88,11 @@ if(isset($_GET['insertcourse'])){
     echo $obj->insertEnrollSemester();
   }
 
+  if(isset($_GET['getstudentsforattendance']) && isset($_GET['s_reg']))
+  {
+    $s_reg = $_GET['s_reg'];
+    echo $obj->getStudentsForAttendance($s_reg);
+  }
 
 
 

@@ -49,8 +49,8 @@ const Course = () => {
   useEffect(() => {
     getlecture();
     getteachers();
-    console.log(courseID);
-    console.log(semID);
+    // console.log(courseID);
+    // console.log(semID);
 
   }, []);
 

@@ -4,6 +4,7 @@ import React from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
+import { ToastContainer, toast } from "react-toastify";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { CgClose } from "react-icons/cg";
 import Backdrop from "@mui/material/Backdrop";
@@ -21,6 +22,8 @@ const Course = () => {
   const [lectures, setLectures] = useState([]);
   let { courseID } = useParams();
   let { semID } = useParams();
+
+  let { state } = useLocation();
 
   const nav = useNavigate();
   const takeAttendance = (lecID,semID,lecDate) => {
@@ -49,6 +52,10 @@ const Course = () => {
   useEffect(() => {
     getlecture();
     getteachers();
+    if(state === true){
+      toast.success("Attendance Saved Successfully!");
+      state = false;
+    }
     // console.log(courseID);
     // console.log(semID);
 
@@ -58,6 +65,7 @@ const Course = () => {
     <div className="flex">
       <Sidebar />
       <div className="homeContainer flex-1">
+      <ToastContainer position="top-right" pauseOnHover draggable />
         <Navbar />
         <hr className="mx-2 mb-3" />
         <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">

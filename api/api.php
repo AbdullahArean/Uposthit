@@ -94,6 +94,14 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getStudentsForAttendance($s_reg);
   }
 
+  if(isset($_GET['viewattendance']) && isset($_GET['c_code']))
+  {
+    $c_code = $_GET['c_code'];
+    echo $obj->viewAttendance($c_code);
+  }
+
+
+
 
 
 

@@ -2,5 +2,5 @@
 $host = "localhost";
 $username = "root";
 $password = "password";
-$dbname = "uposthitnewer";
+$dbname = "uposthita";
 ?>

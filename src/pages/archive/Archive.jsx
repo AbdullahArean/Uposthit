@@ -6,43 +6,43 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Table, Column, HeaderCell, Cell } from "rsuite-table";
+import "rsuite-table/dist/css/rsuite-table.css";
 
 const Archive = () => {
   const [loading, setLoading] = useState(true);
   const [lectures, setLectures] = useState([]);
   const [teacherID, setTeacherID] = useState("");
   const [lectureID, setLectureID] = useState([]);
+  const [ attendance, setAttendance] = useState([]);
   let { courseID } = useParams();
-    const getlecture = () => {
-      if (loading) {
-        axios.get("/?getlecture&course_id=" + courseID).then((response) => {
-          setLectures(response?.data);
-          for (var i = 0; i < response.data.length; i++) {
-            setLectureID(lectures[i].lecture_id);
-            setTeacherID(lectures[i].teacher_id);
-          }
-          setLoading(false);
-          console.log(response.data);
-        });
-      }
-    };
 
-  const getteachers = () => {
+  let DataLoading = false;
+
+  const getlecture = () => {
     if (loading) {
-      axios.get("/?getteachers&course_id=" + courseID).then((response) => {
-        const what = response.data[0].teacher_id;
-        setTeacherID(what);
-        console.log(response.data[0].teacher_id);
-        console.log(courseID);
+      axios.get("/?getlecture&course_id=" + courseID).then((response) => {
+        setLectures(response.data);
         setLoading(false);
-        console.log(teacherID);
       });
     }
   };
 
+  const viewAttendance = () => {
+    axios
+        .post("/?viewattendance&c_code=" + courseID, {
+          c_code: courseID
+        })
+        .then((response) => {
+          setAttendance(response?.data);
+          console.log(response?.data);
+          DataLoading = true;
+        });
+  }
+
   useEffect(() => {
-    getteachers();
-    // console.log(lectureID);
+    viewAttendance();
+    getlecture();
   }, []);
   return (
     <div className="flex">
@@ -50,15 +50,36 @@ const Archive = () => {
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
-        {/*lectures.map((lecture) => {
-          return (
-            <div key={lecture.lecture_id}>
-              {lecture.lecture_id}
-              {courseID}
-              {lecture.teacher_id}
-            </div>
-          );
-        })*/}
+        <div>
+        <Table
+          className="rounded-lg mb-24"
+          loading={DataLoading}
+          hover={false}
+          data={attendance}
+          rowKey="s_classroll + l_id"
+          autoHeight
+          onSortColumn={(sortColumn, sortType) => {
+            console.log(sortColumn, sortType);
+          }}
+        >
+          <Column width={50} align="left" fixed>
+            <HeaderCell>Roll</HeaderCell>
+            <Cell dataKey="s_classroll" />
+          </Column>
+          <Column width={250} align="left" fullText>
+            <HeaderCell>Name</HeaderCell>
+            <Cell dataKey="s_name" />
+          </Column>
+          {lectures.map((lec) => {
+            return(
+          <Column width={120} align="left" fullText>
+            <HeaderCell>{lec.l_date}</HeaderCell>
+            <Cell dataKey="presence" />
+          </Column>
+            )
+          })}
+        </Table>
+        </div>
       </div>
     </div>
   );

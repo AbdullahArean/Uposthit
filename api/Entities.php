@@ -329,6 +329,24 @@ class Entities
     }
 
 
+    public function viewAttendance($c_code)
+    {
+        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, lectures.l_date, teachers.t_code, lectures.c_code, attendances.presence, lectures.l_id
+        FROM students
+        JOIN enrolls ON students.s_reg = enrolls.s_reg
+        JOIN lectures ON enrolls.sem_id = lectures.sem_id
+        JOIN courses ON courses.c_code = lectures.c_code AND courses.sem_id = lectures.sem_id
+        JOIN teaches ON lectures.c_code = teaches.c_code AND lectures.sem_id = teaches.sem_id
+        JOIN teachers ON teaches.t_code = teachers.t_code
+        JOIN attendances ON attendances.s_reg = students.s_reg AND attendances.l_id = lectures.l_id
+        WHERE courses.c_code = '$c_code'
+        ORDER BY students.s_classroll ASC;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+
 
 
 

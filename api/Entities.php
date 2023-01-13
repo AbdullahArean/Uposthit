@@ -364,7 +364,7 @@ class Entities
         return json_encode($all);
     }
 
-    public function viewpresence()
+    public function viewPresence()
     {
         $selectdata = "SELECT GROUP_CONCAT(a.presence) as presence
         FROM attendances a
@@ -385,9 +385,20 @@ class Entities
         return json_encode($all);
     }
 
+    public function getpresence($l_id)
+    {
+        $selectdata = "SELECT attendances.presence FROM attendances
+        JOIN students ON attendances.s_reg = students.s_reg
+        WHERE attendances.l_id = '$l_id'
+        ORDER BY students.s_classroll ASC;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
 
 
-    public function insertUser()
+
+    public function insertUser($username, $password)
     {
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
@@ -405,7 +416,7 @@ class Entities
             }
             else
             {
-                $insertSql = "INSERT INTO `login`( `username`,  `password`) VALUES ('" . $username . "','" . $password . "')";
+                $insertSql = "INSERT INTO `login`(`username`, `password`) VALUES ('" . $username . "','" . $password . "')";
                 if (mysqli_query($this->conn, $insertSql)) {
                     header("location: login.php");
                    } else {

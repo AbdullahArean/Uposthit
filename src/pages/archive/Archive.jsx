@@ -25,19 +25,19 @@ const Archive = () => {
     if (loading) {
       axios.get("/?getlecture&course_id=" + courseID).then((response) => {
         setLectures(response.data);
-        setLoading(false);
+        setLectureID(response.data.l_id);
       });
     }
   };
 
-  // const viewPresence = () => {
+  // const getpresence = () => {
   //   if (loading) {
-  //     axios.get("/?viewpresence").then((response) => {
-  //       setPresence(response.data);
-  //       console.log(response.data);
+  //     axios.get("/?getpresence&l_id=" + courseID).then((response) => {
+  //       setLectures(response.data);
   //     });
   //   }
   // };
+  
 
   const viewAttendance = async () => {
     axios
@@ -47,24 +47,13 @@ const Archive = () => {
       .then((response) => {
         setAttendance(response?.data);
         setLecDate(response.data[0].l_date);
-        console.log(response?.data);
-        for (let i = 0; i < response.data.length; i++) {
-          console.log(response?.data[i].presence.split(","));
-          setPresence((presence) => [
-            ...presence,
-            response?.data[i].presence.split(","),
-          ]);
-        }
-        DataLoading = true;
+        DataLoading = false;
       });
   };
 
   useEffect(() => {
-    viewAttendance().then(() => {
-      console.log(presence);
-    });
+    viewAttendance();
     getlecture();
-    // viewPresence();
   }, []);
   return (
     <div className="flex">
@@ -72,7 +61,7 @@ const Archive = () => {
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
-        <div className="">
+        <div className="mx-7">
           <Table
             className="rounded-lg mb-24"
             loading={DataLoading}
@@ -84,30 +73,22 @@ const Archive = () => {
               console.log(sortColumn, sortType);
             }}
           >
-            <Column width={50} align="left" fixed>
+            <Column width={100} align="center" fixed>
               <HeaderCell>Roll</HeaderCell>
               <Cell dataKey="s_classroll" />
             </Column>
-            <Column width={250} align="left" fixed>
+            <Column width={300} align="left" fixed>
               <HeaderCell>Name</HeaderCell>
               <Cell dataKey="s_name" />
             </Column>
             {lectures.map((lec, i) => {
               return (
-                <Column key={i} width={120} align="left" fullText>
-                  <HeaderCell>{lec.l_id}</HeaderCell>
-                  <Cell dataKey={presence} />
+                <Column key={i} width={150} align="center" fullText>
+                  <HeaderCell>{lec.l_date}</HeaderCell>
+                  <Cell dataKey={`presence[${i*2}]`} />
                 </Column>
               );
             })}
-            {/*presence.map((att, index) => {
-              return (
-                <Column width={120} align="left" fullText>
-                  <HeaderCell>date</HeaderCell>
-                  <Cell dataKey="presence"/>
-                </Column>
-              );
-            })*/}
           </Table>
         </div>
       </div>

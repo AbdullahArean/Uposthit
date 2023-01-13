@@ -10,7 +10,22 @@ const IForm = () => {
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
-  const insertUser = () => {};
+  const insertUser = () => {
+    axios
+        .post(`/?insertuser&username=${username}&password=${password}`, {
+          username: username,
+          password: password,
+        })
+        .then((response) => {
+          if (response.data === 1) {
+            setdataInserted(true);
+            setdataInsertedError(false);
+          } else {
+            setdataInsertedError(true);
+            setdataInserted(false);
+          }
+        });
+  };
 
   const iFormValidation = () => {
     const username = document.getElementById("username").value;

@@ -83,14 +83,11 @@ if(isset($_GET['insertcourse'])){
   }
 
 
-  if(isset($_GET['insertuser']) && isset($_GET['username']) && isset($_GET['password']) && isset($_GET['email']))
+  if(isset($_GET['insertuser']) && isset($_GET['username']) && isset($_GET['password']))
   {
     $username = $_GET['username'];
     $password = $_GET['password'];
-    $email = $GET['email'];
-
-
-    echo $obj->insertUser($username, $password, $email);
+    echo $obj->insertUser($username, $password);
     
   }
 
@@ -113,6 +110,12 @@ if(isset($_GET['insertcourse'])){
   if(isset($_GET['viewpresence']))
   {
     echo $obj->viewPresence();
+  }
+
+  if(isset($_GET['getpresence']) && isset($_GET['l_id']))
+  {
+    $l_id = $_GET['l_id'];
+    echo $obj->viewPresence($l_id);
   }
 
 

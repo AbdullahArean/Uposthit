@@ -331,7 +331,7 @@ class Entities
 
     public function viewAttendance($c_code)
     {
-        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, lectures.l_date, teachers.t_code, lectures.c_code, attendances.presence, lectures.l_id
+        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, teachers.t_code, group_concat(attendances.presence) as presence, group_concat(attendances.l_id) as l_id, group_concat(lectures.l_date) as l_date
         FROM students
         JOIN enrolls ON students.s_reg = enrolls.s_reg
         JOIN lectures ON enrolls.sem_id = lectures.sem_id
@@ -340,7 +340,29 @@ class Entities
         JOIN teachers ON teaches.t_code = teachers.t_code
         JOIN attendances ON attendances.s_reg = students.s_reg AND attendances.l_id = lectures.l_id
         WHERE courses.c_code = '$c_code'
-        ORDER BY students.s_classroll ASC;";
+        GROUP BY students.s_reg, students.s_name, students.s_classroll, teachers.t_code
+        ORDER BY students.s_classroll ASC";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+    public function viewpresence()
+    {
+        $selectdata = "SELECT GROUP_CONCAT(a.presence) as presence
+        FROM attendances a
+        JOIN enrolls ON a.s_reg = enrolls.s_reg
+        WHERE a.s_reg IN (SELECT DISTINCT students.s_reg
+        FROM students
+        JOIN enrolls ON students.s_reg = enrolls.s_reg
+        JOIN lectures ON enrolls.sem_id = lectures.sem_id
+        JOIN courses ON courses.c_code = lectures.c_code AND courses.sem_id = lectures.sem_id
+        JOIN teaches ON lectures.c_code = teaches.c_code AND lectures.sem_id = teaches.sem_id
+        JOIN teachers ON teaches.t_code = teachers.t_code
+        JOIN attendances ON attendances.s_reg = students.s_reg
+        WHERE courses.c_code = 'CSE-1101'
+        ORDER BY students.s_classroll ASC)
+        GROUP BY a.s_reg;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);

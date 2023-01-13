@@ -13,7 +13,7 @@ import TForm from "../form/TForm";
 import CForm from "../form/CForm";
 import SemForm from "../form/SemForm";
 
-const Widget = ({ type, teacher, course, student }) => {
+const Widget = ({ type, teacher, course, student, officer, semester }) => {
   let data;
   switch (type) {
     case "students":
@@ -37,7 +37,7 @@ const Widget = ({ type, teacher, course, student }) => {
     case "officers":
       data = {
         title: "OFFICERS",
-        counter: "Null",
+        counter: `${officer}`,
         link: "All Officers",
         icon: <HiUserAdd className="" />,
         isOfficer: true,
@@ -55,7 +55,7 @@ const Widget = ({ type, teacher, course, student }) => {
     case "semesters":
       data = {
         title: "SEMESTERS",
-        counter: "Null",
+        counter: `${semester}`,
         link: "All Semesters",
         icon: <MdAddBox className="" />,
         isSemester: true,

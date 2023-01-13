@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const AForm = ({ student, loading, semester }) => {
+const EForm = ({ student, loading, semester }) => {
   var data = student;
   const [studentID, setStudentID] = useState("");
   const [semID, setSemID] = useState([]);
@@ -68,8 +68,6 @@ const AForm = ({ student, loading, semester }) => {
   const selectSemester = (e, sem_id) => {
     if (e.target.checked) {
       setSemID(sem_id);
-      console.log(semID);
-      console.log("agei hoitase")
     } else {
       setSemID("");
     }
@@ -86,7 +84,6 @@ const AForm = ({ student, loading, semester }) => {
     );
   });
   useEffect(() => {
-    console.log(data);
   }, []);
   return (
     <div className="grid grid-cols-2 gap-16">
@@ -210,4 +207,4 @@ const AForm = ({ student, loading, semester }) => {
   );
 };
 
-export default AForm;
+export default EForm;

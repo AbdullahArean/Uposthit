@@ -1,14 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const Courses = () => {
+const SemCourses = () => {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const nav = useNavigate();
+  let { semID } = useParams();
+
 
   const lectures = (id, sId) => {
     nav(`/courses/${id}/${sId}`);
@@ -19,9 +23,10 @@ const Courses = () => {
   };
 
   const getCourse = () => {
-    Axios.get("/?getAllcourse")
+    Axios.get("/?getcourse&sem_id=" + semID)
       .then((response) => {
         setData(response?.data);
+        setLoading(true);
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +43,7 @@ const Courses = () => {
         <Navbar />
         <hr className="mx-2 mb-3" />
         <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
-          All Courses
+          Courses
         </div>
         <div className="grid grid-cols-3 gap-10 mx-7 my-12">
           {data.map((course) => {
@@ -81,4 +86,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default SemCourses;

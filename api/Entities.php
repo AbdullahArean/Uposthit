@@ -147,11 +147,28 @@ class Entities
         return json_encode($all); 
     }
 
+    public function getAllOfficers()
+    {
+        $selectdata = "SELECT `o_code` as id,`o_name` ,`o_des`,`o_contact`,`o_email` FROM `officers`;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
     
 
     public function getLecture($c_code)
     {
         $selectdata = "SELECT * FROM lectures where c_code = '$c_code';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+    public function getSemCourse($sem_id)
+    {
+        $selectdata = "SELECT * FROM courses
+        WHERE courses.sem_id = '$sem_id';";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -374,13 +391,12 @@ class Entities
     {
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
-            
             $data = json_decode($postdata) ; 
             $username =   $data->username;
             $password =  $data->password;
 
             $sql = "SELECT * FROM 'login' WHERE username = '$username' ";
-            $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($this->conn, $sql);
             $rowCount = mysqli_num_rows($res);
 
             if($rowCount>0)
@@ -396,12 +412,7 @@ class Entities
                        return 0;
                    }
             }
-
-
-            
-     
         }
-      
     }
 
     public function changePassAndLogin()
@@ -424,14 +435,6 @@ class Entities
                    } else {
                        return 0;
                    }
-
-
-
     }
-}
-
-
-
-
-    
+} 
 }

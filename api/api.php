@@ -33,6 +33,10 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getAllStudents();
   }
 
+  if(isset($_GET['getallofficers'])){
+    echo $obj->getAllOfficers();
+  }
+
   if(isset($_GET['insertlecture'])){
     echo $obj->insertLecture();
   }
@@ -41,6 +45,12 @@ if(isset($_GET['insertcourse'])){
   {
     $course_id = $_GET['course_id'];
     echo $obj->getLecture($course_id);
+  }
+
+  if(isset($_GET['getcourse']) && isset($_GET['sem_id']))
+  {
+    $sem_id = $_GET['sem_id'];
+    echo $obj->getSemCourse($sem_id);
   }
 
   if(isset($_GET['getallteachers'])){

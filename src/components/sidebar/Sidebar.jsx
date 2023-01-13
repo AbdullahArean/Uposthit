@@ -1,11 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-import {MdTimeline,MdDashboard,MdHelpOutline,MdInfoOutline} from "react-icons/md";
-import {FiBookOpen} from "react-icons/fi";
-import {FaBookReader,FaChalkboardTeacher,FaUserShield} from "react-icons/fa";
-import {BiLogOutCircle} from "react-icons/bi";
-import {BsArchive,BsPersonCircle} from "react-icons/bs";
+import {
+  MdTimeline,
+  MdDashboard,
+  MdHelpOutline,
+  MdInfoOutline,
+} from "react-icons/md";
+import { FiBookOpen } from "react-icons/fi";
+import {
+  FaBookReader,
+  FaChalkboardTeacher,
+  FaUserShield,
+} from "react-icons/fa";
+import { BiLogOutCircle } from "react-icons/bi";
+import { BsArchive, BsPersonCircle } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -69,12 +78,17 @@ const Sidebar = () => {
               className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
             >
               <FiBookOpen className="text-black text-2xl" />
-              <span className="text-gray-600">Courses</span>
+              <span className="text-gray-600">All Courses</span>
             </Link>
           </li>
-          <li className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-            <MdTimeline className="text-black text-2xl" />
-            <span className="text-gray-600">Semesters</span>
+          <li>
+            <Link
+              to="/semesters"
+              className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
+            >
+              <MdTimeline className="text-black text-2xl" />
+              <span className="text-gray-600">Semesters</span>
+            </Link>
           </li>
           <li className="text-gray-400 pl-2 pt-6 text-sm">
             <span>USER</span>

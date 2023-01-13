@@ -133,7 +133,7 @@ class Entities
 
     public function getAllStudents()
     {
-        $selectdata = "SELECT `s_reg` as id,`s_name` ,`s_classroll`,`s_contact`,`s_email`,`s_contact2`,`s_email2` FROM `students`;";
+        $selectdata = "SELECT `s_reg` as id,`s_name` ,`s_classroll`,`s_contact`,`s_email`,`s_contact2`,`s_email2` FROM `students` ORDER BY students.s_classroll ASC";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);

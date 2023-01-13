@@ -370,6 +370,67 @@ class Entities
 
 
 
+    public function insertUser()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $username =   $data->username;
+            $password =  $data->password;
+
+            $sql = "SELECT * FROM 'login' WHERE username = '$username' ";
+            $res = mysqli_query($conn, $sql);
+            $rowCount = mysqli_num_rows($res);
+
+            if($rowCount>0)
+            {
+                 return 0;
+            }
+            else
+            {
+                $insertSql = "INSERT INTO `login`( `username`,  `password`) VALUES ('" . $username . "','" . $password . "')";
+                if (mysqli_query($this->conn, $insertSql)) {
+                    header("location: login.php");
+                   } else {
+                       return 0;
+                   }
+            }
+
+
+            
+     
+        }
+      
+    }
+
+    public function changePassAndLogin()
+    {  
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            
+            $data = json_decode($postdata) ; 
+            $username =   $data->username;
+            $password =  $data->password;
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+
+            $insertSql= "UPDATE `login` 
+            SET `password`  = $hash
+            WHERE `username` = '" . $username . "';";
+                
+                if (mysqli_query($this->conn, $insertSql)) {
+                       return 1;
+                   } else {
+                       return 0;
+                   }
+
+
+
+    }
+}
+
+
 
 
     

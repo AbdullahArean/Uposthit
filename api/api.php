@@ -100,6 +100,11 @@ if(isset($_GET['insertcourse'])){
     echo $obj->viewAttendance($c_code);
   }
 
+  if(isset($_GET['viewpresence']))
+  {
+    echo $obj->viewPresence();
+  }
+
 
 
 

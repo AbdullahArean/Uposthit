@@ -26,8 +26,6 @@ const IForm = () => {
             setdataInserted(false);
           }
         });
-        console.log(username);
-        console.log(password);
 
   };
 

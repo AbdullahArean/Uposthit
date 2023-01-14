@@ -1,21 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./login.css";
 import loginImage from "../../images/login.jpg";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   let navigate = useNavigate();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const[username, setUsername] = useState("");
-  const [dataInserted, setdataInserted] = useState(false);
-  const [dataInsertedError, setdataInsertedError] = useState(false);
-  const toDashboard = () => {
-    let path = `/dashboard`;
-    navigate(path);
-  };
+  const [username, setUsername] = useState("");
 
   const addUser = () => {
     axios
@@ -25,18 +21,17 @@ const Login = () => {
       })
       .then((response) => {
         if (response.data === 1) {
-          setdataInserted(true);
-          setdataInsertedError(false);
-          // window.localStorage.setItem("username", username);
+          localStorage.setItem("what", username);
+          navigate(`/dashboard`);
         } else {
-          setdataInsertedError(true);
-          setdataInserted(false);
+          toast.error("Login Failed!");
         }
       });
   };
 
   return (
     <div className="flex h-screen bg-white items-center justify-center">
+      <ToastContainer position="top-right" pauseOnHover draggable />
       <div className="container h-content w-content rounded-3xl grid grid-cols-1 xl:grid-cols-2 bg-white shadow-2xl">
         <div className="left lg:my-36 md:my-16 my-3 lg:ml-8 md:ml-4 grid grid-cols-1 lg:gap-6 justify-items-center items-center">
           <span className="logo text-black text-5xl font-black font-lobster sm:mb-6 lg:m-0">
@@ -45,9 +40,10 @@ const Login = () => {
           <form className="w-4/5 mb-6">
             <div className="mb-6 justify-self-start">
               <div className="md:w-full txt_field ">
-                <input onChange={(event) => {
-                setUsername(event.target.value);
-              }}
+                <input
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                  }}
                   type="text"
                   id="username"
                   className="focus:border-none focus:outline-none focus:ring-0"
@@ -59,9 +55,10 @@ const Login = () => {
             </div>
             <div className="md:flex md:items-center mb-4">
               <div className="md:w-full txt_field">
-                <input onChange={(event) => {
-                setPassword(event.target.value);
-              }}
+                <input
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
                   type="password"
                   id="login-password"
                   className="focus:border-none focus:outline-none focus:ring-0"

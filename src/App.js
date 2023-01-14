@@ -11,29 +11,105 @@ import Lectures from "./pages/lectures/Lectures";
 import Attendance from "./pages/attendance/Attendance";
 import Archive from "./pages/archive/Archive";
 import SemCourses from "./pages/courses/SemCourses";
-// import login from "./pages/login/Login.php";
+import NotFound from "./pages/notfound/NotFound";
+import Private from "./components/route/Private";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route index element={<Login />} />
+          <Route
+            index
+            element={
+              <Private>
+                <Dashboard />
+              </Private>
+            }
+          />
           <Route path="login" element={<Login />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/officers" element={<Officer />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/semesters" element={<Semesters />} />
-          <Route path="/courses/:semID" element={<SemCourses />} />
-          <Route path="/archive/:courseID" element={<Archive />} />
-          <Route path="/courses/:courseID/:semID" element={<Lectures />} />
+          <Route
+            path="dashboard"
+            element={
+              <Private>
+                <Dashboard />
+              </Private>
+            }
+          />
+          <Route
+            path="/teachers"
+            element={
+              <Private>
+                <Teachers />
+              </Private>
+            }
+          />
+          <Route
+            path="/officers"
+            element={
+              <Private>
+                <Officer />
+              </Private>
+            }
+          />
+          <Route
+            path="/courses"
+            element={
+              <Private>
+                <Courses />
+              </Private>
+            }
+          />
+          <Route
+            path="/semesters"
+            element={
+              <Private>
+                <Semesters />
+              </Private>
+            }
+          />
+          <Route
+            path="/courses/:semID"
+            element={
+              <Private>
+                <SemCourses />
+              </Private>
+            }
+          />
+          <Route
+            path="/archive/:courseID"
+            element={
+              <Private>
+                <Archive />
+              </Private>
+            }
+          />
+          <Route
+            path="/courses/:courseID/:semID"
+            element={
+              <Private>
+                <Lectures />
+              </Private>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/lectures/:courseID:lectureID:semID/:lecDate"
-            element={<Attendance />}
+            element={
+              <Private>
+                <Attendance />
+              </Private>
+            }
           />
           <Route path="/students">
-            <Route index element={<Students />} />
+            <Route
+              index
+              element={
+                <Private>
+                  <Students />
+                </Private>
+              }
+            />
           </Route>
         </Route>
       </Routes>

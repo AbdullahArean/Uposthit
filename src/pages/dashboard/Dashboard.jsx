@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Widget from "../../components/widget/Widget";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Axios from "axios";
 import { CgClose } from "react-icons/cg";
 import Backdrop from "@mui/material/Backdrop";
@@ -14,6 +14,10 @@ import { MdAddBox } from "react-icons/md";
 import AForm from "../../components/form/AForm";
 import EForm from "../../components/form/EForm";
 import IForm from "../../components/form/IForm";
+import { AuthContext } from "../../components/context/Context";
+// import { AuthContext } from " ../../components/context/Context.jsx";
+// src\components\context\Context.jsx
+
 
 const Dashboard = () => {
   const [tData, setTData] = useState([]);
@@ -31,6 +35,8 @@ const Dashboard = () => {
   const handleClose = () => setOpen(false);
   const handleCloses = () => setOpens(false);
   const handleCloses2 = () => setOpens2(false);
+  // const {user} = useContext(AuthContext);
+
   const getSemester = () => {
     if (loading) {
       Axios.get("/?getAllsemester")
@@ -91,6 +97,8 @@ const Dashboard = () => {
     getStudent();
     getSemester();
     getOfficer();
+    // console.log(user);
+    console.log(localStorage.getItem("what"))
   }, []);
   return (
     <div className="flex">

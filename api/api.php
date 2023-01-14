@@ -90,6 +90,13 @@ if(isset($_GET['insertcourse'])){
     
   }
 
+  if(isset($_GET['loginuser']))
+  {
+
+    echo $obj->loginUser();
+    
+  }
+
   if(isset($_GET['insertsemesterassign'])){
     echo $obj->insertEnrollSemester();
   }

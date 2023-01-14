@@ -405,6 +405,7 @@ class Entities
             $data = json_decode($postdata) ; 
             $username =   $data->username;
             $password =  $data->password;
+            $hash = password_hash($password, PASSWORD_DEFAULT);
 
             $sql = "SELECT * FROM login WHERE username = '$username' ";
 
@@ -417,7 +418,7 @@ class Entities
             }
 
             else if(!empty($username)){
-                    $insertSql = "INSERT INTO `login`( `username`,  `password`) VALUES ('" . $username . "','" . $password . "')";
+                    $insertSql = "INSERT INTO `login`( `username`,  `password`) VALUES ('" . $username . "','" . $hash . "')";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {
@@ -449,5 +450,33 @@ class Entities
                        return 0;
                    }
     }
-} 
 }
+
+public function loginUser()
+    {
+        $postdata = file_get_contents("php://input");
+        if(isset($postdata)){
+            $data = json_decode($postdata) ; 
+            $username =   $data->username;
+            $password =  $data->password;
+
+            $sql = "SELECT password FROM login WHERE username = '$username' ";
+
+            $res = mysqli_query($this->conn, $sql);
+            $row = mysqli_fetch_array($res);
+            
+
+            // $rowCount = mysqli_num_rows($res);
+
+            if(password_verify($password, $row['password']))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+                
+            }
+        }
+    }

@@ -1,13 +1,38 @@
 import React from "react";
 import "./login.css";
 import loginImage from "../../images/login.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   let navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const[username, setUsername] = useState("");
+  const [dataInserted, setdataInserted] = useState(false);
+  const [dataInsertedError, setdataInsertedError] = useState(false);
   const toDashboard = () => {
     let path = `/dashboard`;
     navigate(path);
+  };
+
+  const addUser = () => {
+    axios
+      .post("/?loginuser", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        if (response.data === 1) {
+          setdataInserted(true);
+          setdataInsertedError(false);
+          // window.localStorage.setItem("username", username);
+        } else {
+          setdataInsertedError(true);
+          setdataInserted(false);
+        }
+      });
   };
 
   return (
@@ -20,19 +45,23 @@ const Login = () => {
           <form className="w-4/5 mb-6">
             <div className="mb-6 justify-self-start">
               <div className="md:w-full txt_field ">
-                <input
-                  type="email"
-                  id="login-email"
+                <input onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+                  type="text"
+                  id="username"
                   className="focus:border-none focus:outline-none focus:ring-0"
                   required
                 />
                 <span></span>
-                <label>E-Mail</label>
+                <label>Username</label>
               </div>
             </div>
             <div className="md:flex md:items-center mb-4">
               <div className="md:w-full txt_field">
-                <input
+                <input onChange={(event) => {
+                setPassword(event.target.value);
+              }}
                   type="password"
                   id="login-password"
                   className="focus:border-none focus:outline-none focus:ring-0"
@@ -58,9 +87,9 @@ const Login = () => {
             </div>
             <div className="md:w-full grid grid-cols-1 justify-items-center items-center">
               <button
-                onClick={toDashboard}
+                onClick={addUser}
                 className="shadow bg-blue hover:bg-hover focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full"
-                type="submit"
+                type="button"
               >
                 Log In
               </button>

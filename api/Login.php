@@ -24,6 +24,7 @@ if($_SERVER ["REQUEST_METHOD"] == "POST")
                  session_start();
                  $_SESSION['loggedin'] = true;
                  $_SESSION['username'] = $username;
+                 
 
                  header("location: home.php");
             }
@@ -32,3 +33,4 @@ if($_SERVER ["REQUEST_METHOD"] == "POST")
                 return 0;
             }
 }
+?>

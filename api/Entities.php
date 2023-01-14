@@ -429,26 +429,46 @@ class Entities
         }
     }
 
-    public function changePassAndLogin()
+    public function changePassword()
     {  
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
             
             $data = json_decode($postdata) ; 
             $username =   $data->username;
-            $password =  $data->password;
-            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $oldpassword =  $data->oldpassword;
+            $newpassword =  $data->newpassword;
 
+            $sql = "SELECT password FROM login WHERE username = '$username' ";
+            $res = mysqli_query($this->conn, $sql);
+            $row = mysqli_fetch_array($res);
 
-            $insertSql= "UPDATE `login` 
-            SET `password`  = $hash
-            WHERE `username` = '" . $username . "';";
+            if(password_verify($oldpassword, $row['password']))
+            {
+                $hash = password_hash($newpassword, PASSWORD_DEFAULT);
+                $insertSql= "UPDATE `login` SET `password`  = '$hash' WHERE `username` = '" . $username . "';";
                 
-                if (mysqli_query($this->conn, $insertSql)) {
-                       return 1;
-                   } else {
-                       return 0;
-                   }
+                if (mysqli_query($this->conn, $insertSql))
+                {
+                    return 1;
+                } 
+                else 
+                {
+                    return 0;
+                }
+
+            }
+            else
+            {
+                return 0;
+            }
+
+
+
+            
+
+
+            
     }
 }
 

@@ -11,7 +11,7 @@ const Private = ({ children }) => {
   }
   else
 //   return children;
-return console.log("login")
+return <Navigate to="/login"></Navigate>;
 };
 
 export default Private;

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   MdTimeline,
   MdDashboard,
@@ -16,7 +16,14 @@ import {
 import { BiLogOutCircle } from "react-icons/bi";
 import { BsArchive, BsPersonCircle } from "react-icons/bs";
 
+
 const Sidebar = () => {
+  const Nav = useNavigate();
+  
+  const logOut = () =>{
+    localStorage.removeItem("what");
+    Nav('/login');
+  }
   return (
     <div className="flex-initial border-r h-screen relative bg-white text-black shadow-xl">
       <div className="top flex h-12 items-center justify-center">
@@ -97,14 +104,11 @@ const Sidebar = () => {
             <BsPersonCircle className="text-black text-2xl" />
             <span className="text-gray-600">Profile</span>
           </li>
-          <li>
-            <Link
-              to="/login"
-              className="flex gap-2 items-center pr-6 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
+          <li onClick={logOut}
+              className="flex gap-2 items-center pr-6 pl-2 mb-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer "
             >
-              <BiLogOutCircle className="text-black text-2xl" />
-              <span className="text-gray-600">Logout</span>
-            </Link>
+              <BiLogOutCircle className="text-black text-2xl " />
+              <span className="text-gray-600 ">Logout</span>
           </li>
         </ul>
       </div>

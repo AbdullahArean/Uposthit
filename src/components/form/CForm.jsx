@@ -17,7 +17,6 @@ const CForm = () => {
       axios.get("/?getAllsemester").then((response) => {
         setLoading(false);
         setsemesterData(response.data);
-        console.log(response.data);
       });
     }
   });

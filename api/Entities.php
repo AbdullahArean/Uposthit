@@ -133,7 +133,7 @@ class Entities
 
     public function getAllStudents()
     {
-        $selectdata = "SELECT `s_reg` as id,`s_name` ,`s_classroll`,`s_contact`,`s_email`,`s_contact2`,`s_email2` FROM `students`;";
+        $selectdata = "SELECT `s_reg` as id,`s_name` ,`s_classroll`,`s_contact`,`s_email`,`s_contact2`,`s_email2` FROM `students` ORDER BY students.s_classroll ASC";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -147,11 +147,28 @@ class Entities
         return json_encode($all); 
     }
 
+    public function getAllOfficers()
+    {
+        $selectdata = "SELECT `o_code` as id,`o_name` ,`o_des`,`o_contact`,`o_email` FROM `officers`;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
     
 
     public function getLecture($c_code)
     {
         $selectdata = "SELECT * FROM lectures where c_code = '$c_code';";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
+
+    public function getSemCourse($sem_id)
+    {
+        $selectdata = "SELECT * FROM courses
+        WHERE courses.sem_id = '$sem_id';";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -347,7 +364,7 @@ class Entities
         return json_encode($all);
     }
 
-    public function viewpresence()
+    public function viewPresence()
     {
         $selectdata = "SELECT GROUP_CONCAT(a.presence) as presence
         FROM attendances a
@@ -368,19 +385,29 @@ class Entities
         return json_encode($all);
     }
 
+    public function getpresence($l_id)
+    {
+        $selectdata = "SELECT attendances.presence FROM attendances
+        JOIN students ON attendances.s_reg = students.s_reg
+        WHERE attendances.l_id = '$l_id'
+        ORDER BY students.s_classroll ASC;";
+        $result = mysqli_query($this->conn, $selectdata);
+        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+        return json_encode($all);
+    }
 
 
-    public function insertUser()
+
+    public function insertUser($username, $password)
     {
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
-            
             $data = json_decode($postdata) ; 
             $username =   $data->username;
             $password =  $data->password;
 
             $sql = "SELECT * FROM 'login' WHERE username = '$username' ";
-            $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($this->conn, $sql);
             $rowCount = mysqli_num_rows($res);
 
             if($rowCount>0)
@@ -389,19 +416,14 @@ class Entities
             }
             else
             {
-                $insertSql = "INSERT INTO `login`( `username`,  `password`) VALUES ('" . $username . "','" . $password . "')";
+                $insertSql = "INSERT INTO `login`(`username`, `password`) VALUES ('" . $username . "','" . $password . "')";
                 if (mysqli_query($this->conn, $insertSql)) {
                     header("location: login.php");
                    } else {
                        return 0;
                    }
             }
-
-
-            
-     
         }
-      
     }
 
     public function changePassAndLogin()
@@ -424,14 +446,6 @@ class Entities
                    } else {
                        return 0;
                    }
-
-
-
     }
-}
-
-
-
-
-    
+} 
 }

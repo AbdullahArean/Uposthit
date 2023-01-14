@@ -6,9 +6,11 @@ import Students from "./pages/tables/Students";
 import Teachers from "./pages/tables/Teachers";
 import Officer from "./pages/tables/Officers";
 import Courses from "./pages/courses/Courses";
+import Semesters from "./pages/semesters/Semesters";
 import Lectures from "./pages/lectures/Lectures";
 import Attendance from "./pages/attendance/Attendance";
 import Archive from "./pages/archive/Archive";
+import SemCourses from "./pages/courses/SemCourses";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/officers" element={<Officer />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/semesters" element={<Semesters />} />
+          <Route path="/courses/:semID" element={<SemCourses />} />
           <Route path="/archive/:courseID" element={<Archive />} />
           <Route path="/courses/:courseID/:semID" element={<Lectures />} />
           <Route

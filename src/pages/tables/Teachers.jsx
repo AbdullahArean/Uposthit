@@ -28,7 +28,7 @@ const Teacher = () => {
     { field: "id", headerName: "T_Code", width: 170 },
     { field: "t_des", headerName: "Designation", width: 250 },
     { field: "t_contact", headerName: "Mobile No.", width:170 },
-    { field: "t_email", headerName: "E-mail", width: 150 },
+    { field: "t_email", headerName: "E-mail", width: 250 },
     { field: "t_dept", headerName: "Department", width: 400 },
   ];
 

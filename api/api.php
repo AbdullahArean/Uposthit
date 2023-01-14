@@ -83,11 +83,10 @@ if(isset($_GET['insertcourse'])){
   }
 
 
-  if(isset($_GET['insertuser']) && isset($_GET['username']) && isset($_GET['password']))
+  if(isset($_GET['insertuser']))
   {
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-    echo $obj->insertUser($username, $password);
+
+    echo $obj->insertUser();
     
   }
 

@@ -12,7 +12,8 @@ const IForm = () => {
 
   const insertUser = () => {
     axios
-        .post(`/?insertuser&username=${username}&password=${password}`, {
+        .post("/?insertuser", {
+
           username: username,
           password: password,
         })
@@ -25,6 +26,9 @@ const IForm = () => {
             setdataInserted(false);
           }
         });
+        console.log(username);
+        console.log(password);
+
   };
 
   const iFormValidation = () => {

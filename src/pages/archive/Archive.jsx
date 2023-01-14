@@ -30,15 +30,6 @@ const Archive = () => {
     }
   };
 
-  // const getpresence = () => {
-  //   if (loading) {
-  //     axios.get("/?getpresence&l_id=" + courseID).then((response) => {
-  //       setLectures(response.data);
-  //     });
-  //   }
-  // };
-  
-
   const viewAttendance = async () => {
     axios
       .post("/?viewattendance&c_code=" + courseID, {
@@ -57,7 +48,7 @@ const Archive = () => {
   }, []);
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar className="fixed top-0 left-0 z-20" />
       <div className="homeContainer flex-1">
         <Navbar />
         <hr className="mx-2 mb-3" />
@@ -68,7 +59,7 @@ const Archive = () => {
             hover={false}
             data={attendance}
             rowKey="s_classroll + l_id"
-            autoHeight
+            height={850}
             onSortColumn={(sortColumn, sortType) => {
               console.log(sortColumn, sortType);
             }}
@@ -85,7 +76,7 @@ const Archive = () => {
               return (
                 <Column key={i} width={150} align="center" fullText>
                   <HeaderCell>{lec.l_date}</HeaderCell>
-                  <Cell dataKey={`presence[${i*2}]`} />
+                  <Cell dataKey={`presence[${i * 2}]`} />
                 </Column>
               );
             })}

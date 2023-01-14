@@ -11,6 +11,7 @@ import Lectures from "./pages/lectures/Lectures";
 import Attendance from "./pages/attendance/Attendance";
 import Archive from "./pages/archive/Archive";
 import SemCourses from "./pages/courses/SemCourses";
+// import login from "./pages/login/Login.php";
 
 function App() {
   return (

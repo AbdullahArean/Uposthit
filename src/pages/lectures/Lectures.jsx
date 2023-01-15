@@ -27,7 +27,7 @@ const Course = () => {
 
   const nav = useNavigate();
   const takeAttendance = (lecID,semID,lecDate) => {
-    nav(`/lectures/${courseID}${lecID}${semID}/${lecDate}`);
+    nav(`/lectures/${courseID}/${lecID}/${semID}/${lecDate}`);
   };
 
   const getlecture = () => {
@@ -56,8 +56,8 @@ const Course = () => {
       toast.success("Attendance Saved Successfully!");
       state = false;
     }
-    // console.log(courseID);
-    // console.log(semID);
+    console.log(courseID);
+    console.log(semID);
 
   }, []);
 

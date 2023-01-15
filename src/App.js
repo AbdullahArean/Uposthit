@@ -13,6 +13,10 @@ import Archive from "./pages/archive/Archive";
 import SemCourses from "./pages/courses/SemCourses";
 import NotFound from "./pages/notfound/NotFound";
 import Private from "./components/route/Private";
+import O from "./components/route/O";
+import S from "./components/route/S";
+import T from "./components/route/T";
+import OT from "./components/route/OT";
 
 function App() {
   return (
@@ -23,7 +27,9 @@ function App() {
             index
             element={
               <Private>
-                <Dashboard />
+                <O>
+                  <Dashboard />
+                </O>
               </Private>
             }
           />
@@ -32,7 +38,9 @@ function App() {
             path="dashboard"
             element={
               <Private>
-                <Dashboard />
+                <O>
+                  <Dashboard />
+                </O>
               </Private>
             }
           />
@@ -40,7 +48,9 @@ function App() {
             path="/teachers"
             element={
               <Private>
-                <Teachers />
+                <O>
+                  <Teachers />
+                </O>
               </Private>
             }
           />
@@ -48,7 +58,9 @@ function App() {
             path="/officers"
             element={
               <Private>
-                <Officer />
+                <O>
+                  <Officer />
+                </O>
               </Private>
             }
           />
@@ -56,7 +68,9 @@ function App() {
             path="/courses"
             element={
               <Private>
-                <Courses />
+                <OT>
+                  <Courses />
+                </OT>
               </Private>
             }
           />
@@ -64,7 +78,9 @@ function App() {
             path="/semesters"
             element={
               <Private>
-                <Semesters />
+                <OT>
+                  <Semesters />
+                </OT>
               </Private>
             }
           />
@@ -72,7 +88,9 @@ function App() {
             path="/courses/:semID"
             element={
               <Private>
-                <SemCourses />
+                <OT>
+                  <SemCourses />
+                </OT>
               </Private>
             }
           />
@@ -80,7 +98,9 @@ function App() {
             path="/archive/:courseID"
             element={
               <Private>
-                <Archive />
+                <T>
+                  <Archive />
+                </T>
               </Private>
             }
           />
@@ -88,16 +108,20 @@ function App() {
             path="/courses/:courseID/:semID"
             element={
               <Private>
-                <Lectures />
+                <T>
+                  <Lectures />
+                </T>
               </Private>
             }
           />
           <Route path="*" element={<NotFound />} />
           <Route
-            path="/lectures/:courseID:lectureID:semID/:lecDate"
+            path="/lectures/:courseID/:lectureID/:semID/:lecDate"
             element={
               <Private>
-                <Attendance />
+                <T>
+                  <Attendance />
+                </T>
               </Private>
             }
           />
@@ -106,7 +130,9 @@ function App() {
               index
               element={
                 <Private>
-                  <Students />
+                  <OT>
+                    <Students />
+                  </OT>
                 </Private>
               }
             />

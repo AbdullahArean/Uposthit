@@ -97,8 +97,6 @@ const Dashboard = () => {
     getStudent();
     getSemester();
     getOfficer();
-    // console.log(user);
-    console.log(localStorage.getItem("what"))
   }, []);
   return (
     <div className="flex">
@@ -107,7 +105,7 @@ const Dashboard = () => {
         <Navbar />
         <hr className="mx-2 mb-3" />
         <div className="flex justify-center items-center">
-          <div className="widgets grid lg:grid-cols-4 mx-8 gap-8 md:grid-cols-1 mt-10">
+          <div className="widgets grid lg:grid-cols-4 mx-8 gap-8 md:grid-cols-2 mt-10">
             <Widget type="students" student={sData.length} />
             <Widget type="teachers" teacher={tData.length} />
             <Widget type="officers" officer={oData.length}/>

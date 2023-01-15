@@ -110,16 +110,15 @@ class Entities
     {
         $postdata = file_get_contents("php://input");
         if(isset($postdata)){
-            
             $data = json_decode($postdata) ; 
-            // $lecture_id =  $data->lecture_id;
-            $teacher_id =   $data->teacher_id;
-            $course_id =  $data->course_id;
-            $lecture_topic=  $data->lecture_topic;
-            $lecture_date=  $data->lecture_date;
-            $lecture_time=  $data->lecture_time;
+            $t_code =   $data->t_code;
+            $sem_id =   $data->sem_id;
+            $c_code =  $data->c_code;
+            $l_topic=  $data->l_topic;
+            $l_date=  $data->l_date;
+            $l_time=  $data->l_time;
 
-                $insertSql = "INSERT INTO `lectures`( `course_id`, `lecture_topic` , `lecture_date`, `lecture_time`, `teacher_id`) VALUES ( '" . $course_id . "','" . $lecture_topic . "'  , '" . $lecture_date . "' , '" . $lecture_time . "'  , '" . $teacher_id . "'  )";
+                $insertSql = "INSERT INTO `lectures`( `c_code`,`sem_id`, `l_topic` , `l_date`, `l_time`, `t_code`) VALUES ( '" . $c_code . "','" . $sem_id . "','" . $l_topic . "'  , '" . $l_date . "' , '" . $l_time . "'  , '" . $t_code . "'  )";
                 if (mysqli_query($this->conn, $insertSql)) {
                        return 1;
                    } else {
@@ -159,7 +158,7 @@ class Entities
 
     public function getLecture($c_code)
     {
-        $selectdata = "SELECT * FROM lectures where c_code = '$c_code';";
+        $selectdata = "SELECT * FROM lectures where c_code = '$c_code' ORDER BY l_id ASC;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -281,9 +280,9 @@ class Entities
       
     }
 
-    public function getTeachers($course_id)
+    public function getTeachers($c_code)
     {
-        $selectdata = "SELECT * FROM course_takes where course_id = '$course_id';";
+        $selectdata = "SELECT * FROM teaches where c_code = '$c_code';";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -348,7 +347,7 @@ class Entities
 
     public function viewAttendance($c_code)
     {
-        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, teachers.t_code, group_concat(attendances.presence) as presence, group_concat(attendances.l_id) as l_id, group_concat(lectures.l_date) as l_date
+        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, teachers.t_code, group_concat(attendances.presence order by attendances.l_id) as presence, group_concat(attendances.l_id order by attendances.l_id) as l_id, group_concat(lectures.l_date order by attendances.l_id) as l_date
         FROM students
         JOIN enrolls ON students.s_reg = enrolls.s_reg
         JOIN lectures ON enrolls.sem_id = lectures.sem_id
@@ -358,28 +357,7 @@ class Entities
         JOIN attendances ON attendances.s_reg = students.s_reg AND attendances.l_id = lectures.l_id
         WHERE courses.c_code = '$c_code'
         GROUP BY students.s_reg, students.s_name, students.s_classroll, teachers.t_code
-        ORDER BY students.s_classroll ASC";
-        $result = mysqli_query($this->conn, $selectdata);
-        $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
-        return json_encode($all);
-    }
-
-    public function viewPresence()
-    {
-        $selectdata = "SELECT GROUP_CONCAT(a.presence) as presence
-        FROM attendances a
-        JOIN enrolls ON a.s_reg = enrolls.s_reg
-        WHERE a.s_reg IN (SELECT DISTINCT students.s_reg
-        FROM students
-        JOIN enrolls ON students.s_reg = enrolls.s_reg
-        JOIN lectures ON enrolls.sem_id = lectures.sem_id
-        JOIN courses ON courses.c_code = lectures.c_code AND courses.sem_id = lectures.sem_id
-        JOIN teaches ON lectures.c_code = teaches.c_code AND lectures.sem_id = teaches.sem_id
-        JOIN teachers ON teaches.t_code = teachers.t_code
-        JOIN attendances ON attendances.s_reg = students.s_reg
-        WHERE courses.c_code = 'CSE-1101'
-        ORDER BY students.s_classroll ASC)
-        GROUP BY a.s_reg;";
+        ORDER BY students.s_classroll ASC;";
         $result = mysqli_query($this->conn, $selectdata);
         $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
         return json_encode($all);
@@ -412,7 +390,24 @@ class Entities
             $res = mysqli_query($this->conn, $sql);
             $rowCount = mysqli_num_rows($res);
 
-            if($rowCount>0)
+
+            $sql1 = "SELECT * FROM students WHERE s_reg = '$username' ";
+
+            $res1 = mysqli_query($this->conn, $sql1);
+            $rowCount1 = mysqli_num_rows($res1);
+
+
+            $sql2 = "SELECT * FROM teachers WHERE t_code = '$username' ";
+
+            $res2 = mysqli_query($this->conn, $sql2);
+            $rowCount2 = mysqli_num_rows($res2);
+
+            $sql3 = "SELECT * FROM officers WHERE o_code = '$username' ";
+
+            $res3 = mysqli_query($this->conn, $sql3);
+            $rowCount3 = mysqli_num_rows($res3);
+
+            if($rowCount>0 &&  $rowCount1==0 &&  $rowCount2==0 &&  $rowCount3==0 )
             {
                 return 0;
             }

@@ -22,7 +22,7 @@ const Login = () => {
       .then((response) => {
         if (response.data === 1) {
           localStorage.setItem("what", username);
-          navigate(`/dashboard`);
+          navigate(`/home`);
         } else {
           toast.error("Login Failed!");
         }

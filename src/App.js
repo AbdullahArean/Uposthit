@@ -9,12 +9,12 @@ import Courses from "./pages/courses/Courses";
 import Semesters from "./pages/semesters/Semesters";
 import Lectures from "./pages/lectures/Lectures";
 import Attendance from "./pages/attendance/Attendance";
+import Home from "./pages/home/HomePage";
 import Archive from "./pages/archive/Archive";
 import SemCourses from "./pages/courses/SemCourses";
 import NotFound from "./pages/notfound/NotFound";
 import Private from "./components/route/Private";
 import O from "./components/route/O";
-import S from "./components/route/S";
 import T from "./components/route/T";
 import OT from "./components/route/OT";
 
@@ -23,16 +23,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route
-            index
-            element={
-              <Private>
-                <O>
-                  <Dashboard />
-                </O>
-              </Private>
-            }
-          />
+          <Route index element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route
             path="dashboard"
@@ -41,6 +32,14 @@ function App() {
                 <O>
                   <Dashboard />
                 </O>
+              </Private>
+            }
+          />
+          <Route
+            path="home"
+            element={
+              <Private>
+                <Home />
               </Private>
             }
           />

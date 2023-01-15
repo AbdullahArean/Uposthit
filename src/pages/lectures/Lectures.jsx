@@ -56,8 +56,6 @@ const Course = () => {
       toast.success("Attendance Saved Successfully!");
       state = false;
     }
-    console.log(courseID);
-    console.log(semID);
 
   }, []);
 

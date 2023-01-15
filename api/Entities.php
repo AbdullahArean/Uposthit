@@ -347,7 +347,7 @@ class Entities
 
     public function viewAttendance($c_code)
     {
-        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, teachers.t_code, group_concat(attendances.presence order by attendances.l_id) as presence, group_concat(attendances.l_id order by attendances.l_id) as l_id, group_concat(lectures.l_date order by attendances.l_id) as l_date
+        $selectdata = "SELECT students.s_reg, students.s_name, students.s_classroll, teachers.t_code, group_concat(attendances.presence order by attendances.l_id) as presence, group_concat(attendances.l_id order by attendances.l_id) as l_id, group_concat(lectures.l_date order by attendances.l_id) as l_date,(SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Percent'
         FROM students
         JOIN enrolls ON students.s_reg = enrolls.s_reg
         JOIN lectures ON enrolls.sem_id = lectures.sem_id
@@ -506,11 +506,12 @@ public function loginUser()
 
         public function getAttendancePercentage($c_code)
         {
-            $selectdata = "SELECT lectures.l_id, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(lectures.l_id)) * 100 AS 'Presence Percentage'
+            $selectdata = "SELECT lectures.l_id, lectures.l_date, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(lectures.l_id)) * 100 AS 'Percentage'
             FROM lectures
             JOIN attendances ON lectures.l_id = attendances.l_id
             WHERE lectures.c_code = '$c_code'
-            GROUP BY lectures.l_id;";
+            GROUP BY lectures.l_id
+            ORDER BY lectures.l_date ASC;";
             $result = mysqli_query($this->conn, $selectdata);
             $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
             return json_encode($all);
@@ -519,7 +520,7 @@ public function loginUser()
 
         public function getPercentageForCourse($c_code)
         {
-            $selectdata = "SELECT attendances.s_reg, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Presence Percentage'
+            $selectdata = "SELECT attendances.s_reg, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Percentage'
             FROM attendances
             JOIN lectures ON attendances.l_id = lectures.l_id
             JOIN students ON attendances.s_reg = students.s_reg
@@ -532,14 +533,15 @@ public function loginUser()
         }
 
 
-        public function getStudentStat($c_code, $s_reg)
+        public function getStudentStat($s_reg)
         {
-            $selectdata = "SELECT courses.c_code, courses.c_name, courses.c_credit, students.s_name, students.s_classroll, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Presence Percentage'
+            $selectdata = "SELECT courses.c_code, courses.c_name, courses.c_credit, students.s_name, students.s_classroll, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Percentage'
             FROM attendances
             JOIN lectures ON attendances.l_id = lectures.l_id
             JOIN students ON attendances.s_reg = students.s_reg
             JOIN courses ON lectures.c_code = courses.c_code
-            WHERE lectures.c_code = '$c_code' AND attendances.s_reg = '$s_reg'
+            JOIN enrolls on enrolls.sem_id = courses.sem_id and enrolls.s_reg = attendances.s_reg
+            WHERE attendances.s_reg = '$s_reg'
             GROUP BY courses.c_code, students.s_reg;";
             $result = mysqli_query($this->conn, $selectdata);
             $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);

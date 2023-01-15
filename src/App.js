@@ -17,7 +17,9 @@ import Private from "./components/route/Private";
 import O from "./components/route/O";
 import T from "./components/route/T";
 import OT from "./components/route/OT";
+import S from "./components/route/S";
 import Profile from "./pages/profile/Profile";
+import Stat from "./pages/stat/Stat";
 
 function App() {
   return (
@@ -41,6 +43,16 @@ function App() {
             element={
               <Private>
                 <Home />
+              </Private>
+            }
+          />
+          <Route
+            path="stat"
+            element={
+              <Private>
+                <S>
+                  <Stat />
+                </S>
               </Private>
             }
           />

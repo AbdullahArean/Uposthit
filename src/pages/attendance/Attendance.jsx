@@ -67,7 +67,7 @@ const Attendance = () => {
   const takeAttendance = (e, s_reg) => {
     if (e.target.checked) {
       isPresent = 1;
-      setPresent((array) => [...array, s_reg]);
+      setPresent((present) => [...present, s_reg]);
     } else {
       isPresent = 0;
       setPresent(present.filter((item) => item !== s_reg));
@@ -84,6 +84,7 @@ const Attendance = () => {
 
   useEffect(() => {
     getstudents();
+    console.log(courseID)
   }, []);
   return (
     <div className="flex relative">

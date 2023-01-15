@@ -6,42 +6,42 @@ import axios from "axios";
 import { useLocation, useParams } from "react-router-dom";
 
 const LectureForm = ({teacher}) => {
-  // let location = useLocation();
-  // let arr = location.pathname.split("courses/");
-  // let id = arr[arr.length - 1];
-
+  
   let {courseID} = useParams();
+  let {semID} = useParams();
+  
+  const tCode = localStorage.getItem("what");
 
   const [lectureTopic, setLectureTopic] = useState("");
   const [lectureDate, setLectureDate] = useState("");
   const [lectureTime, setLectureTime] = useState("");
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
-
+  
   var date = new Date();
-
+  
   var today =
-    date.getFullYear() +
-    "-" +
-    ("0" + (date.getMonth() + 1)).slice(-2) +
-    "-" +
-    ("0" + date.getDate()).slice(-2);
+  date.getFullYear() +
+  "-" +
+  ("0" + (date.getMonth() + 1)).slice(-2) +
+  "-" +
+  ("0" + date.getDate()).slice(-2);
   var time = date.getHours() + ":" + date.getMinutes();
-
+  
   useEffect(() => {
     setLectureDate(today.toString());
     setLectureTime(time.toString());
-    console.log(courseID);
   }, []);
 
   const addLecture = () => {
     axios
       .post("/?insertlecture", {
-        lecture_topic: lectureTopic,
-        lecture_date: lectureDate,
-        lecture_time: lectureTime,
-        course_id: courseID,
-        teacher_id: teacher[0].teacher_id,
+        sem_id: semID,
+        l_topic: lectureTopic,
+        l_date: lectureDate,
+        l_time: lectureTime,
+        c_code: courseID,
+        t_code: tCode,
       })
       .then((response) => {
         if (response.data === 1) {

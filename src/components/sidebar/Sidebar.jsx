@@ -19,7 +19,24 @@ import { BsArchive, BsPersonCircle } from "react-icons/bs";
 
 const Sidebar = () => {
   const Nav = useNavigate();
-  
+  let O = false;
+  let OT = false;
+  let S = false;
+  let T = false;
+  const who = () => {
+    if(localStorage.getItem("what").slice(0,1) === 'O'){
+      O = true;
+    }
+    else if(localStorage.getItem("what").slice(0,1) === 'T'){
+      T = true;
+    }
+    else if(localStorage.getItem("what").slice(0,1) === 'S'){
+      S = true;
+    }
+    else if(localStorage.getItem("what").slice(0,1) === 'OT'){
+      OT = true;
+    }
+  }
   const logOut = () =>{
     localStorage.removeItem("what");
     Nav('/login');

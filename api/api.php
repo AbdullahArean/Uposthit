@@ -134,11 +134,10 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getPercentageForCourse($c_code);
   }
 
-  if(isset($_GET['getstudentstat']) && isset($_GET['c_code']) && isset($_GET['s_reg']))
+  if(isset($_GET['getstudentstat']) && isset($_GET['s_reg']))
   {
-    $c_code = $_GET['c_code'];
     $s_reg = $_GET['s_reg'];
-    echo $obj->getStudentStat($c_code, $s_reg);
+    echo $obj->getStudentStat($s_reg);
   }
 
 

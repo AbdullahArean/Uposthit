@@ -116,18 +116,11 @@ if(isset($_GET['insertcourse'])){
     echo $obj->viewAttendance($c_code);
   }
 
-  if(isset($_GET['viewpresence']))
+  if(isset($_GET['getuser']) && isset($_GET['id']))
   {
-    echo $obj->viewPresence();
+    $id = $_GET['id'];
+    echo $obj->getUser($id);
   }
-
-  if(isset($_GET['getpresence']) && isset($_GET['l_id']))
-  {
-    $l_id = $_GET['l_id'];
-    echo $obj->viewPresence($l_id);
-  }
-
-
 
 
 

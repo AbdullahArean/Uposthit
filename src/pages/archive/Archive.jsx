@@ -26,7 +26,6 @@ const Archive = () => {
       axios.get("/?getlecture&course_id=" + courseID).then((response) => {
         setLectures(response.data);
         setLectureID(response.data.l_id);
-        console.log(response.data)
       });
     }
   };
@@ -38,7 +37,6 @@ const Archive = () => {
       })
       .then((response) => {
         setAttendance(response?.data);
-        console.log(response.data)
         setLecDate(response.data[0].l_date);
         DataLoading = false;
       });

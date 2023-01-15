@@ -4,96 +4,115 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const IForm = () => {
+const CPForm = () => {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [opassword, setOPassword] = useState("");
+  const [npassword, setNPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
   const [dataInserted, setdataInserted] = useState(false);
   const [dataInsertedError, setdataInsertedError] = useState(false);
 
-  const insertUser = () => {
+  const changepassword = () => {
     axios
-        .post("/?insertuser", {
-
-          username: username,
-          password: password,
-        })
-        .then((response) => {
-          if (response.data === 1) {
-            setdataInserted(true);
-            setdataInsertedError(false);
-          } else {
-            setdataInsertedError(true);
-            setdataInserted(false);
-          }
-        });
-
+      .post("/?changepassword", {
+        username: username,
+        oldpassword: opassword,
+        newpassword: npassword,
+      })
+      .then((response) => {
+        if (response.data === 1) {
+          setdataInserted(true);
+          setdataInsertedError(false);
+        } else {
+          setdataInsertedError(true);
+          setdataInserted(false);
+        }
+      });
   };
 
-  const iFormValidation = () => {
-    const username = document.getElementById("username").value;
-    const otp = document.getElementById("otp").value;
-
-    let usernameCheck = /^[a-zA-Z\-0-9\s]{1,14}$/;
-    let otpCheck = /^[a-zA-Z0-9\s]{1,32}$/;
-
-    if (usernameCheck.test(username) === false) {
-      document.getElementById("userNameError").innerText =
-        "Please insert a valid username";
-    } else {
-      document.getElementById("userNameError").innerText = "";
+  const CPFormValidation = () => {
+    if(username === localStorage.getItem("what") && npassword === cpassword){
+        changepassword();
     }
-
-    if (otpCheck.test(otp) === false) {
-      document.getElementById("otpError").innerText =
-        "Please insert a valid OTP";
-    } else {
-      document.getElementById("otpError").innerText = "";
+    else if (username !== localStorage.getItem("what")){
+        document.getElementById("userNameError").innerText="Please insert a valid ID"
     }
-
-    if (usernameCheck.test(username) === true && otpCheck.test(otp) === true) {
-      insertUser();
+    else if (npassword !== cpassword){
+        document.getElementById("cpError").innerText="Passwords do not match!"
     }
   };
 
   useEffect(() => {}, []);
   return (
-    <div className="grid grid-cols-2 gap-16">
-      <div className="grid grid-cols-2 gap-16">
-        <div className="mb-6 col-end-3 col-span-2">
-          <label
-            htmlFor="sem_name"
-            className="block mb-2 text-md font-medium text-gray-900"
-          >
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <span id="userNameError" className="text-red-800"></span>
-        </div>
+    <div className="grid grid-cols-1 gap-4">
+      <div className="">
+        <label
+          htmlFor="username"
+          className="block mb-2 text-md font-medium text-gray-900"
+        >
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+        />
+        <span id="userNameError" className="text-red-800"></span>
       </div>
-      <div className="grid grid-cols-2 gap-16">
-        <div className="mb-6 col-end-3 col-span-2">
+      <div className="grid grid-cols-1">
+        <div className="mb-6">
           <label
-            htmlFor="otp"
+            htmlFor="op"
             className="block mb-2 text-md font-medium text-gray-900"
           >
-            OTP
+            Old Password
           </label>
           <input
-            type="text"
-            id="otp"
+            type="password"
+            id="op"
             className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
             onChange={(event) => {
-              setPassword(event.target.value);
+              setOPassword(event.target.value);
             }}
           />
-          <span id="otpError" className="text-red-800"></span>
+          <span id="opError" className="text-red-800"></span>
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="np"
+            className="block mb-2 text-md font-medium text-gray-900"
+          >
+            New Password
+          </label>
+          <input
+            type="password"
+            id="np"
+            className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+            onChange={(event) => {
+              setNPassword(event.target.value);
+            }}
+          />
+          <span id="npError" className="text-red-800"></span>
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="cp"
+            className="block mb-2 text-md font-medium text-gray-900"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="cp"
+            className="shadow-sm border border-gray-300 text-gray-900 text-md rounded-lg focus:border-hblue block w-full p-2.5"
+            onChange={(event) => {
+              setCPassword(event.target.value);
+            }}
+          />
+          <span id="cpError" className="text-red-800"></span>
         </div>
       </div>
       {dataInserted ? (
@@ -144,14 +163,14 @@ const IForm = () => {
       ) : (
         ""
       )}
-      <div className="grid grid-cols-2 col-start-2 gap-12">
+      <div className="grid grid-cols-2 gap-12">
         <button
           id="c_submit"
-          onClick={iFormValidation}
+          onClick={CPFormValidation}
           type="button"
           className="col-start-1 text-black bg-white border-2 border-gray-500 hover:bg-hblue hover:text-black focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 text-center"
         >
-          Insert User
+          Change Password
         </button>
         <button
           id="reset"
@@ -169,4 +188,4 @@ const IForm = () => {
   );
 };
 
-export default IForm;
+export default CPForm;

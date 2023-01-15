@@ -122,6 +122,30 @@ if(isset($_GET['insertcourse'])){
     echo $obj->getUser($id);
   }
 
+  if(isset($_GET['getpercentage']) && isset($_GET['c_code']))
+  {
+    $c_code = $_GET['c_code'];
+    echo $obj->getAttendancePercentage($c_code);
+  }
+
+  if(isset($_GET['getpercentageforcourse']) && isset($_GET['c_code']))
+  {
+    $c_code = $_GET['c_code'];
+    echo $obj->getPercentageForCourse($c_code);
+  }
+
+  if(isset($_GET['getstudentstat']) && isset($_GET['c_code']) && isset($_GET['s_reg']))
+  {
+    $c_code = $_GET['c_code'];
+    $s_reg = $_GET['s_reg'];
+    echo $obj->getStudentStat($c_code, $s_reg);
+  }
+
+
+
+
+
+
 
 
 

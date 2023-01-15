@@ -503,4 +503,48 @@ public function loginUser()
             $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
             return json_encode($all);
         }
+
+        public function getAttendancePercentage($c_code)
+        {
+            $selectdata = "SELECT lectures.l_id, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(lectures.l_id)) * 100 AS 'Presence Percentage'
+            FROM lectures
+            JOIN attendances ON lectures.l_id = attendances.l_id
+            WHERE lectures.c_code = '$c_code'
+            GROUP BY lectures.l_id;";
+            $result = mysqli_query($this->conn, $selectdata);
+            $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+            return json_encode($all);
+        }
+
+
+        public function getPercentageForCourse($c_code)
+        {
+            $selectdata = "SELECT attendances.s_reg, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Presence Percentage'
+            FROM attendances
+            JOIN lectures ON attendances.l_id = lectures.l_id
+            JOIN students ON attendances.s_reg = students.s_reg
+            WHERE lectures.c_code = '$c_code'
+            GROUP BY attendances.s_reg
+            ORDER BY students.s_classroll asc;";
+            $result = mysqli_query($this->conn, $selectdata);
+            $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+            return json_encode($all);
+        }
+
+
+        public function getStudentStat($c_code, $s_reg)
+        {
+            $selectdata = "SELECT courses.c_code, courses.c_name, courses.c_credit, students.s_name, students.s_classroll, (SUM(CASE WHEN attendances.presence = 1 THEN 1 ELSE 0 END) / COUNT(attendances.s_reg)) * 100 AS 'Presence Percentage'
+            FROM attendances
+            JOIN lectures ON attendances.l_id = lectures.l_id
+            JOIN students ON attendances.s_reg = students.s_reg
+            JOIN courses ON lectures.c_code = courses.c_code
+            WHERE lectures.c_code = '$c_code' AND attendances.s_reg = '$s_reg'
+            GROUP BY courses.c_code, students.s_reg;";
+            $result = mysqli_query($this->conn, $selectdata);
+            $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+            return json_encode($all);
+        }
     }
+
+

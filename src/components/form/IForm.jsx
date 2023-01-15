@@ -33,7 +33,7 @@ const IForm = () => {
     const username = document.getElementById("username").value;
     const otp = document.getElementById("otp").value;
 
-    let usernameCheck = /^[a-zA-Z0-9\s]{1,14}$/;
+    let usernameCheck = /^[a-zA-Z\-0-9\s]{1,14}$/;
     let otpCheck = /^[a-zA-Z0-9\s]{1,32}$/;
 
     if (usernameCheck.test(username) === false) {

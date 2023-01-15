@@ -2,14 +2,12 @@
 import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
-const Private = ({ children }) => {
+const O = ({ children }) => {
   if(localStorage.getItem("what").slice(0,1) === 'O'){
     return children;
   }
-  else if (localStorage.getItem("what").slice(0,1) === 'T')
-    return <Navigate to="/courses"></Navigate>;
   else 
     return <Navigate to="/profile"></Navigate>
 };
 
-export default Private;
+export default O;

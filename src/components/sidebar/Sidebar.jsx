@@ -72,7 +72,7 @@ const Sidebar = () => {
             ) : (
               ""
             )}
-            {T === true ? (
+            {OT === true ? (
               <div>
                 <li className="text-gray-400 pl-2 pt-6 text-sm">
                   <span>LISTS</span>

@@ -8,7 +8,7 @@ const Private = ({ children }) => {
     return children;
   }
   else
-return children;;
+return <Navigate to="/login"></Navigate>;
 };
 
 export default Private;

@@ -44,7 +44,10 @@ const Sidebar = () => {
     <div>
       <div className="flex-initial border-r h-screen relative bg-white text-black shadow-xl">
         <div className="top flex h-12 items-center justify-center">
-          <Link to="/home" className="logo text-black text-2xl font-black font-dancing-script ">
+          <Link
+            to="/home"
+            className="logo text-black text-2xl font-black font-dancing-script "
+          >
             UPOSTHIT
           </Link>
         </div>
@@ -143,9 +146,14 @@ const Sidebar = () => {
             <li className="text-gray-400 pl-2 pt-6 text-sm">
               <span>USER</span>
             </li>
-            <li className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer">
-              <BsPersonCircle className="text-black text-2xl" />
-              <span className="text-gray-600">Profile</span>
+            <li>
+              <Link
+                to="/profile"
+                className="flex gap-2 items-center pr-6 pl-2 my-2 py-1.5 text-xl hover:text-black hover:bg-hblue rounded-md cursor-pointer"
+              >
+                <BsPersonCircle className="text-black text-2xl" />
+                <span className="text-gray-600">Profile</span>
+              </Link>
             </li>
             <li
               onClick={logOut}

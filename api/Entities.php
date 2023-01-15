@@ -456,14 +456,7 @@ class Entities
             else
             {
                 return 0;
-            }
-
-
-
-            
-
-
-            
+            }      
     }
 }
 
@@ -493,5 +486,21 @@ public function loginUser()
             }
                 
             }
+        }
+
+        
+        public function getUser($id)
+        {
+            $selectdata = "SELECT name, id, email FROM (
+                SELECT s_reg as id, s_name as name, s_email as email FROM students
+                UNION
+                SELECT t_code as id, t_name as name, t_email as email FROM teachers
+                UNION
+                SELECT o_code as id, o_name as name, o_email as email FROM officers
+                ) as users
+                WHERE id = '$id';";
+            $result = mysqli_query($this->conn, $selectdata);
+            $all = mysqli_fetch_all($result, $resulttype = MYSQLI_ASSOC);
+            return json_encode($all);
         }
     }

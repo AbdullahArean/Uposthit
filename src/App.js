@@ -17,6 +17,7 @@ import Private from "./components/route/Private";
 import O from "./components/route/O";
 import T from "./components/route/T";
 import OT from "./components/route/OT";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -124,18 +125,24 @@ function App() {
               </Private>
             }
           />
-          <Route path="/students">
-            <Route
-              index
-              element={
-                <Private>
-                  <OT>
-                    <Students />
-                  </OT>
-                </Private>
-              }
-            />
-          </Route>
+          <Route
+            path="/students"
+            element={
+              <Private>
+                <OT>
+                  <Students />
+                </OT>
+              </Private>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Private>
+                <Profile />
+              </Private>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

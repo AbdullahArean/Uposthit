@@ -23,13 +23,13 @@ const Sidebar = () => {
   const [S, setS] = useState(false);
   const [OT, setOT] = useState(false);
   const who = () => {
-    if (localStorage.getItem("what").slice(0, 1) === "O") {
+    if (localStorage.getItem("what")?.slice(0, 1) === "O") {
       setO(true);
       setOT(true);
-    } else if (localStorage.getItem("what").slice(0, 1) === "T") {
+    } else if (localStorage.getItem("what")?.slice(0, 1) === "T") {
       setT(true);
       setOT(true);
-    } else if (localStorage.getItem("what").slice(0, 1) === "S") {
+    } else if (localStorage.getItem("what")?.slice(0, 1) === "S") {
       setS(true);
     }
   };
@@ -129,7 +129,7 @@ const Sidebar = () => {
             ) : (
               ""
             )}
-            {OT === true ? (
+            {T === true ? (
               <div>
                 <li className="text-gray-400 pl-2 pt-6 text-sm">
                   <span>PROGRAMS</span>

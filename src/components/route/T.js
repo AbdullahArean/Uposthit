@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 const T = ({ children }) => {
-  if(localStorage.getItem("what").slice(0,1) === 'T'){
+  if(localStorage.getItem("what")?.slice(0,1) === 'T'){
     return children;
   }
   else 

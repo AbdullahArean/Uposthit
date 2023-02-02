@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -50,7 +49,7 @@ const Archive = () => {
       })
       .then((response) => {
         setPercentageS(response?.data);
-        console.log(response.data);
+        // console.log(response.data);
         DataLoading = false;
       });
   };
@@ -74,58 +73,54 @@ const Archive = () => {
     viewPercentageS();
   }, []);
   return (
-    <div className="flex">
-      <Sidebar className="fixed top-0 left-0 z-20" />
-      <div className="homeContainer flex-1">
-        <Navbar />
-        <hr className="mx-2 mb-3" />
-        <div className="">
-          <div className="ml-7 pr-2">
-            <Table
-              className="rounded-lg mb-6"
-              loading={DataLoading}
-              hover={false}
-              data={attendance}
-              rowKey="s_classroll + l_id"
-              height={850}
-              onSortColumn={(sortColumn, sortType) => {
-                console.log(sortColumn, sortType);
-              }}
-            >
-              <Column width={100} align="center" fixed>
-                <HeaderCell>Roll</HeaderCell>
-                <Cell dataKey="s_classroll" />
-              </Column>
-              <Column width={300} align="left" fixed>
-                <HeaderCell>Name</HeaderCell>
-                <Cell dataKey="s_name" />
-              </Column>
-              {lectures.map((lec, i) => {
-                return (
-                  <Column key={i} width={150} align="center" fullText>
-                    <HeaderCell>{lec.l_date}</HeaderCell>
-                    <Cell dataKey={`presence[${i * 2}]`} />
-                  </Column>
-                );
-              })}
-              <Column width={350} align="left" fixed>
-                <HeaderCell>Percentage</HeaderCell>
-                <Cell dataKey="Percent" />
-              </Column>
-            </Table>
-            <div className="flex gap-16">
-              <div className="w-96 text-center text-xl">
-                Attendance Percentage
-              </div>
-              {percentage.map((p, i) => {
-                return (
-                  <div key={i} className="text-center px-1">
-                    <div>{p.Percentage}%</div>
-                  </div>
-                );
-              })}
+    <div className="homeContainer flex-1">
+      <Navbar appearance="subtle" />
+      <div className="">
+        <div className="px-5">
+          <Table
+            className="rounded-lg mb-6"
+            loading={DataLoading}
+            hover={false}
+            data={attendance}
+            rowKey="s_classroll + l_id"
+            height={850}
+            onSortColumn={(sortColumn, sortType) => {
+              console.log(sortColumn, sortType);
+            }}
+          >
+            <Column width={100} align="center" fixed>
+              <HeaderCell>Roll</HeaderCell>
+              <Cell dataKey="s_classroll" />
+            </Column>
+            <Column width={300} align="left" fixed>
+              <HeaderCell>Name</HeaderCell>
+              <Cell dataKey="s_name" />
+            </Column>
+            {lectures.map((lec, i) => {
+              return (
+                <Column key={i} width={150} align="center">
+                  <HeaderCell>{lec.l_date}</HeaderCell>
+                  <Cell dataKey={`presence[${i * 2}]`} />
+                </Column>
+              );
+            })}
+            <Column width={350} align="left" fixed>
+              <HeaderCell>Percentage</HeaderCell>
+              <Cell dataKey="Percent" />
+            </Column>
+          </Table>
+          <div className="flex gap-16">
+            <div className="w-96 text-center text-xl">
+              Attendance Percentage
             </div>
-            </div>
+            {percentage.map((p, i) => {
+              return (
+                <div key={i} className="text-center px-1">
+                  <div>{p.Percentage}%</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

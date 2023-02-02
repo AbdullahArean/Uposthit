@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Sidebar from "../../components/sidebar/Sidebar";
 import Axios from "axios";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 
@@ -9,6 +8,7 @@ import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 const Teacher = () => {
 
   const [data, setData] = useState([]);
+  const [active, setActive] = useState("teachers");
   const getTeacher = () => {
     Axios.get("/?getallteachers")
       .then((response) => {
@@ -33,11 +33,8 @@ const Teacher = () => {
   ];
 
   return (
-    <div className="flex">
-      <Sidebar />
       <div className="homeContainer flex-1">
-        <Navbar />
-        <hr className="mx-2 mb-3" />
+      <Navbar appearance="subtle" active={active} onSelect={setActive} />
         <div className="text-5xl text-center font-bold uppercase mt-8 text-gray-600">
           All Teachers
         </div>
@@ -45,7 +42,6 @@ const Teacher = () => {
           <DataGrid rows={rows} columns={columns} />
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import "./login.css";
 import loginImage from "../../images/login.jpg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -30,87 +29,74 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen bg-white items-center justify-center">
-      <ToastContainer position="top-right" pauseOnHover draggable />
-      <div className="container h-content w-content rounded-3xl grid grid-cols-1 xl:grid-cols-2 bg-white shadow-2xl">
-        <div className="left lg:my-36 md:my-16 my-3 lg:ml-8 md:ml-4 grid grid-cols-1 lg:gap-6 justify-items-center items-center">
-          <span className="logo text-black text-5xl font-black font-lobster sm:mb-6 lg:m-0">
-            Welcome Back !
-          </span>
-          <form className="w-4/5 mb-6">
-            <div className="mb-6 justify-self-start">
-              <div className="md:w-full txt_field ">
+    <section className="bg-gray-100 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
+            </h1>
+            <form className="space-y-4 md:space-y-6" action="#">
+              <div>
+                <label
+                  htmlFor="username"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Username
+                </label>
                 <input
+                  type="text"
                   onChange={(event) => {
                     setUsername(event.target.value);
                   }}
-                  type="text"
+                  name="username"
                   id="username"
-                  className="focus:border-none focus:outline-none focus:ring-0"
-                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@company.com"
+                  required=""
                 />
-                <span></span>
-                <label>Username</label>
               </div>
-            </div>
-            <div className="md:flex md:items-center mb-4">
-              <div className="md:w-full txt_field">
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
                 <input
+                  type="password"
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}
-                  type="password"
-                  id="login-password"
-                  className="focus:border-none focus:outline-none focus:ring-0"
-                  required
+                  name="password"
+                  id="password"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required=""
                 />
-                <span></span>
-                <label>Password</label>
               </div>
-            </div>
-            <div className="flex justify-between mb-6">
-              <label className="text-gray-500 font-bold flex items-center">
-                <input
-                  className="mr-2 leading-tight focus:ring-0 rounded-sm ring-0 transition-all"
-                  type="checkbox"
-                />
-                <span className="text-md">Remember Me</span>
-              </label>
-              <label className="block text-gray-500 font-bold">
-                <span className="text-md cursor-pointer hover:text-blue transition-all">
-                  Forgot Password?
-                </span>
-              </label>
-            </div>
-            <div className="md:w-full grid grid-cols-1 justify-items-center items-center">
+              {/*<div className="flex items-center justify-between">
+                      <div className="flex items-start">
+                          <div className="flex items-center h-5">
+                            <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required=""/>
+                          </div>
+                          <div className="ml-3 text-sm">
+                            <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                    </div>
+                      </div>
+                    <a href="#" className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot password?</a>
+                  </div>*/}
               <button
+                type="submit"
                 onClick={addUser}
-                className="shadow bg-blue hover:bg-hover focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 transition-all rounded-full"
-                type="button"
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Log In
+                Sign in
               </button>
-            </div>
-          </form>
-          <div className="flex justify-items-center items-center">
-            <label className="block text-gray-500 font-bold">
-              <span className="text-md lg:mr-4 sm:mr-2">
-                Don't have an account?
-              </span>
-            </label>
-            <button
-              className="shadow bg-white text-blue border border-blue hover:bg-blue hover:text-white focus:shadow-outline focus:outline-none font-bold lg:py-2 lg:px-8 sm:py-1 sm:px-2 transition-all rounded-full"
-              type="button"
-            >
-              Create New
-            </button>
+            </form>
           </div>
         </div>
-        <div className="right xl:flex items-center hidden rounded-r-3xl lg:mr-16">
-          <img src={loginImage} alt="" className="rounded-3xl" />
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
